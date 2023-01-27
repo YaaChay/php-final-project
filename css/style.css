@@ -5,6 +5,8 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -43,10 +45,21 @@
 }
 
 html {
-  font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body p,
+body a,
+body div {
+  font-family: 'Quicksand', sans-serif;
 }
 
 article,
@@ -10970,13 +10983,88 @@ h6 {
   color: #ffd333;
   transition: 0.3s;
 }
-.btn-square:nth-child(1) i{
+
+.btn-square:nth-child(1) i {
   font-size: 25px;
 }
-.btn-square:nth-child(2) i{
+
+.btn-square:nth-child(2) i {
   margin-top: 3px;
   font-size: 23px;
 }
-.btn-square:nth-child(3) i{
+
+.btn-square:nth-child(3) i {
   font-size: 19px;
+}
+
+.item-review small {
+  margin: 0 2px;
+}
+.products-wrapper{
+  margin-bottom: 15px;
+}
+.product {
+  margin-bottom: 15px;
+  padding: 0;
+  display: flex;
+  align-items: start;
+  background-color: #fff;
+}
+.product:hover{
+  box-shadow: 0 0 5px 1px #d9d9d9;
+  transition: 0.3s;
+}
+
+.product img {
+  width: 180px;
+  height: 220px;
+}
+
+.product .item-info {
+  margin: 20px 20px 20px 0;
+  text-decoration: none;
+}
+
+.item-info a {
+  text-decoration: none;
+}
+
+.item-info .item-name {
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.item-info .item-name:hover {
+  color: #ffd333;
+  transition: 0.3s;
+}
+
+.item-info .prices {
+  height: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.prices h5 {
+  margin-right: 5px;
+}
+
+del {
+  color: #ff0000;
+}
+
+.item-action {
+  margin-top: 10px;
+  display: flex;
+}
+.item-action .btn{
+  margin-right: 5px;
+}
+.item-action .btn:nth-child(1) i{
+  margin-right: 5px;
+}
+.item-action .btn:hover{
+  color: #ffd333 !important;
+  transition: 0.3s;
 }
