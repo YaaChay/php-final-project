@@ -10970,6 +10970,15 @@ h6 {
   filter: drop-shadow(0px 2px 1px #000);
 }
 
+.reviewRate i{
+  margin-right: 4px;
+}
+.itemReviewBar i{
+  font-size: 25px;
+}
+.itemReviewBar i:hover{
+  cursor: pointer;
+}
 #owl-demo {
   display: flex;
   justify-content: center;
@@ -11325,24 +11334,21 @@ del {
 
   .item-info .item-rating {
     margin-top: -10px;
-    font-weight: bold;
   }
 
   .item-rating small {
     font-size: 10px;
-    font-weight: bold;
   }
-  
+
   .item-action {
     margin-top: 4px;
     display: flex;
     align-items: center;
   }
-  
+
   .item-action .btn {
     margin-right: 5px;
     font-size: 10px;
-    font-weight: bold;
   }
   .item-action .btn:nth-child(1){
     padding: 3px;
