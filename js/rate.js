@@ -1,7 +1,6 @@
 var rates = document.querySelectorAll(".rate");
 var reviewRates = document.querySelectorAll(".reviewRate");
 var itemReviewBar = document.querySelector(".itemReviewBar");
-var dataStar = itemReviewBar.dataset.star;
 var star1 = document.getElementById("star1");
 var star2 = document.getElementById("star2");
 var star3 = document.getElementById("star3");
