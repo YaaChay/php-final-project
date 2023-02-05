@@ -207,11 +207,15 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
+                            <input class="form-control" type="email" placeholder="example@email.com">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Mobile No</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789">
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">+95</span>
+                                <input class="form-control" type="tel" placeholder="9XXXXXXXXXX"
+                                    aria-describedby="basic-addon1" maxlength="10" size="10">
+                            </div>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address</label>
@@ -233,7 +237,8 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Country</label>
-                            <input class="form-control" type="text" placeholder="New York" value="Myanmar">
+                            <input class="form-control" type="text" placeholder="New York" value="Myanmar"
+                                aria-disabled="true" disabled>
                         </div>
                     </div>
                 </div>
@@ -258,7 +263,7 @@
                                 <label>Address</label>
                                 <input class="form-control" type="text" placeholder="123 Street">
                             </div>
-    
+
                             <div class="col-md-6 form-group">
                                 <label>City</label>
                                 <input class="form-control" type="text" placeholder="New York">
@@ -274,7 +279,8 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Country</label>
-                                <input class="form-control" type="text" placeholder="New York" value="Myanmar">
+                                <input class="form-control" type="text" placeholder="New York" value="Myanmar"
+                                    aria-disabled="true" disabled>
                             </div>
                         </div>
                     </div>
