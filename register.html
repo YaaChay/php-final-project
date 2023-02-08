@@ -29,6 +29,10 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         .left-side {
             width: 100%;
             height: 100vh;
@@ -75,6 +79,7 @@
 
             .mobile-view {
                 display: block;
+                margin: 50px 0;
             }
 
             .wrapper {
@@ -105,26 +110,74 @@
             </div>
         </div>
         <div class="right-side col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-            <div class="login-form col-xxl-7 col-xl-7 col-lg-8 col-md-10">
-                <h3>Register Account</h3>
-                <div class="form-group">
-                    <label>Name</label>
-                    <input class="form-control" type="text" placeholder="John">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input class="form-control" type="password" placeholder="At least 6 digits." minlength="6">
+            <div class="login-form col-xxl-10 col-xl-11 col-lg-11 col-md-12">
+                <h3 class="mb-3">Register Account</h3>
+                <div class="row">
+                    <div class="col-sm-6 col-6 form-group">
+                        <input class="form-control" type="text" placeholder="Full Name">
+                    </div>
+                    <div class="col-sm-6 col-6 form-group">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1">+95</span>
+                            <input class="form-control" type="tel" placeholder="9XXXXXXXXXX"
+                                aria-describedby="basic-addon1" maxlength="10" size="10">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-6 form-group">
+                        <input class="form-control" type="text" placeholder="Password">
+                    </div>
+                    <div class="col-sm-6 col-6 form-group">
+                        <input class="form-control" type="text" placeholder="Gmail">
+                    </div>
+                    <div class="col-sm-6 col-6 form-group">
+                        <select class="custom-select">
+                            <option selected disabled>Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-6 form-group">
+                        <input class="form-control" type="text" placeholder="Address">
+                    </div>
+                    <div class="col-sm-6 col-6 form-group">
+                        <select class="custom-select">
+                            <option selected disabled>City</option>
+                            <option>Ann</option>
+                            <option>Sittway</option>
+                            <option>YanByae</option>
+                            <option>KyaukPhyu</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-6 form-group">
+                        <select class="custom-select">
+                            <option selected disabled>State/Region</option>
+                            <option>Rakhine</option>
+                            <option>Chin</option>
+                            <option>Kachin</option>
+                            <option>Kayar</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-12 col-12 form-group">
+                        <label for="">Profile Image</label>
+                        <input class="form-control" type="file">
+                    </div>
+                    <div class="col-sm-12 col-12 form-group">
+                        <label for="">Birthday</label>
+                        <input class="form-control" type="date">
+                    </div>
                 </div>
                 <p>You agreed to <a href="" class="font-weight-bold">our terms and conditions.</a></p>
                 <button class="btn btn-block btn-primary font-weight-bold mt-3" id="submitBtn">Register</button>
                 <div class="form-footer">
                     <p class="mt-2">Already have account? <a href="login.html" class="font-weight-bolder">Login</a></p>
+                    <a href="" class="text-dark">မြန်မာ</a>
+                    <a href="" class="font-weight-bolder">English</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="mobile-view">
+    <div class="mobile-view row">
         <div class="wrapper d-flex justify-content-center align-items-center">
             <div class="col-12">
                 <div class="form-header">
@@ -132,22 +185,70 @@
                         <span class="h1 text-uppercase text-primary bg-dark px-2">Book</span>
                         <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
                     </a>
-                    <h3 class="mt-3">Register Account</h3>
+                    <h3 class="mt-3 mb-4">Register Account</h3>
                 </div>
-                <div class="login-form col-sm-8 col-9">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input class="form-control" type="text" placeholder="John">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input class="form-control" type="password" placeholder="At least 6 digits." minlength="6">
+                <div class="login-form col-sm-11 col-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-6 form-group">
+                            <input class="form-control" type="text" placeholder="Full Name">
+                        </div>
+                        <div class="col-sm-6 col-6 form-group">
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">+95</span>
+                                <input class="form-control" type="tel" placeholder="9XXXXXXXXXX"
+                                    aria-describedby="basic-addon1" maxlength="10" size="10">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-6 form-group">
+                            <input class="form-control" type="text" placeholder="Password">
+                        </div>
+                        <div class="col-sm-6 col-6 form-group">
+                            <input class="form-control" type="text" placeholder="Gmail">
+                        </div>
+                        <div class="col-sm-6 col-6 form-group">
+                            <select class="custom-select">
+                                <option selected disabled>Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-6 form-group">
+                            <input class="form-control" type="text" placeholder="Address">
+                        </div>
+                        <div class="col-sm-6 col-6 form-group">
+                            <select class="custom-select">
+                                <option selected disabled>City</option>
+                                <option>Ann</option>
+                                <option>Sittway</option>
+                                <option>YanByae</option>
+                                <option>KyaukPhyu</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-6 form-group">
+                            <select class="custom-select">
+                                <option selected disabled>State/Region</option>
+                                <option>Rakhine</option>
+                                <option>Chin</option>
+                                <option>Kachin</option>
+                                <option>Kayar</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-12 form-group">
+                            <label for="">Profile Image</label>
+                            <input class="form-control" type="file">
+                        </div>
+                        <div class="col-sm-12 col-12 form-group">
+                            <label for="">Birthday</label>
+                            <input class="form-control" type="date">
+                        </div>
                     </div>
                     <p>You agreed to <a href="" class="font-weight-bold">our terms and conditions.</a></p>
                     <button class="btn btn-block btn-primary font-weight-bold mt-3" id="submitBtn">Register</button>
                     <div class="form-footer">
                         <p class="mt-2">Already have account? <a href="login.html" class="font-weight-bolder">Login</a>
                         </p>
+                        <a href="" class="text-dark">မြန်မာ</a>
+                        <a href="" class="font-weight-bolder">English</a>
                     </div>
                 </div>
             </div>
