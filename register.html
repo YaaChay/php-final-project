@@ -71,8 +71,15 @@
         .form-footer {
             text-align: center;
         }
+        .toast-logo{
+            width: 35px;
+            height: 35px;
+        }
 
         @media only screen and (max-width: 767px) {
+            body{
+                margin: 170px auto;
+            }
             .desktop-view {
                 display: none;
             }
@@ -167,7 +174,7 @@
                     </div>
                 </div>
                 <p>You agreed to <a href="" class="font-weight-bold">our terms and conditions.</a></p>
-                <button class="btn btn-block btn-primary font-weight-bold mt-3" id="submitBtn">Register</button>
+                <button class="btn btn-block btn-primary font-weight-bold mt-3" id="registerBtn1">Register</button>
                 <div class="form-footer">
                     <p class="mt-2">Already have account? <a href="login.html" class="font-weight-bolder">Login</a></p>
                     <a href="" class="text-dark">မြန်မာ</a>
@@ -189,33 +196,33 @@
                 </div>
                 <div class="login-form col-sm-11 col-12">
                     <div class="row">
-                        <div class="col-sm-6 col-6 form-group">
+                        <div class="col-sm-12 col-12 form-group">
                             <input class="form-control" type="text" placeholder="Full Name">
                         </div>
-                        <div class="col-sm-6 col-6 form-group">
+                        <div class="col-sm-12 col-12 form-group">
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1">+95</span>
                                 <input class="form-control" type="tel" placeholder="9XXXXXXXXXX"
                                     aria-describedby="basic-addon1" maxlength="10" size="10">
                             </div>
                         </div>
-                        <div class="col-sm-6 col-6 form-group">
+                        <div class="col-sm-12 col-12 form-group">
                             <input class="form-control" type="text" placeholder="Password">
                         </div>
-                        <div class="col-sm-6 col-6 form-group">
+                        <div class="col-sm-12 col-12 form-group">
                             <input class="form-control" type="text" placeholder="Gmail">
                         </div>
-                        <div class="col-sm-6 col-6 form-group">
+                        <div class="col-sm-12 col-12 form-group">
                             <select class="custom-select">
                                 <option selected disabled>Gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
                         </div>
-                        <div class="col-sm-6 col-6 form-group">
+                        <div class="col-sm-12 col-12 form-group">
                             <input class="form-control" type="text" placeholder="Address">
                         </div>
-                        <div class="col-sm-6 col-6 form-group">
+                        <div class="col-sm-12 col-12 form-group">
                             <select class="custom-select">
                                 <option selected disabled>City</option>
                                 <option>Ann</option>
@@ -224,7 +231,7 @@
                                 <option>KyaukPhyu</option>
                             </select>
                         </div>
-                        <div class="col-sm-6 col-6 form-group">
+                        <div class="col-sm-12 col-12 form-group">
                             <select class="custom-select">
                                 <option selected disabled>State/Region</option>
                                 <option>Rakhine</option>
@@ -243,7 +250,7 @@
                         </div>
                     </div>
                     <p>You agreed to <a href="" class="font-weight-bold">our terms and conditions.</a></p>
-                    <button class="btn btn-block btn-primary font-weight-bold mt-3" id="submitBtn">Register</button>
+                    <button class="btn btn-block btn-primary font-weight-bold mt-3" id="registerBtn2">Register</button>
                     <div class="form-footer">
                         <p class="mt-2">Already have account? <a href="login.html" class="font-weight-bolder">Login</a>
                         </p>
@@ -254,6 +261,30 @@
             </div>
         </div>
     </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="./img/testimonial-1.jpg" class="toast-logo rounded-5 me-2" alt="...">
+                <strong class="me-auto">Book Shop</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Hello, world! This is a toast message.
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const registerBtn1 = document.getElementById('registerBtn1');
+        const registerBtn2 = document.getElementById('registerBtn2');
+        const liveToast = document.getElementById('liveToast');
+        function showToast() {
+            const toast = new bootstrap.Toast(liveToast);
+            toast.show();
+        }
+
+        registerBtn1.onclick = () => { showToast(); }
+        registerBtn2.onclick = () => { showToast(); }
+    </script>
 </body>
 
 </html>
