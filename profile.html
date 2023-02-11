@@ -17,7 +17,7 @@
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
     <!-- Getbootstrap.com -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -36,6 +36,37 @@
         .profile-image {
             width: 120px;
             height: 120px;
+            object-fit: cover;
+        }
+
+        .setting-btn i {
+            font-size: 18.5px;
+        }
+
+        .mobile-view {
+            display: none;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .desktop-view {
+                display: none;
+            }
+
+            .mobile-view {
+                display: block;
+            }
+
+            .wrapper {
+                height: 100vh;
+            }
+
+            .wrapper .form-header {
+                text-align: center;
+            }
+
+            .wrapper .login-form {
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -215,23 +246,82 @@
     <!-- Breadcrumb End -->
 
     <!-- Profile Start -->
-    <div class="container-fluid">
-        <div class="row px-xl-5">
-            <div class="col-12">
+    <div class=" px-xl-5">
+        <div class="col-12">
+            <div class="desktop-view">
                 <div class="d-flex bg-light mb-30 p-3">
-                    <img src="./img/offer-1.jpg" class="profile-image rounded-3" alt="" srcset="">
-                    <div class="col-auto">
+                    <div class="d-flex col-xxl-10 col-xl-10 col-lg-10 col-md-10">
+                        <img src="./img/offer-1.jpg" class="profile-image rounded-3 mr-3" alt="Profile Image" srcset="">
                         <div>
                             <h3>Smile</h3>
-                            <h6>Wet Mhyee Village, Ann Township, Rakhine</h6>
+                            <h6>Wet Mhyee Village, Ann Township, Rakhine Wet Mhyee Village, Ann Township, Rakhine
+                            </h6>
                             <div class="row mt-3">
-                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i class="bi bi-telephone mr-2"></i>+959405999313</div>
-                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i class="bi bi-envelope mr-2"></i>yachay498@gmail.com</div>
-                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i class="bi bi-envelope mr-2"></i>yachay498@gmail.com</div>
-                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i class="bi bi-calendar mr-2"></i>yachay498@gmail.com</div>
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i
+                                        class="bi bi-gender-ambiguous mr-2"></i>Male</div>
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i
+                                        class="bi bi-calendar2-heart mr-2"></i>March 1, 2001</div>
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i
+                                        class="bi bi-telephone mr-2"></i>+959405999313</div>
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i
+                                        class="bi bi-envelope-at mr-2"></i>yachay498@gmail.com</div>
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex align-items-start justify-content-end col-xxl-2 col-xl-2 col-lg-2 col-md-2">
+                        <div class="btn-group">
+                            <button type="button" class="setting-btn btn btn-sm btn-light dropdown-toggle"
+                                data-toggle="dropdown"><i class="bi bi-gear text-black mr-1"></i></button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Edit Profile</a>
+                                <a class="dropdown-item" href="#">Clear Wish List</a>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-view">
+                <div class="bg-light mb-30 p-3">
+                    <div class="d-flex mr-auto ml-auto">
+                        <div class="col-4 p-0">
+                            <img src="./img/offer-1.jpg" class="profile-image rounded-3 m-0" alt="Profile Image"
+                                srcset="">
+                        </div>
+                        <div class="d-flex align-items-start justify-content-end col-8">
+                            <div class="btn-group">
+                                <button type="button" class="setting-btn btn btn-sm btn-light dropdown-toggle"
+                                    data-toggle="dropdown"><i class="bi bi-gear text-black mr-1"></i></button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#">Edit Profile</a>
+                                    <a class="dropdown-item" href="#">Clear Wish List</a>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <a class="dropdown-item" href="#">Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Smile</h3>
+                        <h6>Wet Mhyee Village, Ann Township, Rakhine Wet Mhyee Village, Ann Township, Rakhine
+                        </h6>
+                        <div class="row mt-3">
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i
+                                    class="bi bi-gender-ambiguous mr-2"></i>Male</div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i
+                                    class="bi bi-calendar2-heart mr-2"></i>March 1, 2001</div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i
+                                    class="bi bi-telephone mr-2"></i>+959405999313</div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-10 col-sm-11"><i
+                                    class="bi bi-envelope-at mr-2"></i>yachay498@gmail.com</div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -252,36 +342,36 @@
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" checked id="color-all">
                             <label class="custom-control-label" for="price-all">All Book</label>
-                            <span class="badge border font-weight-normal">1000</span>
+                            <span class="badge text-dark border font-weight-normal">1000</span>
                         </div>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="color-1">
                             <label class="custom-control-label" for="color-1">Black</label>
-                            <span class="badge border font-weight-normal">150</span>
+                            <span class="badge text-dark border font-weight-normal">150</span>
                         </div>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="color-2">
                             <label class="custom-control-label" for="color-2">White</label>
-                            <span class="badge border font-weight-normal">295</span>
+                            <span class="badge text-dark border font-weight-normal">295</span>
                         </div>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="color-3">
                             <label class="custom-control-label" for="color-3">Red</label>
-                            <span class="badge border font-weight-normal">246</span>
+                            <span class="badge text-dark border font-weight-normal">246</span>
                         </div>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="color-4">
                             <label class="custom-control-label" for="color-4">Blue</label>
-                            <span class="badge border font-weight-normal">145</span>
+                            <span class="badge text-dark border font-weight-normal">145</span>
                         </div>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
                             <input type="checkbox" class="custom-control-input" id="color-5">
                             <label class="custom-control-label" for="color-5">Green</label>
-                            <span class="badge border font-weight-normal">168</span>
+                            <span class="badge text-dark border font-weight-normal">168</span>
                         </div>
                     </form>
                 </div>
@@ -295,36 +385,36 @@
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" checked id="price-all">
                             <label class="custom-control-label" for="price-all">All Price</label>
-                            <span class="badge border font-weight-normal">1000</span>
+                            <span class="badge text-dark border font-weight-normal">1000</span>
                         </div>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="price-1">
                             <label class="custom-control-label" for="price-1">$0 - $100</label>
-                            <span class="badge border font-weight-normal">150</span>
+                            <span class="badge text-dark border font-weight-normal">150</span>
                         </div>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="price-2">
                             <label class="custom-control-label" for="price-2">$100 - $200</label>
-                            <span class="badge border font-weight-normal">295</span>
+                            <span class="badge text-dark border font-weight-normal">295</span>
                         </div>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="price-3">
                             <label class="custom-control-label" for="price-3">$200 - $300</label>
-                            <span class="badge border font-weight-normal">246</span>
+                            <span class="badge text-dark border font-weight-normal">246</span>
                         </div>
                         <div
                             class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="checkbox" class="custom-control-input" id="price-4">
                             <label class="custom-control-label" for="price-4">$300 - $400</label>
-                            <span class="badge border font-weight-normal">145</span>
+                            <span class="badge text-dark border font-weight-normal">145</span>
                         </div>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
                             <input type="checkbox" class="custom-control-input" id="price-5">
                             <label class="custom-control-label" for="price-5">$400 - $500</label>
-                            <span class="badge border font-weight-normal">168</span>
+                            <span class="badge text-dark border font-weight-normal">168</span>
                         </div>
                     </form>
                 </div>
