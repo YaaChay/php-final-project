@@ -1,3 +1,4 @@
+<?php require("language.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,19 +13,15 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
     <!-- Getbootstrap.com -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <!-- Alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -108,30 +105,33 @@
                     <span class="h1 text-uppercase text-primary bg-dark px-2">Book</span>
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
                 </a>
-                <h5 class="quote text-light font-weight-lighter">"Books are a uniquely portable magic."</h5>
-                <p class="text-light">– Stephen King</p>
+                <h5 class="quote text-light font-weight-lighter"><?php echo $dataDecode[$_COOKIE['lang']]['quote']; ?></h5>
+                <p class="text-light"><?php echo $dataDecode[$_COOKIE['lang']]['quote_owner']; ?></p>
             </div>
         </div>
         <div class="right-side col-xxl-6 col-xl-6 col-lg-6 col-md-6">
             <div class="login-form col-xxl-7 col-xl-7 col-lg-8 col-md-10">
-                <h3 class="mb-4">Login Account</h3>
+                <h3 class="mb-4"><?php echo $dataDecode[$_COOKIE['lang']]['login_account']; ?></h3>
                 <div class="form-group">
                     <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1">+95</span>
-                        <input class="form-control" type="tel" placeholder="9XXXXXXXXX" aria-describedby="basic-addon1"
-                            maxlength="10" size="10">
+                        <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
+                        <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
                     </div>
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="password" placeholder="Password" minlength="6">
+                    <input class="form-control" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6">
                 </div>
-                <p>Forgot your password? <a href="" class="font-weight-bolder">Reset password.</a></p>
-                <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn1">Login</button>
+                <p><?php echo $dataDecode[$_COOKIE['lang']]['forgot_your_password']; ?><a href="" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['reset_password']; ?></a></p>
+                <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn1"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
                 <div class="form-footer">
-                    <p class="mt-2">You don't have any account? <a href="./register.html"
-                            class="font-weight-bolder">Register</a></p>
-                    <a href="" class="text-dark">မြန်မာ</a>
-                    <a href="" class="font-weight-bolder">English</a>
+                    <p class="mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['you_dont_have_any_account']; ?><a href="./register.php" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a></p>
+                    <?php if (isEng()) { ?>
+                            <a href="setCookie.php?key=lang&value=myanmar&page=login" class="text-dark">မြန်မာ</a>
+                            <span class="text-primary font-weight-bolder">English</span>
+                        <?php } else if (isMy()) { ?>
+                            <span class="text-primary font-weight-bolder">မြန်မာ</span>
+                            <a href="setCookie.php?key=lang&value=english&page=login" class="text-dark">English</a>
+                        <?php } ?>
                 </div>
             </div>
         </div>
@@ -145,26 +145,29 @@
                         <span class="h1 text-uppercase text-primary bg-dark px-2">Book</span>
                         <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
                     </a>
-                    <h3 class="mt-3 mb-4">Login Account</h3>
+                    <h3 class="mt-3 mb-4"><?php echo $dataDecode[$_COOKIE['lang']]['login_account']; ?></h3>
                 </div>
                 <div class="login-form col-sm-11 col-11">
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1">+95</span>
-                            <input class="form-control" type="tel" placeholder="9XXXXXXXXX"
-                                aria-describedby="basic-addon1" maxlength="10" size="10">
+                            <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
+                            <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
                         </div>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="password" placeholder="Password" minlength="6">
+                        <input class="form-control" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6">
                     </div>
-                    <p>Forgot your password? <a href="" class="font-weight-bolder">Reset password.</a></p>
-                    <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn2">Login</button>
+                    <p><?php echo $dataDecode[$_COOKIE['lang']]['forgot_your_password']; ?><a href="" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['reset_password']; ?></a></p>
+                    <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn2"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
                     <div class="form-footer">
-                        <p class="mt-2">You don't have any account? <a href="./register.html"
-                                class="font-weight-bolder">Register</a></p>
-                        <a href="" class="text-dark">မြန်မာ</a>
-                        <a href="" class="font-weight-bolder">English</a>
+                        <p class="mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['you_dont_have_any_account']; ?><a href="./register.php" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a></p>
+                        <?php if (isEng()) { ?>
+                            <a href="setCookie.php?key=lang&value=myanmar&page=login" class="text-dark">မြန်မာ</a>
+                            <span class="text-primary font-weight-bolder">English</span>
+                        <?php } else if (isMy()) { ?>
+                            <span class="text-primary font-weight-bolder">မြန်မာ</span>
+                            <a href="setCookie.php?key=lang&value=english&page=login" class="text-dark">English</a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -186,12 +189,15 @@
         const loginBtn1 = document.getElementById('loginBtn1');
         const loginBtn2 = document.getElementById('loginBtn2');
         const liveToast = document.getElementById('liveToast');
+
         function showToast() {
             const toast = new bootstrap.Toast(liveToast);
             toast.show();
         }
 
-        loginBtn1.onclick = () => { showToast(); }
+        loginBtn1.onclick = () => {
+            showToast();
+        }
         loginBtn2.onclick = () => {
             swal({
                 title: "Are you sure?",
