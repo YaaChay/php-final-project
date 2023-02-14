@@ -10898,6 +10898,11 @@ h6 {
   animation: action 1s infinite alternate;
 }
 
+.swal-modal .swal-text,
+.swal-footer{
+  text-align: center;
+}
+
 @keyframes action {
   0% {
     transform: translateY(0);

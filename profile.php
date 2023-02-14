@@ -262,7 +262,7 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-start justify-content-end col-xxl-4 col-xl-4 col-lg-4 col-md-4">
-                        <a href="" class="btn btn-primary mr-2"><i class="bi bi-plus-lg mr-1"></i><?php echo $dataDecode[$_COOKIE['lang']]['new_book']; ?></a>
+                        <a href="new-book.php" class="btn btn-primary mr-2"><i class="bi bi-plus-lg mr-1"></i><?php echo $dataDecode[$_COOKIE['lang']]['new_book']; ?></a>
                         <div class="btn-group">
                             <button type="button" class="setting-btn btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="bi bi-gear text-black mr-1"></i></button>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -284,7 +284,7 @@
                             <img src="./img/offer-1.jpg" class="profile-image rounded-3 m-0" alt="Profile Image" srcset="">
                         </div>
                         <div class="d-flex align-items-start justify-content-end col-8">
-                            <a href="" class="btn btn-primary mr-2"><i class="bi bi-plus-lg mr-1"></i><?php echo $dataDecode[$_COOKIE['lang']]['new_book']; ?></a>
+                            <a href="new-book.php" class="btn btn-primary mr-2"><i class="bi bi-plus-lg mr-1"></i><?php echo $dataDecode[$_COOKIE['lang']]['new_book']; ?></a>
                             <div class="btn-group">
                                 <button type="button" class="setting-btn btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="bi bi-gear text-black mr-1"></i></button>
                                 <div class="dropdown-menu dropdown-menu-right">

@@ -110,30 +110,32 @@
             </div>
         </div>
         <div class="right-side col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-            <div class="login-form col-xxl-7 col-xl-7 col-lg-8 col-md-10">
-                <h3 class="mb-4"><?php echo $dataDecode[$_COOKIE['lang']]['login_account']; ?></h3>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
-                        <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
+            <form action="" method="post">
+                <div class="login-form col-xxl-7 col-xl-7 col-lg-8 col-md-10">
+                    <h3 class="mb-4"><?php echo $dataDecode[$_COOKIE['lang']]['login_account']; ?></h3>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
+                            <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6">
-                </div>
-                <p><?php echo $dataDecode[$_COOKIE['lang']]['forgot_your_password']; ?><a href="" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['reset_password']; ?></a></p>
-                <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn1"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
-                <div class="form-footer">
-                    <p class="mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['you_dont_have_any_account']; ?><a href="./register.php" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a></p>
-                    <?php if (isEng()) { ?>
+                    <div class="form-group">
+                        <input class="form-control" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6">
+                    </div>
+                    <p><?php echo $dataDecode[$_COOKIE['lang']]['forgot_your_password']; ?><a href="" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['reset_password']; ?></a></p>
+                    <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn1"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
+                    <div class="form-footer">
+                        <p class="mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['you_dont_have_any_account']; ?><a href="./register.php" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a></p>
+                        <?php if (isEng()) { ?>
                             <a href="setCookie.php?key=lang&value=myanmar&page=login" class="text-dark">မြန်မာ</a>
                             <span class="text-primary font-weight-bolder">English</span>
                         <?php } else if (isMy()) { ?>
                             <span class="text-primary font-weight-bolder">မြန်မာ</span>
                             <a href="setCookie.php?key=lang&value=english&page=login" class="text-dark">English</a>
                         <?php } ?>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -147,29 +149,31 @@
                     </a>
                     <h3 class="mt-3 mb-4"><?php echo $dataDecode[$_COOKIE['lang']]['login_account']; ?></h3>
                 </div>
-                <div class="login-form col-sm-11 col-11">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
-                            <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
+                <form action="" method="post">
+                    <div class="login-form col-sm-11 col-11">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
+                                <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6">
+                        </div>
+                        <p><?php echo $dataDecode[$_COOKIE['lang']]['forgot_your_password']; ?><a href="" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['reset_password']; ?></a></p>
+                        <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn2" type="button"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
+                        <div class="form-footer">
+                            <p class="mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['you_dont_have_any_account']; ?><a href="./register.php" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a></p>
+                            <?php if (isEng()) { ?>
+                                <a href="setCookie.php?key=lang&value=myanmar&page=login" class="text-dark">မြန်မာ</a>
+                                <span class="text-primary font-weight-bolder">English</span>
+                            <?php } else if (isMy()) { ?>
+                                <span class="text-primary font-weight-bolder">မြန်မာ</span>
+                                <a href="setCookie.php?key=lang&value=english&page=login" class="text-dark">English</a>
+                            <?php } ?>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6">
-                    </div>
-                    <p><?php echo $dataDecode[$_COOKIE['lang']]['forgot_your_password']; ?><a href="" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['reset_password']; ?></a></p>
-                    <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn2"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
-                    <div class="form-footer">
-                        <p class="mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['you_dont_have_any_account']; ?><a href="./register.php" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a></p>
-                        <?php if (isEng()) { ?>
-                            <a href="setCookie.php?key=lang&value=myanmar&page=login" class="text-dark">မြန်မာ</a>
-                            <span class="text-primary font-weight-bolder">English</span>
-                        <?php } else if (isMy()) { ?>
-                            <span class="text-primary font-weight-bolder">မြန်မာ</span>
-                            <a href="setCookie.php?key=lang&value=english&page=login" class="text-dark">English</a>
-                        <?php } ?>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
