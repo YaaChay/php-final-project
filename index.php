@@ -132,23 +132,18 @@ require("language.php");
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
-                        <div class="nav-item dropdown dropright">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses <i class="fa fa-angle-right float-right mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">Men's Dresses</a>
-                                <a href="" class="dropdown-item">Women's Dresses</a>
-                                <a href="" class="dropdown-item">Baby's Dresses</a>
-                            </div>
-                        </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['business']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['cartoon']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['comedy']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['health']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['history']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['IT']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['knowledge']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['religion']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></a>
+                        <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['translation']; ?></a>
                     </div>
                 </nav>
             </div>
@@ -207,38 +202,38 @@ require("language.php");
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item position-relative active" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/bookshop.jpg" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men
                                         Fashion</h1>
                                     <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet
                                         lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="shop.php"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/bookshop.jpg" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Women
                                         Fashion</h1>
                                     <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet
                                         lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="shop.php"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/carousel-3.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/bookshop.jpg" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
                                     <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids
                                         Fashion</h1>
                                     <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet
                                         lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="shop.php"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +246,7 @@ require("language.php");
                     <div class="offer-text">
                         <h6 class="text-white text-uppercase"><?php echo $dataDecode[$_COOKIE['lang']]['save_20%']; ?></h6>
                         <h3 class="text-white mb-3"><?php echo $dataDecode[$_COOKIE['lang']]['special_offer']; ?></h3>
-                        <a href="" class="btn btn-primary"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
+                        <a href="shop.php" class="btn btn-primary"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                     </div>
                 </div>
                 <div class="product-offer mb-30" style="height: 200px;">
@@ -259,7 +254,7 @@ require("language.php");
                     <div class="offer-text">
                         <h6 class="text-white text-uppercase"><?php echo $dataDecode[$_COOKIE['lang']]['save_20%']; ?></h6>
                         <h3 class="text-white mb-3"><?php echo $dataDecode[$_COOKIE['lang']]['special_offer']; ?></h3>
-                        <a href="" class="btn btn-primary"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
+                        <a href="shop.php" class="btn btn-primary"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                     </div>
                 </div>
             </div>
@@ -311,8 +306,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-1.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['business']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -324,8 +319,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-2.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['cartoon']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -337,8 +332,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-3.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['comedy']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -350,8 +345,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-4.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -363,8 +358,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-4.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['health']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -376,8 +371,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-3.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['history']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -389,8 +384,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-2.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['IT']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -402,8 +397,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-1.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['knowledge']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -415,8 +410,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-2.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -428,8 +423,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-1.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['religion']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -441,8 +436,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-4.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>
@@ -454,8 +449,8 @@ require("language.php");
                             <img class="img-fluid" src="img/cat-3.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
-                            <h6>Category Name</h6>
-                            <small class="text-body">100 Products</small>
+                            <h6><?php echo $dataDecode[$_COOKIE['lang']]['translation']; ?></h6>
+                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
                         </div>
                     </div>
                 </a>

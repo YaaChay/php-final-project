@@ -124,8 +124,8 @@
                     </div>
                     <div class="col-sm-6 col-6 form-group">
                         <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95'];?></span>
-                            <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9'];?>" aria-describedby="basic-addon1" maxlength="10" size="10">
+                            <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
+                            <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
                         </div>
                     </div>
                     <div class="col-sm-6 col-6 form-group">
@@ -146,7 +146,7 @@
                     </div>
                     <div class="col-sm-6 col-6 form-group">
                         <select class="custom-select">
-                            <option selected disabled><?php echo $dataDecode[$_COOKIE['lang']]['city']; ?></option>
+                            <option selected disabled><?php echo $dataDecode[$_COOKIE['lang']]['town']; ?></option>
                             <option>Ann</option>
                             <option>Sittway</option>
                             <option>YanByae</option>
@@ -156,10 +156,21 @@
                     <div class="col-sm-6 col-6 form-group">
                         <select class="custom-select">
                             <option selected disabled><?php echo $dataDecode[$_COOKIE['lang']]['state_region']; ?></option>
-                            <option>Rakhine</option>
-                            <option>Chin</option>
-                            <option>Kachin</option>
-                            <option>Kayar</option>
+                            <option value="Kachin"><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
+                            <option value="Kayar"><?php echo $dataDecode[$_COOKIE['lang']]['kayar']; ?></option>
+                            <option value="Kayin"><?php echo $dataDecode[$_COOKIE['lang']]['kayin']; ?></option>
+                            <option value="Chin"><?php echo $dataDecode[$_COOKIE['lang']]['chin']; ?></option>
+                            <option value="Mon"><?php echo $dataDecode[$_COOKIE['lang']]['mon']; ?></option>
+                            <option value="Rakhine"><?php echo $dataDecode[$_COOKIE['lang']]['rakhine']; ?></option>
+                            <option value="Shan"><?php echo $dataDecode[$_COOKIE['lang']]['shan']; ?></option>
+                            <option value="Yangon"><?php echo $dataDecode[$_COOKIE['lang']]['yangon']; ?></option>
+                            <option value="Mandalay"><?php echo $dataDecode[$_COOKIE['lang']]['mandalay']; ?></option>
+                            <option value="Nay Pyi Taw"><?php echo $dataDecode[$_COOKIE['lang']]['naypyitaw']; ?></option>
+                            <option value="Ayeyarwady"><?php echo $dataDecode[$_COOKIE['lang']]['ayeyarwady']; ?></option>
+                            <option value="Sagaing"><?php echo $dataDecode[$_COOKIE['lang']]['sagaing']; ?></option>
+                            <option value="Magway"><?php echo $dataDecode[$_COOKIE['lang']]['magway']; ?></option>
+                            <option value="Bago"><?php echo $dataDecode[$_COOKIE['lang']]['bago']; ?></option>
+                            <option value="Taninthari"><?php echo $dataDecode[$_COOKIE['lang']]['taninthari']; ?></option>
                         </select>
                     </div>
                     <div class="col-sm-12 col-12 form-group">
@@ -172,20 +183,20 @@
                     </div>
                 </div>
                 <?php if (isEng()) { ?>
-                        <p><?php echo $dataDecode[$_COOKIE['lang']]['you_agreed_to']; ?><a href="" class="font-weight-bold"><?php echo $dataDecode[$_COOKIE['lang']]['our_terms_and_conditions']; ?></a></p>
-                    <?php } else if (isMy()) { ?>
-                        <p><a href="" class="font-weight-bold"><?php echo $dataDecode[$_COOKIE['lang']]['our_terms_and_conditions']; ?></a><?php echo $dataDecode[$_COOKIE['lang']]['you_agreed_to']; ?></p>
-                    <?php } ?>
-                <button class="btn btn-block btn-primary font-weight-bold mt-3" id="registerBtn1"><?php echo $dataDecode[$_COOKIE['lang']]['register'];?></button>
+                    <p><?php echo $dataDecode[$_COOKIE['lang']]['you_agreed_to']; ?><a href="" class="font-weight-bold"><?php echo $dataDecode[$_COOKIE['lang']]['our_terms_and_conditions']; ?></a></p>
+                <?php } else if (isMy()) { ?>
+                    <p><a href="" class="font-weight-bold"><?php echo $dataDecode[$_COOKIE['lang']]['our_terms_and_conditions']; ?></a><?php echo $dataDecode[$_COOKIE['lang']]['you_agreed_to']; ?></p>
+                <?php } ?>
+                <button class="btn btn-block btn-primary font-weight-bold mt-3" id="registerBtn1"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></button>
                 <div class="form-footer">
                     <p class="mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['already_have_account']; ?><a href="login.php" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a></p>
                     <?php if (isEng()) { ?>
-                            <a href="setCookie.php?key=lang&value=myanmar&page=register" class="text-dark">မြန်မာ</a>
-                            <span class="text-primary font-weight-bolder">English</span>
-                        <?php } else if (isMy()) { ?>
-                            <span class="text-primary font-weight-bolder">မြန်မာ</span>
-                            <a href="setCookie.php?key=lang&value=english&page=register" class="text-dark">English</a>
-                        <?php } ?>
+                        <a href="setCookie.php?key=lang&value=myanmar&page=register" class="text-dark">မြန်မာ</a>
+                        <span class="text-primary font-weight-bolder">English</span>
+                    <?php } else if (isMy()) { ?>
+                        <span class="text-primary font-weight-bolder">မြန်မာ</span>
+                        <a href="setCookie.php?key=lang&value=english&page=register" class="text-dark">English</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -208,8 +219,8 @@
                         </div>
                         <div class="col-sm-12 col-12 form-group">
                             <div class="input-group">
-                                <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95'];?></span>
-                                <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9'];?>" aria-describedby="basic-addon1" maxlength="10" size="10">
+                                <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
+                                <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
                             </div>
                         </div>
                         <div class="col-sm-12 col-12 form-group">
@@ -230,7 +241,7 @@
                         </div>
                         <div class="col-sm-12 col-12 form-group">
                             <select class="custom-select">
-                                <option selected disabled><?php echo $dataDecode[$_COOKIE['lang']]['city']; ?></option>
+                                <option selected disabled><?php echo $dataDecode[$_COOKIE['lang']]['town']; ?></option>
                                 <option>Ann</option>
                                 <option>Sittway</option>
                                 <option>YanByae</option>
@@ -240,10 +251,21 @@
                         <div class="col-sm-12 col-12 form-group">
                             <select class="custom-select">
                                 <option selected disabled><?php echo $dataDecode[$_COOKIE['lang']]['state_region']; ?></option>
-                                <option>Rakhine</option>
-                                <option>Chin</option>
-                                <option>Kachin</option>
-                                <option>Kayar</option>
+                                <option value="Kachin"><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
+                                <option value="Kayar"><?php echo $dataDecode[$_COOKIE['lang']]['kayar']; ?></option>
+                                <option value="Kayin"><?php echo $dataDecode[$_COOKIE['lang']]['kayin']; ?></option>
+                                <option value="Chin"><?php echo $dataDecode[$_COOKIE['lang']]['chin']; ?></option>
+                                <option value="Mon"><?php echo $dataDecode[$_COOKIE['lang']]['mon']; ?></option>
+                                <option value="Rakhine"><?php echo $dataDecode[$_COOKIE['lang']]['rakhine']; ?></option>
+                                <option value="Shan"><?php echo $dataDecode[$_COOKIE['lang']]['shan']; ?></option>
+                                <option value="Yangon"><?php echo $dataDecode[$_COOKIE['lang']]['yangon']; ?></option>
+                                <option value="Mandalay"><?php echo $dataDecode[$_COOKIE['lang']]['mandalay']; ?></option>
+                                <option value="Nay Pyi Taw"><?php echo $dataDecode[$_COOKIE['lang']]['naypyitaw']; ?></option>
+                                <option value="Ayeyarwady"><?php echo $dataDecode[$_COOKIE['lang']]['ayeyarwady']; ?></option>
+                                <option value="Sagaing"><?php echo $dataDecode[$_COOKIE['lang']]['sagaing']; ?></option>
+                                <option value="Magway"><?php echo $dataDecode[$_COOKIE['lang']]['magway']; ?></option>
+                                <option value="Bago"><?php echo $dataDecode[$_COOKIE['lang']]['bago']; ?></option>
+                                <option value="Taninthari"><?php echo $dataDecode[$_COOKIE['lang']]['taninthari']; ?></option>
                             </select>
                         </div>
                         <div class="col-sm-12 col-12 form-group">

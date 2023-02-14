@@ -6,5 +6,7 @@ $database = "book_shop_db";
 
 if($con){
     mysqli_query($con, "CREATE DATABASE IF NOT EXISTS $database;");
+    
     mysqli_select_db($con, $database);
+    echo "DB Connected";
 }
