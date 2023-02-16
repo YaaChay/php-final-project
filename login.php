@@ -112,7 +112,7 @@ require("db-connect.php"); ?>
             </div>
         </div>
         <div class="right-side col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-            <form action="" method="post">
+            <form action="login.php" method="post">
                 <div class="login-form col-xxl-7 col-xl-7 col-lg-8 col-md-10">
                     <h3 class="mb-4"><?php echo $dataDecode[$_COOKIE['lang']]['login_account']; ?></h3>
                     <div class="form-group">
@@ -151,7 +151,7 @@ require("db-connect.php"); ?>
                     </a>
                     <h3 class="mt-3 mb-4"><?php echo $dataDecode[$_COOKIE['lang']]['login_account']; ?></h3>
                 </div>
-                <form action="" method="post">
+                <form action="login.php" method="post">
                     <div class="login-form col-sm-11 col-11">
                         <div class="form-group">
                             <div class="input-group">
@@ -193,7 +193,7 @@ require("db-connect.php"); ?>
     </div>
     <!-- PHP Start -->
     <?php
-    if ($_POST['phone']) {
+    if (isset($_POST['phone'])) {
         $phone = "+95" . $_POST['phone'];
         $password = $_POST['password'];
         $checkAccount = "SELECT * FROM `accounts` WHERE `phone`='$phone';";
@@ -211,7 +211,7 @@ require("db-connect.php"); ?>
                 $row = mysqli_fetch_array($result);
                 if (($row['phone'] == $phone) and ($row['password'] == $password)) { ?>
                     <script type='text/javascript'>
-                        window.open("setCookie.php?key=acc&value=<?php echo $row['id'];?>&page=index", "_self");
+                        window.open("setCookie.php?key=acc&value=<?php echo $row['id']; ?>&page=index", "_self");
                     </script>
                 <?php } else { ?>
                     <script type='text/javascript'>
@@ -225,7 +225,7 @@ require("db-connect.php"); ?>
                     $row = mysqli_fetch_array($result);
                     if (($row['phone'] == $phone) and ($row['password'] == $password)) { ?>
                         <script type='text/javascript'>
-                            window.open("setCookie.php?key=acc&value=<?php echo $row['id'];?>&page=index", "_self");
+                            window.open("setCookie.php?key=acc&value=<?php echo $row['id']; ?>&page=index", "_self");
                         </script>
                     <?php } else { ?>
                         <script type='text/javascript'>
