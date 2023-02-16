@@ -42,23 +42,26 @@
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <div class="btn-group d-none">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                            <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt=""><?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="register.php"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a>
-                            <a class="dropdown-item" href="login.php"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a>
+                    <?php if (isset($_COOKIE['acc'])) { ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                                <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="setCookie.php?key=acc&value=&page=detail"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                            <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="logout.php"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
+                    <?php } else { ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                                <?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="register.php"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a>
+                                <a class="dropdown-item" href="login.php"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
                     <?php if (isEng()) { ?>
                         <div class="btn-group mx-2">
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">English</button>

@@ -1,4 +1,6 @@
-<?php require("language.php"); ?>
+<?php
+require("language.php");
+require("db-connect.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,14 +118,14 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
-                            <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
+                            <input class="form-control" name="phone" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required">
                         </div>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6">
+                        <input class="form-control" name="password" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6" required="required">
                     </div>
                     <p><?php echo $dataDecode[$_COOKIE['lang']]['forgot_your_password']; ?><a href="" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['reset_password']; ?></a></p>
-                    <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn1"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
+                    <button class="btn btn-block btn-primary font-weight-bold mt-3" type="submit"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
                     <div class="form-footer">
                         <p class="mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['you_dont_have_any_account']; ?><a href="./register.php" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a></p>
                         <?php if (isEng()) { ?>
@@ -154,14 +156,14 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
-                                <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
+                                <input class="form-control" name="phone" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required">
                             </div>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6">
+                            <input class="form-control" name="password" type="password" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['password']; ?>" minlength="6" required="required">
                         </div>
                         <p><?php echo $dataDecode[$_COOKIE['lang']]['forgot_your_password']; ?><a href="" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['reset_password']; ?></a></p>
-                        <button class="btn btn-block btn-primary font-weight-bold mt-3" id="loginBtn2" type="button"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
+                        <button class="btn btn-block btn-primary font-weight-bold mt-3" type="submit"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></button>
                         <div class="form-footer">
                             <p class="mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['you_dont_have_any_account']; ?><a href="./register.php" class="font-weight-bolder"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a></p>
                             <?php if (isEng()) { ?>
@@ -189,38 +191,57 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        const loginBtn1 = document.getElementById('loginBtn1');
-        const loginBtn2 = document.getElementById('loginBtn2');
-        const liveToast = document.getElementById('liveToast');
-
-        function showToast() {
-            const toast = new bootstrap.Toast(liveToast);
-            toast.show();
-        }
-
-        loginBtn1.onclick = () => {
-            showToast();
-        }
-        loginBtn2.onclick = () => {
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this imaginary file!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
-                    swal("Poof! Your imaginary file has been deleted!", {
-                        icon: "success",
-                    }).then((ok) => {
-                        if (ok) {
-                            console.log("Hello");
-                        }
-                    });
+    <!-- PHP Start -->
+    <?php
+    if ($_POST['phone']) {
+        $phone = "+95" . $_POST['phone'];
+        $password = $_POST['password'];
+        $checkAccount = "SELECT * FROM `accounts` WHERE `phone`='$phone';";
+        $result = mysqli_query($con, $checkAccount);
+        $rowcount = mysqli_num_rows($result);
+        $loginQuery = ";";
+        if ($rowcount == 0) { ?>
+            <script type='text/javascript'>
+                swal('<?php echo $phone; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['there_was_no_account_with_this_phone_number']; ?>', {
+                    icon: 'error',
+                });
+            </script>
+            <?php } else {
+            if ($row_count == 1) {
+                $row = mysqli_fetch_array($result);
+                if (($row['phone'] == $phone) and ($row['password'] == $password)) { ?>
+                    <script type='text/javascript'>
+                        window.open("setCookie.php?key=acc&value=<?php echo $row['id'];?>&page=index", "_self");
+                    </script>
+                <?php } else { ?>
+                    <script type='text/javascript'>
+                        swal('<?php echo $dataDecode[$_COOKIE['lang']]['incorrect_password']; ?>', {
+                            icon: 'error',
+                        });
+                    </script>
+                    <?php };
+            } else {
+                for ($i = 0; $i < $rowcount; $i++) {
+                    $row = mysqli_fetch_array($result);
+                    if (($row['phone'] == $phone) and ($row['password'] == $password)) { ?>
+                        <script type='text/javascript'>
+                            window.open("setCookie.php?key=acc&value=<?php echo $row['id'];?>&page=index", "_self");
+                        </script>
+                    <?php } else { ?>
+                        <script type='text/javascript'>
+                            swal('<?php echo $dataDecode[$_COOKIE['lang']]['incorrect_password']; ?>', {
+                                icon: 'error',
+                            });
+                        </script>
+    <?php           }
                 }
-            });
+            }
         }
+    }
+    ?>
+    <!-- PHP End -->
+    <script type="text/javascript">
+
     </script>
 </body>
 

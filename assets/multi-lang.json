@@ -109,6 +109,7 @@
         "book_intro": "Description",
         "discount": "Discount",
         "kyat": "MMK",
+        "product_key": "Product Key",
         "e_mail": "E-mail",
         "mobile_no": "Mobile No",
         "address": "Address",
@@ -180,7 +181,12 @@
         "received": "Received",
         "wish_list": "Wish List",
         "history1": "History",
-        "ordered": "Ordered"
+        "ordered": "Ordered",
+        "new_book_added_successfully": "New book added successfully.",
+        "mmk": "MMK",
+        "product_key_already_exists": "Product key already exists.",
+        "there_was_no_account_with_this_phone_number": "There was no account with this phone number.",
+        "incorrect_password": "Incorrect Password"
     },
     "myanmar": {
         "quote": "စာအုပ်များသည် ထူးခြားစွာသယ်ဆောင်ရလွယ်ကူသော မှော်ပညာတစ်ခုဖြစ်သည်။",
@@ -292,6 +298,7 @@
         "book_intro": "စာအုပ်အကျဉ်းချုပ်",
         "discount": "လျေ့ာစျေး",
         "kyat": "ကျပ်",
+        "product_key": "ထုတ်ကုန်နံပါတ်",
         "e_mail": "အီးမေး(လ်)",
         "mobile_no": "ဖုန်းနံပါတ်",
         "address": "လိပ်စာ",
@@ -363,6 +370,11 @@
         "received": "ရရှိခဲ့သည်",
         "wish_list": "Wish List",
         "history1": "မှတ်တမ်း",
-        "ordered": "အော်ဒါတင်ခဲ့သည်"
+        "ordered": "အော်ဒါတင်ခဲ့သည်",
+        "new_book_added_successfully": "စာအုပ်အသစ်ကို အောင်မြင်စွာ ထည့်သွင်းခဲ့သည်။",
+        "mmk": "ကျပ်",
+        "product_key_already_exists": "ထုတ်ကုန်နံပါတ်သည် ရှိနှင့်ပြီးဖြစ်သည်။",
+        "there_was_no_account_with_this_phone_number":"ဒီဖုန်းနံပါတ်နှင့် အကောင့်မရှိခဲ့ပါ။",
+        "incorrect_password": "စကား၀ှက်မှားနေပါသည်"
     }
 }

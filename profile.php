@@ -86,23 +86,26 @@
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <div class="btn-group d-none">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                            <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt=""><?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="register.php"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a>
-                            <a class="dropdown-item" href="login.php"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a>
+                    <?php if (isset($_COOKIE['acc'])) { ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                                <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="setCookie.php?key=acc&value=&page=profile"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                            <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="logout.php"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
+                    <?php } else { ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                                <?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="register.php"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a>
+                                <a class="dropdown-item" href="login.php"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
                     <?php if (isEng()) { ?>
                         <div class="btn-group mx-2">
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">English</button>
@@ -266,7 +269,7 @@
                         <div class="btn-group">
                             <button type="button" class="setting-btn btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="bi bi-gear text-black mr-1"></i></button>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#"><?php echo $dataDecode[$_COOKIE['lang']]['edit_profile']; ?></a>
+                                <a class="dropdown-item" href="edit-profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['edit_profile']; ?></a>
                                 <a class="dropdown-item" href="#"><?php echo $dataDecode[$_COOKIE['lang']]['clear_wish_list']; ?></a>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -288,7 +291,7 @@
                             <div class="btn-group">
                                 <button type="button" class="setting-btn btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="bi bi-gear text-black mr-1"></i></button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#"><?php echo $dataDecode[$_COOKIE['lang']]['edit_profile']; ?></a>
+                                    <a class="dropdown-item" href="edit-profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['edit_profile']; ?></a>
                                     <a class="dropdown-item" href="#"><?php echo $dataDecode[$_COOKIE['lang']]['clear_wish_list']; ?></a>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -631,7 +634,7 @@
     <!-- CUSTOMER CONTROL END -->
 
     <!-- ADMIN CONTROL START -->
-    <div class="px-xl-5 d-none">
+    <div class="px-xl-5">
         <div class="col">
             <div class="nav nav-tabs mb-4">
                 <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-3"><?php echo $dataDecode[$_COOKIE['lang']]['dashboard']; ?></a>
@@ -649,75 +652,106 @@
                             <!-- Book Start -->
                             <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['filter_by_categories']; ?></span></h5>
                             <div class="bg-light p-4 mb-30">
-                                <form>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" checked id="color-all">
-                                        <label class="custom-control-label" for="price-all"><?php echo $dataDecode[$_COOKIE['lang']]['all_books']; ?></label>
-                                        <span class="badge text-dark border font-weight-normal">1000</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="color-1">
-                                        <label class="custom-control-label" for="color-1">Black</label>
-                                        <span class="badge text-dark border font-weight-normal">150</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="color-2">
-                                        <label class="custom-control-label" for="color-2">White</label>
-                                        <span class="badge text-dark border font-weight-normal">295</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="color-3">
-                                        <label class="custom-control-label" for="color-3">Red</label>
-                                        <span class="badge text-dark border font-weight-normal">246</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="color-4">
-                                        <label class="custom-control-label" for="color-4">Blue</label>
-                                        <span class="badge text-dark border font-weight-normal">145</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                                        <input type="checkbox" class="custom-control-input" id="color-5">
-                                        <label class="custom-control-label" for="color-5">Green</label>
-                                        <span class="badge text-dark border font-weight-normal">168</span>
-                                    </div>
-                                </form>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" checked id="color-all">
+                                    <label class="custom-control-label" for="price-all"><?php echo $dataDecode[$_COOKIE['lang']]['all_books']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">1000</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-1">
+                                    <label class="custom-control-label" for="color-1"><?php echo $dataDecode[$_COOKIE['lang']]['business']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">150</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-2">
+                                    <label class="custom-control-label" for="color-2"><?php echo $dataDecode[$_COOKIE['lang']]['cartoon']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">295</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-3">
+                                    <label class="custom-control-label" for="color-3"><?php echo $dataDecode[$_COOKIE['lang']]['comedy']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">246</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-4">
+                                    <label class="custom-control-label" for="color-4"><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">145</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-5">
+                                    <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['health']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">168</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-6">
+                                    <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['history']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">168</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-7">
+                                    <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['IT']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">168</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-8">
+                                    <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['knowledge']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">168</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-9">
+                                    <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">168</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-10">
+                                    <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['religion']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">168</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-11">
+                                    <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">168</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="color-12">
+                                    <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['translation']; ?></label>
+                                    <span class="text-dark badge border font-weight-normal">168</span>
+                                </div>
                             </div>
                             <!-- Book End -->
                             <!-- Price Start -->
                             <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['filter_by_prices']; ?></span></h5>
                             <div class="bg-light p-4 mb-30">
-                                <form>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" checked id="price-all">
-                                        <label class="custom-control-label" for="price-all"><?php echo $dataDecode[$_COOKIE['lang']]['all_prices']; ?></label>
-                                        <span class="badge text-dark border font-weight-normal">1000</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="price-1">
-                                        <label class="custom-control-label" for="price-1">$0 - $100</label>
-                                        <span class="badge text-dark border font-weight-normal">150</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="price-2">
-                                        <label class="custom-control-label" for="price-2">$100 - $200</label>
-                                        <span class="badge text-dark border font-weight-normal">295</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="price-3">
-                                        <label class="custom-control-label" for="price-3">$200 - $300</label>
-                                        <span class="badge text-dark border font-weight-normal">246</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="price-4">
-                                        <label class="custom-control-label" for="price-4">$300 - $400</label>
-                                        <span class="badge text-dark border font-weight-normal">145</span>
-                                    </div>
-                                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                                        <input type="checkbox" class="custom-control-input" id="price-5">
-                                        <label class="custom-control-label" for="price-5">$400 - $500</label>
-                                        <span class="badge text-dark border font-weight-normal">168</span>
-                                    </div>
-                                </form>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" checked id="price-all">
+                                    <label class="custom-control-label" for="price-all"><?php echo $dataDecode[$_COOKIE['lang']]['all_prices']; ?></label>
+                                    <span class="badge text-dark border font-weight-normal">1000</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="price-1">
+                                    <label class="custom-control-label" for="price-1">0 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 2000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                                    <span class="badge text-dark border font-weight-normal">150</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="price-2">
+                                    <label class="custom-control-label" for="price-2">2000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 5000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                                    <span class="badge text-dark border font-weight-normal">295</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="price-3">
+                                    <label class="custom-control-label" for="price-3">5000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 7000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                                    <span class="badge text-dark border font-weight-normal">246</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="price-4">
+                                    <label class="custom-control-label" for="price-4">7000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 10000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                                    <span class="badge text-dark border font-weight-normal">145</span>
+                                </div>
+                                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                                    <input type="checkbox" class="custom-control-input" id="price-5">
+                                    <label class="custom-control-label" for="price-5">10000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 15000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                                    <span class="badge text-dark border font-weight-normal">168</span>
+                                </div>
                             </div>
                             <!-- Price End -->
                         </div>
@@ -1334,6 +1368,25 @@
             }).then((received) => {
                 if (received) {
                     swal("Thank you for your ordering.", {
+                        icon: "success",
+                    }).then((ok) => {
+                        if (ok) {
+                            console.log("Hello");
+                        }
+                    });
+                }
+            });
+        }
+        loginBtn2.onclick = () => {
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    swal("Poof! Your imaginary file has been deleted!", {
                         icon: "success",
                     }).then((ok) => {
                         if (ok) {

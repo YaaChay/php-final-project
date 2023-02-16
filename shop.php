@@ -42,23 +42,26 @@
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <div class="btn-group d-none">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                            <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt=""><?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="register.php"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a>
-                            <a class="dropdown-item" href="login.php"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a>
+                    <?php if (isset($_COOKIE['acc'])) { ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                                <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="setCookie.php?key=acc&value=&page=shop"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                            <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="logout.php"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
+                    <?php } else { ?>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                                <?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="register.php"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a>
+                                <a class="dropdown-item" href="login.php"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
                     <?php if (isEng()) { ?>
                         <div class="btn-group mx-2">
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">English</button>
@@ -207,110 +210,106 @@
                 <!-- Color Start -->
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['filter_by_categories']; ?></span></h5>
                 <div class="bg-light p-4 mb-30">
-                    <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="color-all">
-                            <label class="custom-control-label" for="price-all"><?php echo $dataDecode[$_COOKIE['lang']]['all_books']; ?></label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-1">
-                            <label class="custom-control-label" for="color-1"><?php echo $dataDecode[$_COOKIE['lang']]['business']; ?></label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-2">
-                            <label class="custom-control-label" for="color-2"><?php echo $dataDecode[$_COOKIE['lang']]['cartoon']; ?></label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-3">
-                            <label class="custom-control-label" for="color-3"><?php echo $dataDecode[$_COOKIE['lang']]['comedy']; ?></label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-4">
-                            <label class="custom-control-label" for="color-4"><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['health']; ?></label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['history']; ?></label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['IT']; ?></label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['knowledge']; ?></label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['religion']; ?></label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-5">
-                            <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['translation']; ?></label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                    </form>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" checked id="color-all">
+                        <label class="custom-control-label" for="price-all"><?php echo $dataDecode[$_COOKIE['lang']]['all_books']; ?></label>
+                        <span class="badge border font-weight-normal">1000</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-1">
+                        <label class="custom-control-label" for="color-1"><?php echo $dataDecode[$_COOKIE['lang']]['business']; ?></label>
+                        <span class="badge border font-weight-normal">150</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-2">
+                        <label class="custom-control-label" for="color-2"><?php echo $dataDecode[$_COOKIE['lang']]['cartoon']; ?></label>
+                        <span class="badge border font-weight-normal">295</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-3">
+                        <label class="custom-control-label" for="color-3"><?php echo $dataDecode[$_COOKIE['lang']]['comedy']; ?></label>
+                        <span class="badge border font-weight-normal">246</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-4">
+                        <label class="custom-control-label" for="color-4"><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></label>
+                        <span class="badge border font-weight-normal">145</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-5">
+                        <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['health']; ?></label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-6">
+                        <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['history']; ?></label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-7">
+                        <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['IT']; ?></label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-8">
+                        <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['knowledge']; ?></label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-9">
+                        <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-10">
+                        <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['religion']; ?></label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-11">
+                        <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="color-12">
+                        <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['translation']; ?></label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
                 </div>
                 <!-- Color End -->
                 <!-- Price Start -->
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['filter_by_prices']; ?></span></h5>
                 <div class="bg-light p-4 mb-30">
-                    <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="price-all">
-                            <label class="custom-control-label" for="price-all"><?php echo $dataDecode[$_COOKIE['lang']]['all_prices']; ?></label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-1">
-                            <label class="custom-control-label" for="price-1">$0 - $100</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-2">
-                            <label class="custom-control-label" for="price-2">$100 - $200</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-3">
-                            <label class="custom-control-label" for="price-3">$200 - $300</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-4">
-                            <label class="custom-control-label" for="price-4">$300 - $400</label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="price-5">
-                            <label class="custom-control-label" for="price-5">$400 - $500</label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                    </form>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" checked id="price-all">
+                        <label class="custom-control-label" for="price-all"><?php echo $dataDecode[$_COOKIE['lang']]['all_prices']; ?></label>
+                        <span class="badge text-dark border font-weight-normal">1000</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-1">
+                        <label class="custom-control-label" for="price-1">0 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 2000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                        <span class="badge text-dark border font-weight-normal">150</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-2">
+                        <label class="custom-control-label" for="price-2">2000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 5000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                        <span class="badge text-dark border font-weight-normal">295</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-3">
+                        <label class="custom-control-label" for="price-3">5000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 7000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                        <span class="badge text-dark border font-weight-normal">246</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="price-4">
+                        <label class="custom-control-label" for="price-4">7000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 10000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                        <span class="badge text-dark border font-weight-normal">145</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                        <input type="checkbox" class="custom-control-input" id="price-5">
+                        <label class="custom-control-label" for="price-5">10000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?> - 15000 <?php echo $dataDecode[$_COOKIE['lang']]['mmk']; ?></label>
+                        <span class="badge text-dark border font-weight-normal">168</span>
+                    </div>
                 </div>
                 <!-- Price End -->
             </div>
@@ -322,10 +321,17 @@
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <div>
-                                <button class="btn btn-sm btn-light active"><i class="fa fa-th-large"></i></button>
-                                <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>
-                            </div>
+                            <?php if ((!isset($_COOKIE['list-style'])) or ($_COOKIE['list-style'] == "style1")) { ?>
+                                <div>
+                                    <a href="setCookie.php?key=list-style&value=style1&page=shop" class="btn btn-sm btn-light active"><i class="fa fa-th-large"></i></a>
+                                    <a href="setCookie.php?key=list-style&value=style2&page=shop" class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></a>
+                                </div>
+                            <?php } else if ($_COOKIE['list-style'] == "style2") { ?>
+                                <div>
+                                    <a href="setCookie.php?key=list-style&value=style1&page=shop" class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></a>
+                                    <a href="setCookie.php?key=list-style&value=style2&page=shop" class="btn btn-sm btn-light ml-2 active"><i class="fa fa-bars"></i></a>
+                                </div>
+                            <?php } ?>
                             <div class="ml-2">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><?php echo $dataDecode[$_COOKIE['lang']]['sorting']; ?></button>
@@ -350,378 +356,379 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Vertical Product Item Start -->
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
-                                    <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                    <?php if ((!isset($_COOKIE['list-style'])) or ($_COOKIE['list-style'] == "style1")) { ?>
+                        <!-- Vertical Product Item Start -->
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
+                                        <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>$123.00</h5>
+                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>$123.00</h5>
+                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-5.jpg" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-6.jpg" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>$123.00</h5>
+                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-7.jpg" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-8.jpg" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>$123.00</h5>
+                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="img/product-9.jpg" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="img/product-5.jpg" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5>
-                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>$123.00</h5>
+                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Vertical Product Item End -->
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="img/product-6.jpg" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>$123.00</h5>
+                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="img/product-7.jpg" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>$123.00</h5>
+                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="img/product-8.jpg" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>$123.00</h5>
+                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                            <div class="product-item bg-light mb-4">
+                                <div class="product-img position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src="img/product-9.jpg" alt="">
+                                    <div class="product-action">
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                                <div class="text-center py-4">
+                                    <a class="h6 text-decoration-none text-truncate" href="">Product Name Goes Here</a>
+                                    <div class="d-flex align-items-center justify-content-center mt-2">
+                                        <h5>$123.00</h5>
+                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Vertical Product Item End -->
+                    <?php } else if ($_COOKIE['list-style'] == "style2") { ?>
+                        <!-- Horizontal Product Item Start -->
+                        <div class="products-wrapper col-lg-12 col-md-12 col-sm-12 pb-12">
+                            <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
+                                <img src="img/product-9.jpg" alt="">
+                                <div class="item-info">
+                                    <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
+                                        Goes Here</a>
+                                    <div class="prices">
+                                        <h5>$123.00</h5>
+                                        <h6 class=""><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-rating">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                    <div class="item-action">
+                                        <a class="btn btn-outline-dark active"><i class="bi bi-cart-dash"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                        <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
+                                <img src="img/product-9.jpg" alt="">
+                                <div class="item-info">
+                                    <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
+                                        Goes Here</a>
+                                    <div class="prices">
+                                        <h5>$123.00</h5>
+                                        <h6 class=""><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-rating">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                    <div class="item-action">
+                                        <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
+                                <img src="img/product-9.jpg" alt="">
+                                <div class="item-info">
+                                    <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
+                                        Goes Here</a>
+                                    <div class="prices">
+                                        <h5>$123.00</h5>
+                                        <h6 class=""><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-rating">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                    <div class="item-action">
+                                        <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
+                                <img src="img/product-9.jpg" alt="">
+                                <div class="item-info">
+                                    <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
+                                        Goes Here</a>
+                                    <div class="prices">
+                                        <h5>$123.00</h5>
+                                        <h6 class=""><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-rating">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                    <div class="item-action">
+                                        <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
+                                <img src="img/product-9.jpg" alt="">
+                                <div class="item-info">
+                                    <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
+                                        Goes Here</a>
+                                    <div class="prices">
+                                        <h5>$123.00</h5>
+                                        <h6 class=""><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-rating">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                    <div class="item-action">
+                                        <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
+                                <img src="img/product-9.jpg" alt="">
+                                <div class="item-info">
+                                    <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
+                                        Goes Here</a>
+                                    <div class="prices">
+                                        <h5>$123.00</h5>
+                                        <h6 class=""><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-rating">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                    <div class="item-action">
+                                        <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
+                                <img src="img/product-9.jpg" alt="">
+                                <div class="item-info">
+                                    <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
+                                        Goes Here</a>
+                                    <div class="prices">
+                                        <h5>$123.00</h5>
+                                        <h6 class=""><del>$123.00</del></h6>
+                                    </div>
+                                    <div class="item-rating">
+                                        <small>4.5</small>
+                                        <small><i class="bi bi-star-fill"></i></small>
+                                        <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                    </div>
+                                    <div class="item-action">
+                                        <a class="btn btn-outline-dark"><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <!-- Horizontal Product Item Start -->
-                    <div class="products-wrapper col-lg-12 col-md-12 col-sm-12 pb-12">
-                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                            <img src="img/product-9.jpg" alt="">
-                            <div class="item-info">
-                                <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
-                                    Goes Here</a>
-                                <div class="prices">
-                                    <h5>$123.00</h5>
-                                    <h6 class=""><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-rating">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                                <div class="item-action">
-                                    <a class="btn btn-outline-dark active"><i class="bi bi-cart-dash"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
-                                    <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
                         </div>
-                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                            <img src="img/product-9.jpg" alt="">
-                            <div class="item-info">
-                                <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
-                                    Goes Here</a>
-                                <div class="prices">
-                                    <h5>$123.00</h5>
-                                    <h6 class=""><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-rating">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                                <div class="item-action">
-                                    <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                            <img src="img/product-9.jpg" alt="">
-                            <div class="item-info">
-                                <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
-                                    Goes Here</a>
-                                <div class="prices">
-                                    <h5>$123.00</h5>
-                                    <h6 class=""><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-rating">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                                <div class="item-action">
-                                    <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                            <img src="img/product-9.jpg" alt="">
-                            <div class="item-info">
-                                <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
-                                    Goes Here</a>
-                                <div class="prices">
-                                    <h5>$123.00</h5>
-                                    <h6 class=""><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-rating">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                                <div class="item-action">
-                                    <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                            <img src="img/product-9.jpg" alt="">
-                            <div class="item-info">
-                                <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
-                                    Goes Here</a>
-                                <div class="prices">
-                                    <h5>$123.00</h5>
-                                    <h6 class=""><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-rating">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                                <div class="item-action">
-                                    <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                            <img src="img/product-9.jpg" alt="">
-                            <div class="item-info">
-                                <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
-                                    Goes Here</a>
-                                <div class="prices">
-                                    <h5>$123.00</h5>
-                                    <h6 class=""><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-rating">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                                <div class="item-action">
-                                    <a class="btn btn-outline-dark "><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                            <img src="img/product-9.jpg" alt="">
-                            <div class="item-info">
-                                <a class="item-name" href="">Product Name Goes Here Product Name Goes Here Product Name
-                                    Goes Here</a>
-                                <div class="prices">
-                                    <h5>$123.00</h5>
-                                    <h6 class=""><del>$123.00</del></h6>
-                                </div>
-                                <div class="item-rating">
-                                    <small>4.5</small>
-                                    <small><i class="bi bi-star-fill"></i></small>
-                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                </div>
-                                <div class="item-action">
-                                    <a class="btn btn-outline-dark"><i class="bi bi-cart-plus"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- Horizontal Product Item End -->
-
+                        <!-- Horizontal Product Item End -->
+                    <?php } ?>
                     <div class="col-12">
                         <nav>
                             <ul class="pagination justify-content-center">

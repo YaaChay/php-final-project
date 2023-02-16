@@ -48,26 +48,23 @@ require("db-connect.php");
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <?php if (isset($_COOKIE['acc'])) { ?>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                                <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="setCookie.php?key=acc&value=&page=new-book"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
-                            </div>
+                    <div class="btn-group d-none">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                            <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt=""><?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="register.php"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a>
+                            <a class="dropdown-item" href="login.php"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a>
                         </div>
-                    <?php } else { ?>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                                <?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="register.php"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a>
-                                <a class="dropdown-item" href="login.php"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a>
-                            </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
+                            <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="logout.php"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
                         </div>
-                    <?php } ?>
+                    </div>
                     <?php if (isEng()) { ?>
                         <div class="btn-group mx-2">
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">English</button>
@@ -224,7 +221,7 @@ require("db-connect.php");
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['book_name']; ?></label>
-                                <input class="form-control" required="required" type="text" name="bookName" placeholder="" >
+                                <input class="form-control" required="required" type="text" name="bookName" placeholder="">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['authors']; ?></label>
@@ -236,7 +233,7 @@ require("db-connect.php");
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['book_cover_url']; ?></label>
-                                <input class="form-control" required="required" type="text" name="coverURL" placeholder="" >
+                                <input class="form-control" required="required" type="text" name="coverURL" placeholder="">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['category']; ?></label>
@@ -258,7 +255,7 @@ require("db-connect.php");
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['price']; ?></label>
                                 <div class="input-group">
-                                    <input class="form-control" required="required" type="number" name="price" placeholder="" aria-label="" aria-describedby="basic-addon2" >
+                                    <input class="form-control" required="required" type="number" name="price" placeholder="" aria-label="" aria-describedby="basic-addon2">
                                     <span class="input-group-text" id="basic-addon2"><?php echo $dataDecode[$_COOKIE['lang']]['kyat']; ?></span>
                                 </div>
                             </div>
@@ -362,7 +359,7 @@ require("db-connect.php");
     if (isset($_POST['bookName'])) {
         $bookName = $_POST['bookName'];
         $authorName = $_POST['authorName'];
-        $productKey = $_POST['productKey'];
+        $produtKey = $_POST['productKey'];
         $coverURL = $_POST['coverURL'];
         $category = $_POST['category'];
         $price = $_POST['price'];
@@ -372,26 +369,21 @@ require("db-connect.php");
         $bookIntro = $_POST['bookIntro'];
         $true = true;
 
-        $checkKey = "SELECT * FROM `books` WHERE `product_key`='$productKey';";
-        $result = mysqli_query($con, $checkKey);
-        $rowcount = mysqli_num_rows($result);
-        $insertQuery = "INSERT INTO `books` (`name`, `author`, `img_url`, `product_key`, `category`, `intro`, `price`, `total_pages`, `public_date`, `size`) VALUES ('$bookName', '$authorName', '$coverURL', '$productKey', '$category', '$bookIntro', $price, $noOfPages, '$publicationDate', '$size');";
-        if ($rowcount == 1) { ?>
+        $insertQuery = "INSERT INTO `books` (`name`, `author`, `img_url`, `product_key`, `category`, `intro`, `price`, `total_pages`, `public_date`, `size`) VALUES ('$bookName', '$authorName', '$coverURL', '$produtKey', '$category', '$bookIntro', $price, $noOfPages, '$publicationDate', '$size');";
+        if (mysqli_query($con, $insertQuery)) { ?>
             <script type='text/javascript'>
-                swal('<?php echo $productKey; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['product_key_already_exists']; ?>', {
-                    icon: 'error',
+                swal('<?php echo $dataDecode[$_COOKIE['lang']]['new_book_added_successfully']; ?>', {
+                    icon: 'success',
                 });
             </script>
-            <?php } else {
-            if (mysqli_query($con, $insertQuery)) { ?>
-                <script type='text/javascript'>
-                    console.log("Error");
-                    swal('<?php echo $dataDecode[$_COOKIE['lang']]['new_book_added_successfully']; ?>', {
-                        icon: 'success',
-                    });
-                </script>
+        <?php } else { ?>
+            <script type='text/javascript'>
+                console.log("Error");
+                swal('<?php echo $dataDecode[$_COOKIE['lang']]['new_book_added_successfully']; ?>', {
+                    icon: '',
+                });
+            </script>
     <?php };
-        };
     };
     ?>
     <!-- PHP End -->
