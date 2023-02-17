@@ -213,7 +213,7 @@ $row = mysqli_fetch_array($result);
     <div class="container-fluid pb-5">
         <div class="row px-xl-5">
             <div class="col-lg-4 mb-30">
-                <img class="w-100 h-100" src="https://www.myanmarbookshop.com/Images/Contents/Thumbnails/ASTSatLetShin.jpg" alt="Image">
+                <img class="w-100 h-100" src="<?php echo $row['img_url']; ?>" alt="Image">
             </div>
             <div class="col-lg-8 h-auto mb-30">
                 <div class="h-100 bg-light p-30">

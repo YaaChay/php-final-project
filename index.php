@@ -4,6 +4,8 @@ if (!isset($_COOKIE['lang'])) {
 }
 require("language.php");
 require("db-connect.php");
+require("itemCount.php");
+require("isEmpty.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +27,10 @@ require("db-connect.php");
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- Getbootstrap.com -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
@@ -61,7 +67,7 @@ require("db-connect.php");
                     <?php } else { ?>
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                            <?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
+                                <?php echo $dataDecode[$_COOKIE['lang']]['my_account']; ?></button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="register.php"><?php echo $dataDecode[$_COOKIE['lang']]['register']; ?></a>
                                 <a class="dropdown-item" href="login.php"><?php echo $dataDecode[$_COOKIE['lang']]['login']; ?></a>
@@ -311,7 +317,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['business']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Business"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -324,7 +330,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['cartoon']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Cartoon"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -337,7 +343,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['comedy']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Comedy"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -350,7 +356,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Cooking"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -363,7 +369,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['health']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Health"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -376,7 +382,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['history']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("History"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -389,7 +395,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['IT']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("IT"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -402,7 +408,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['knowledge']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Knowledge"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -415,7 +421,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Language"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -428,7 +434,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['religion']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Religion"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -441,7 +447,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Romance"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -454,7 +460,7 @@ require("db-connect.php");
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['translation']; ?></h6>
-                            <small class="text-body">100 <?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></small>
+                            <small class="text-body"><?php itemCount("Translation"); ?><span class="ml-1"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></span></small>
                         </div>
                     </div>
                 </a>
@@ -465,45 +471,47 @@ require("db-connect.php");
 
 
     <!-- Products Start -->
-    <div class="container-fluid pt-5 pb-3">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['featured_books']; ?></span></h2>
-        <div class="row px-xl-5">
-            <?php
-            $query = "SELECT * FROM `books` ORDER BY `id` DESC LIMIT 8;";
-            $result = mysqli_query($con, $query);
-            $row_count = mysqli_num_rows($result);
-            for ($i = 0; $i < $row_count; $i++) {
-                $row = mysqli_fetch_array($result);
-            ?>
-                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                    <div class="product-item bg-light mb-4">
-                        <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" style="object-fit: cover;" src="<?php echo $row['img_url']; ?>" alt="">
-                            <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
-                                <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+    <?php if (!isEmpty("books")) { ?>
+        <div class="container-fluid pt-5 pb-3">
+            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['featured_books']; ?></span></h2>
+            <div class="row px-xl-5">
+                <?php
+                $query = "SELECT * FROM `books` ORDER BY `id` DESC LIMIT 8 OFFSET 7;";
+                $result = mysqli_query($con, $query);
+                $row_count = mysqli_num_rows($result);
+                for ($i = 0; $i < $row_count; $i++) {
+                    $row = mysqli_fetch_array($result);
+                ?>
+                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                        <div class="product-item bg-light mb-4">
+                            <div class="product-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" style="object-fit: cover;" src="<?php echo $row['img_url']; ?>" alt="">
+                                <div class="product-action">
+                                    <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
+                                    <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="text-center py-4  overflow-hidden">
-                            <a class="h6 text-decoration-none text-truncate" href="detail.php?bookId=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5><?php echo $row['price']; ?><span class="ml-1">MMK</span></h5>
-                                <h6 class="text-muted ml-2"><del><?php $price = $row['price'];
-                                                                    echo $price + 2000; ?><span class="ml-1">MMK</span></del></h6>
-                            </div>
-                            <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                <small>4.5</small>
-                                <small><i class="bi bi-star-fill"></i></small>
-                                <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                            <div class="text-center py-4  overflow-hidden">
+                                <a class="h6 text-decoration-none text-truncate" href="detail.php?bookId=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <h5><?php echo $row['price']; ?><span class="ml-1">MMK</span></h5>
+                                    <h6 class="text-muted ml-2"><del><?php $price = $row['price'];
+                                                                        echo $price + 2000; ?><span class="ml-1">MMK</span></del></h6>
+                                </div>
+                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                    <small>4.5</small>
+                                    <small><i class="bi bi-star-fill"></i></small>
+                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <?php }
-            ?>
+                <?php }
+                ?>
+            </div>
         </div>
-    </div>
+    <?php }; ?>
     <!-- Products End -->
 
 
@@ -536,46 +544,48 @@ require("db-connect.php");
 
 
     <!-- Products Start -->
-    <div class="container-fluid pt-5 pb-3">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['recent_books']; ?></span></h2>
-        <div class="row px-xl-5">
-            <?php
-            $query = "SELECT * FROM `books` ORDER BY `id` DESC LIMIT 8;";
-            $result = mysqli_query($con, $query);
-            $row_count = mysqli_num_rows($result);
-            for ($i = 0; $i < $row_count; $i++) {
-                $row = mysqli_fetch_array($result);
-            ?>
-                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                    <div class="product-item bg-light mb-4">
-                        <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" style="object-fit: cover;" src="<?php echo $row['img_url']; ?>" alt="">
-                            <div class="product-action">
-                                <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
-                                <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
-                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+    <?php if (!isEmpty("books")) { ?>
+        <div class="container-fluid pt-5 pb-3">
+            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['recent_books']; ?></span></h2>
+            <div class="row px-xl-5">
+                <?php
+                $query = "SELECT * FROM `books` ORDER BY `id` DESC LIMIT 8;";
+                $result = mysqli_query($con, $query);
+                $row_count = mysqli_num_rows($result);
+                for ($i = 0; $i < $row_count; $i++) {
+                    $row = mysqli_fetch_array($result);
+                ?>
+                    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                        <div class="product-item bg-light mb-4">
+                            <div class="product-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" style="object-fit: cover;" src="<?php echo $row['img_url']; ?>" alt="">
+                                <div class="product-action">
+                                    <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
+                                    <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="text-center py-4  overflow-hidden">
-                            <a class="h6 text-decoration-none text-truncate" href="detail.php?bookId=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
-                            <div class="d-flex align-items-center justify-content-center mt-2">
-                                <h5><?php echo $row['price']; ?><span class="ml-1">MMK</span></h5>
-                                <h6 class="text-muted ml-2"><del><?php $price = $row['price'];
-                                                                    echo $price + 2000; ?><span class="ml-1">MMK</span></del></h6>
-                            </div>
-                            <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                <small>4.5</small>
-                                <small><i class="bi bi-star-fill"></i></small>
-                                <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                            <div class="text-center py-4  overflow-hidden">
+                                <a class="h6 text-decoration-none text-truncate" href="detail.php?bookId=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <h5><?php echo $row['price']; ?><span class="ml-1">MMK</span></h5>
+                                    <h6 class="text-muted ml-2"><del><?php $price = $row['price'];
+                                                                        echo $price + 2000; ?><span class="ml-1">MMK</span></del></h6>
+                                </div>
+                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                    <small>4.5</small>
+                                    <small><i class="bi bi-star-fill"></i></small>
+                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <?php }
-            ?>
+                <?php }
+                ?>
 
+            </div>
         </div>
-    </div>
+    <?php }; ?>
     <!-- Products End -->
 
 
@@ -614,39 +624,42 @@ require("db-connect.php");
     </div>
     <!-- Vendor End -->
     <!-- Review Start -->
-    <div class="container-fluid pt-5 pb-3 reviews">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['customer_reviews']; ?></span></h2>
-        <div>
-            <div id="owl-demo" class="owl-carousel">
-                <?php
-                $query = "SELECT * FROM `reviews`;";
-                $result = mysqli_query($con, $query);
-                $row_count = mysqli_num_rows($result);
-                for ($i = 0; $i < $row_count; $i++) {
-                    $row = mysqli_fetch_array($result);
-                ?>
-                    <div class="item">
-                        <img src="<?php echo $row['profile_url']; ?>" alt="">
-                        <div>
-                            <div class="rate" data-star="<?php echo $row['rating']; ?>"></div>
-                            <p><?php echo $row['comment']; ?></p>
-                            <h5><?php echo $row['acc_name']; ?></h5>
+    <?php
+    if (!isEmpty("reviews")) { ?>
+        <div class="container-fluid pt-5 pb-3 reviews">
+            <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['customer_reviews']; ?></span></h2>
+            <div>
+                <div id="owl-demo" class="owl-carousel">
+                    <?php
+                    $query = "SELECT * FROM `reviews`;";
+                    $result = mysqli_query($con, $query);
+                    $row_count = mysqli_num_rows($result);
+                    for ($i = 0; $i < $row_count; $i++) {
+                        $row = mysqli_fetch_array($result);
+                    ?>
+                        <div class="item">
+                            <img src="<?php echo $row['profile_url']; ?>" alt="">
+                            <div>
+                                <div class="rate" data-star="<?php echo $row['rating']; ?>"></div>
+                                <p><?php echo $row['comment']; ?></p>
+                                <h5><?php echo $row['acc_name']; ?></h5>
+                            </div>
                         </div>
-                    </div>
-                <?php } ?>
-            </div>
+                    <?php } ?>
+                </div>
 
-            <div class="customNavigation">
-                <a class="btn prev" id="prev">
-                    <i class="bi bi-caret-left-fill"></i>
-                </a>
+                <div class="customNavigation">
+                    <a class="btn prev" id="prev">
+                        <i class="bi bi-caret-left-fill"></i>
+                    </a>
 
-                <a class="btn next" id="next">
-                    <i class="bi bi-caret-right-fill"></i>
-                </a>
+                    <a class="btn next" id="next">
+                        <i class="bi bi-caret-right-fill"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    <?php } ?>
     <!-- Review End Start -->
 
     <!-- Footer Start -->

@@ -357,7 +357,7 @@ require("db-connect.php")
                 });
             </script>
             <?php } else {
-            $query = "INSERT INTO `accounts`(`name`,`birthday`,`gender`,`phone`,`pf_img_url`,`role`,`email`,`password`,`address`,`town`,`state_region`) VALUES ('" . $name . "','" . $birthday . "','" . $gender . "','" . $phone . "','" . $img_url . "','" . $role . "','" . $email . "','" . $password . "','" . $address . "','" . $town . "','" . $state_region . "');";
+            $query = "INSERT INTO `accounts`(`name`,`birthday`,`gender`,`phone`,`pf_img_url`,`role`,`email`,`password`,`address`,`town`,`state_region`) VALUES ('" . $name . "','" . $birthday . "','" . $gender . "','" . $phone . "','" . $img_url . "','user','" . $email . "','" . $password . "','" . $address . "','" . $town . "','" . $state_region . "');";
             if (mysqli_query($con, $query)) { ?>
                 <script type='text/javascript'>
                     swal('<?php echo $dataDecode[$_COOKIE['lang']]['congratulation']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['your_account_created_successfully']; ?>', {

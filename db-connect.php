@@ -1,11 +1,11 @@
 <?php
 // Online DB
-// $con = mysqli_connect("us-cdbr-east-06.cleardb.net", "bfe32c201411a9", "fe253c65");
-// $database = "heroku_21520b5315904f6";
+$con = mysqli_connect("us-cdbr-east-06.cleardb.net", "bfe32c201411a9", "fe253c65");
+$database = "heroku_21520b5315904f6";
 
 // Offline DB
-$con = mysqli_connect("localhost", "root", "");
-$database = "book_shop_db";
+// $con = mysqli_connect("localhost", "root", "");
+// $database = "book_shop_db";
 
 // Run this at just first time
 // $dbQuery = "CREATE DATABASE IF NOT EXISTS $database;";
