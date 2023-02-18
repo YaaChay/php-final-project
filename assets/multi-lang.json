@@ -211,7 +211,8 @@
         "update": "Update",
         "update_profile":"Update Profile",
         "updated_successfully":"Updated successfully.",
-        "an_error_occured":"An error occured!"
+        "an_error_occured":"An error occured!",
+        "search_query":"Search query"
     },
     "myanmar": {
         "quote": "စာအုပ်များသည် ထူးခြားစွာသယ်ဆောင်ရလွယ်ကူသော မှော်ပညာတစ်ခုဖြစ်သည်။",
@@ -425,6 +426,7 @@
         "update": "ပြောင်းလဲပါ",
         "update_profile":"ပရိုဖိုင်ကို ပြုပြင်ရန်",
         "updated_successfully":"အောင်မြင်စွာ ပြောင်းလဲခဲ့ပါသည်။",
-        "an_error_occured":"Error တစ်ခုဖြစ်ခဲ့ပါသည်။"
+        "an_error_occured":"Error တစ်,ခုဖြစ်ခဲ့ပါသည်။",
+        "search_query":"ရှာဖွေမှု"
     }
 }

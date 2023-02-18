@@ -6,6 +6,7 @@ require("language.php");
 require("db-connect.php");
 require("itemCount.php");
 require("isEmpty.php");
+require("getProfileData.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +58,7 @@ require("isEmpty.php");
                     <?php if (isset($_COOKIE['acc'])) { ?>
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                                <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
+                                <img src="<?php echo accPfImgURL(); ?>" class="rounded-circle mr-2" style="width: 20px; height: 20px; object-fit: cover;" alt=""><?php echo accName(); ?></button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
                                 <div class="dropdown-divider"></div>
@@ -123,13 +124,11 @@ require("isEmpty.php");
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
+                <form action="shop.php" method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['search_for_books']; ?>">
+                        <input type="text" class="form-control" name="searchQuery" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['search_for_books']; ?>">
                         <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
+                            <button type="submit" class="btn btn-primary m-0"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </form>
@@ -179,13 +178,11 @@ require("isEmpty.php");
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <form action="" class="d-xll-none d-xl-none d-lg-none mt-2">
+                            <form action="shop.php" method="get" class="d-xll-none d-xl-none d-lg-none mt-2">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['search_for_books']; ?>">
+                                    <input type="text" class="form-control" name="searchQuery" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['search_for_books']; ?>">
                                     <div class="input-group-append">
-                                        <span class="input-group-text bg-transparent text-primary">
-                                            <i class="fa fa-search"></i>
-                                        </span>
+                                        <button type="submit" class="btn btn-primary m-0"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>

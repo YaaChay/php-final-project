@@ -1,6 +1,7 @@
 <?php
 require("language.php");
 require("db-connect.php");
+require("getProfileData.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,10 @@ require("db-connect.php");
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
+    <!-- Getbootstrap.com -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -48,11 +53,11 @@ require("db-connect.php");
                     <?php if (isset($_COOKIE['acc'])) { ?>
                         <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">
-                                <img src="./img/testimonial-1.jpg" class="rounded-circle mr-2" style="width: 20px; object-fit: cover;" alt="">Smile</button>
+                                <img src="<?php echo accPfImgURL(); ?>" class="rounded-circle mr-2" style="width: 20px; height: 20px; object-fit: cover;" alt=""><?php echo accName(); ?></button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['view_profile']; ?></a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="setCookie.php?key=acc&value=&page=shop"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
+                                <a class="dropdown-item" href="setCookie.php?key=acc&value=&page=index"><?php echo $dataDecode[$_COOKIE['lang']]['logout']; ?></a>
                             </div>
                         </div>
                     <?php } else { ?>
@@ -114,13 +119,11 @@ require("db-connect.php");
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
+                <form action="shop.php" method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['search_for_books']; ?>">
+                        <input type="text" class="form-control" name="searchQuery" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['search_for_books']; ?>">
                         <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
+                            <button type="submit" class="btn btn-primary m-0"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </form>
@@ -170,13 +173,11 @@ require("db-connect.php");
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <form action="" class="d-xll-none d-xl-none d-lg-none mt-2">
+                            <form action="shop.php" method="get" class="d-xll-none d-xl-none d-lg-none mt-2">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['search_for_books']; ?>">
+                                    <input type="text" class="form-control" name="searchQuery" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['search_for_books']; ?>">
                                     <div class="input-group-append">
-                                        <span class="input-group-text bg-transparent text-primary">
-                                            <i class="fa fa-search"></i>
-                                        </span>
+                                        <button type="submit" class="btn btn-primary m-0"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -220,6 +221,9 @@ require("db-connect.php");
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="index.php"><?php echo $dataDecode[$_COOKIE['lang']]['home']; ?></a>
                     <span class="breadcrumb-item active"><?php echo $dataDecode[$_COOKIE['lang']]['shop']; ?></span>
+                    <?php if (isset($_GET['searchQuery'])) { ?>
+                        <span class="breadcrumb-item active"><?php echo $dataDecode[$_COOKIE['lang']]['search_query'] . " '" . $_GET["searchQuery"] . "' "; ?></span>
+                    <?php } ?>
                 </nav>
             </div>
         </div>
@@ -238,67 +242,67 @@ require("db-connect.php");
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" checked id="color-all">
                         <label class="custom-control-label" for="price-all"><?php echo $dataDecode[$_COOKIE['lang']]['all_books']; ?></label>
-                        <span class="badge border font-weight-normal">1000</span>
+                        <span class="badge border font-weight-normal text-dark">1000</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-1">
                         <label class="custom-control-label" for="color-1"><?php echo $dataDecode[$_COOKIE['lang']]['business']; ?></label>
-                        <span class="badge border font-weight-normal">150</span>
+                        <span class="badge border font-weight-normal text-dark">150</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-2">
                         <label class="custom-control-label" for="color-2"><?php echo $dataDecode[$_COOKIE['lang']]['cartoon']; ?></label>
-                        <span class="badge border font-weight-normal">295</span>
+                        <span class="badge border font-weight-normal text-dark">295</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-3">
                         <label class="custom-control-label" for="color-3"><?php echo $dataDecode[$_COOKIE['lang']]['comedy']; ?></label>
-                        <span class="badge border font-weight-normal">246</span>
+                        <span class="badge border font-weight-normal text-dark">246</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-4">
                         <label class="custom-control-label" for="color-4"><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></label>
-                        <span class="badge border font-weight-normal">145</span>
+                        <span class="badge border font-weight-normal text-dark">145</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-5">
                         <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['health']; ?></label>
-                        <span class="badge border font-weight-normal">168</span>
+                        <span class="badge border font-weight-normal text-dark">168</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-6">
                         <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['history']; ?></label>
-                        <span class="badge border font-weight-normal">168</span>
+                        <span class="badge border font-weight-normal text-dark">168</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-7">
                         <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['IT']; ?></label>
-                        <span class="badge border font-weight-normal">168</span>
+                        <span class="badge border font-weight-normal text-dark">168</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-8">
                         <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['knowledge']; ?></label>
-                        <span class="badge border font-weight-normal">168</span>
+                        <span class="badge border font-weight-normal text-dark">168</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-9">
                         <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></label>
-                        <span class="badge border font-weight-normal">168</span>
+                        <span class="badge border font-weight-normal text-dark">168</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-10">
                         <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['religion']; ?></label>
-                        <span class="badge border font-weight-normal">168</span>
+                        <span class="badge border font-weight-normal text-dark">168</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-11">
                         <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></label>
-                        <span class="badge border font-weight-normal">168</span>
+                        <span class="badge border font-weight-normal text-dark">168</span>
                     </div>
                     <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                         <input type="checkbox" class="custom-control-input" id="color-12">
                         <label class="custom-control-label" for="color-5"><?php echo $dataDecode[$_COOKIE['lang']]['translation']; ?></label>
-                        <span class="badge border font-weight-normal">168</span>
+                        <span class="badge border font-weight-normal text-dark">168</span>
                     </div>
                 </div>
                 <!-- Color End -->
@@ -385,9 +389,12 @@ require("db-connect.php");
                     <?php if ((!isset($_COOKIE['list-style'])) or ($_COOKIE['list-style'] == "style1")) { ?>
                         <!-- Vertical Product Item Start -->
                         <?php
-                        $query = "SELECT * FROM `books`;";
+                        $query = isset($_GET['searchQuery']) ? "SELECT * FROM `books` WHERE `name` LIKE '%" . $_GET['searchQuery'] . "%';" : "SELECT * FROM `books`;";
                         $result = mysqli_query($con, $query);
                         $rowcount = mysqli_num_rows($result);
+                        if ($rowcount == 0) { ?>
+                            <h5 class="text-center my-5">Result no found for "<?php echo $_GET['searchQuery']; ?>".</h5>
+                        <?php };
                         for ($i = 0; $i < $rowcount; $i++) {
                             $row = mysqli_fetch_array($result); ?>
                             <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
@@ -428,9 +435,12 @@ require("db-connect.php");
                     <?php } else if ($_COOKIE['list-style'] == "style2") { ?>
                         <!-- Horizontal Product Item Start -->
                         <?php
-                        $query = "SELECT * FROM `books`;";
+                        $query = isset($_GET['searchQuery']) ? "SELECT * FROM `books` WHERE `name` LIKE '%" . $_GET['searchQuery'] . "%';" : "SELECT * FROM `books`;";
                         $result = mysqli_query($con, $query);
                         $rowcount = mysqli_num_rows($result);
+                        if ($rowcount == 0) { ?>
+                            <h5 class="text-center my-5">Result no found for "<?php echo $_GET['searchQuery']; ?>".</h5>
+                        <?php };
                         for ($i = 0; $i < $rowcount; $i++) {
                             $row = mysqli_fetch_array($result); ?>
                             <div class="products-wrapper col-lg-12 col-md-12 col-sm-12 pb-12">
