@@ -366,7 +366,7 @@ progress {
 
 ::-webkit-file-upload-button {
   font: inherit;
--webkit-appearance: button;
+  -webkit-appearance: button;
 }
 
 output {
@@ -10899,7 +10899,7 @@ h6 {
 }
 
 .swal-modal .swal-text,
-.swal-footer{
+.swal-footer {
   text-align: center;
 }
 
@@ -10951,7 +10951,8 @@ h6 {
   background-color: #fff;
   overflow: visible;
 }
-.reviews .item:hover{
+
+.reviews .item:hover {
   box-shadow: 0 0 4px 1px #d9d9d9;
   transition: 0.3s;
 }
@@ -10979,15 +10980,18 @@ h6 {
   filter: drop-shadow(0px 1px 1px #000);
 }
 
-.reviewRate i{
+.reviewRate i {
   margin-right: 4px;
 }
-.itemReviewBar i{
+
+.itemReviewBar i {
   font-size: 25px;
 }
-.itemReviewBar i:hover{
+
+.itemReviewBar i:hover {
   cursor: pointer;
 }
+
 #owl-demo {
   display: flex;
   justify-content: center;
@@ -11027,7 +11031,7 @@ del {
   color: #ff0000;
 }
 
-#cpRemoveBtn{
+#cpRemoveBtn {
   cursor: pointer;
 }
 
@@ -11098,6 +11102,16 @@ del {
     color: #ffd333 !important;
     transition: 0.3s;
   }
+}
+
+.book-cover {
+  height: 200px;
+  text-align: center;
+}
+
+.book-cover img {
+  height: 100%;
+  width: auto;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -11266,15 +11280,18 @@ del {
     margin-right: 5px;
     font-size: 14px;
   }
+
   .item-action .btn:nth-child(2),
-    .item-action .btn:nth-child(3){
+  .item-action .btn:nth-child(3) {
     width: 38.5px;
     height: 38.5px;
   }
+
   .item-action .btn:nth-child(1) i {
     margin-right: 5px;
     font-size: 16.3px;
   }
+
   .item-action .btn:nth-child(2) i {
     margin: 10px;
     font-size: 16px;
@@ -11289,8 +11306,9 @@ del {
     transition: 0.3s;
   }
 }
+
 @media only screen and (max-width: 575px) {
-  
+
   .product {
     margin-bottom: 15px;
     padding: 0;
@@ -11363,18 +11381,22 @@ del {
     margin-right: 5px;
     font-size: 10px;
   }
-  .item-action .btn:nth-child(1){
+
+  .item-action .btn:nth-child(1) {
     padding: 3px;
   }
+
   .item-action .btn:nth-child(2),
-    .item-action .btn:nth-child(3){
+  .item-action .btn:nth-child(3) {
     width: 26.5px;
     height: 26.5px;
   }
+
   .item-action .btn:nth-child(1) i {
     margin-right: 5px;
     font-size: 12.3px;
   }
+
   .item-action .btn:nth-child(2) i {
     margin: 10px;
     font-size: 12px;

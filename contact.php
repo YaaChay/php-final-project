@@ -81,14 +81,25 @@
                     <?php } ?>
                 </div>
                 <div class="d-inline-flex align-items-center d-block d-lg-none">
-                    <a href="profile.php" class="btn px-0 ml-2">
-                        <i class="fas fa-heart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
-                    <a href="cart.php" class="btn px-0 ml-2">
-                        <i class="fas fa-shopping-cart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
+                    <?php if (isset($_COOKIE['acc'])) { ?>
+                        <a href="profile.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="cart.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php } else { ?>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php }; ?>
                 </div>
             </div>
         </div>
@@ -171,14 +182,25 @@
                             <a href="contact.php" class="nav-item nav-link active"><?php echo $dataDecode[$_COOKIE['lang']]['contact']; ?></a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="profile.php" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
-                            <a href="cart.php" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                            <?php if (isset($_COOKIE['acc'])) { ?>
+                                <a href="profile.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="cart.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php } else { ?>
+                                <a href="login.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="login.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php }; ?>
                         </div>
                     </div>
                 </nav>

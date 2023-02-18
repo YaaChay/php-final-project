@@ -27,6 +27,10 @@ require("db-connect.php");
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
+    <!-- Getbootstrap.com -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
     <!-- Alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -87,14 +91,25 @@ require("db-connect.php");
                     <?php } ?>
                 </div>
                 <div class="d-inline-flex align-items-center d-block d-lg-none">
-                    <a href="profile.php" class="btn px-0 ml-2">
-                        <i class="fas fa-heart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
-                    <a href="cart.php" class="btn px-0 ml-2">
-                        <i class="fas fa-shopping-cart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
+                    <?php if (isset($_COOKIE['acc'])) { ?>
+                        <a href="profile.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="cart.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php } else { ?>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php }; ?>
                 </div>
             </div>
         </div>
@@ -172,19 +187,30 @@ require("db-connect.php");
                                     </div>
                                 </div>
                             </form>
-                            <a href="index.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['home']; ?></a>
-                            <a href="shop.php" class="nav-item nav-link active"><?php echo $dataDecode[$_COOKIE['lang']]['shop']; ?></a>
+                            <a href="index.php" class="nav-item nav-link active"><?php echo $dataDecode[$_COOKIE['lang']]['home']; ?></a>
+                            <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['shop']; ?></a>
                             <a href="contact.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['contact']; ?></a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="profile.php" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
-                            <a href="cart.php" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                            <?php if (isset($_COOKIE['acc'])) { ?>
+                                <a href="profile.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="cart.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php } else { ?>
+                                <a href="login.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="login.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php }; ?>
                         </div>
                     </div>
                 </nav>
@@ -200,7 +226,7 @@ require("db-connect.php");
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="index.php"><?php echo $dataDecode[$_COOKIE['lang']]['home']; ?></a>
-                    <a class="breadcrumb-item text-dark" href="shop.php"><?php echo $dataDecode[$_COOKIE['lang']]['profile']; ?></a>
+                    <a class="breadcrumb-item text-dark" href="profile.php"><?php echo $dataDecode[$_COOKIE['lang']]['profile']; ?></a>
                     <span class="breadcrumb-item active"><?php echo $dataDecode[$_COOKIE['lang']]['edit_profile']; ?></span>
                 </nav>
             </div>
@@ -211,77 +237,242 @@ require("db-connect.php");
 
     <!-- Contact Start -->
     <div class="container-fluid">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['new_book']; ?></span></h2>
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['edit_profile']; ?></span></h2>
         <div class="row px-xl-5">
             <div class="col-lg-12">
                 <div class="contact-form bg-light p-30">
-                    <div id="success"></div>
+                    <?php
+                    $query = "SELECT * FROM `accounts` WHERE `id`='" . $_COOKIE['acc'] . "';";
+                    $result = mysqli_query($con, $query);
+                    $row = mysqli_fetch_array($result);
+                    $phone = substr($row['phone'], 3);
+                    ?>
                     <form method="POST">
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label><?php echo $dataDecode[$_COOKIE['lang']]['book_id']; ?></label>
-                                <input class="form-control" type="text" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['book_id']; ?>" disabled>
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['acc_id']; ?></label>
+                                <input class="form-control" type="text" placeholder="" value="<?php echo $row['id']; ?>" disabled>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label><?php echo $dataDecode[$_COOKIE['lang']]['book_name']; ?></label>
-                                <input class="form-control" required="required" type="text" name="bookName" placeholder="">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['name']; ?></label>
+                                <input class="form-control" required="required" type="text" name="name" placeholder="" value="<?php echo $row['name']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label><?php echo $dataDecode[$_COOKIE['lang']]['authors']; ?></label>
-                                <input class="form-control" required="required" type="text" name="authorName" placeholder="">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label><?php echo $dataDecode[$_COOKIE['lang']]['product_key']; ?></label>
-                                <input class="form-control" required="required" type="text" name="productKey" placeholder="" maxlength="10">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label><?php echo $dataDecode[$_COOKIE['lang']]['book_cover_url']; ?></label>
-                                <input class="form-control" required="required" type="text" name="coverURL" placeholder="">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label><?php echo $dataDecode[$_COOKIE['lang']]['category']; ?></label>
-                                <select class="custom-select" name="category" required="required">
-                                    <option value="Business" selected><?php echo $dataDecode[$_COOKIE['lang']]['business']; ?></option>
-                                    <option value="Cartoon"><?php echo $dataDecode[$_COOKIE['lang']]['cartoon']; ?></option>
-                                    <option value="Comedy"><?php echo $dataDecode[$_COOKIE['lang']]['comedy']; ?></option>
-                                    <option value="Cooking"><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></option>
-                                    <option value="Health"><?php echo $dataDecode[$_COOKIE['lang']]['health']; ?></option>
-                                    <option value="History"><?php echo $dataDecode[$_COOKIE['lang']]['history']; ?></option>
-                                    <option value="IT"><?php echo $dataDecode[$_COOKIE['lang']]['IT']; ?></option>
-                                    <option value="Knowledge"><?php echo $dataDecode[$_COOKIE['lang']]['knowledge']; ?></option>
-                                    <option value="Language"><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></option>
-                                    <option value="Religion"><?php echo $dataDecode[$_COOKIE['lang']]['religion']; ?></option>
-                                    <option value="Romance"><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></option>
-                                    <option value="Translation"><?php echo $dataDecode[$_COOKIE['lang']]['translation']; ?></option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label><?php echo $dataDecode[$_COOKIE['lang']]['price']; ?></label>
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['phone']; ?></label>
                                 <div class="input-group">
-                                    <input class="form-control" required="required" type="number" name="price" placeholder="" aria-label="" aria-describedby="basic-addon2">
-                                    <span class="input-group-text" id="basic-addon2"><?php echo $dataDecode[$_COOKIE['lang']]['kyat']; ?></span>
+                                    <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
+                                    <input class="form-control" type="tel" name="phone" placeholder="" value="<?php echo $phone; ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required">
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label><?php echo $dataDecode[$_COOKIE['lang']]['no_of_pages']; ?></label>
-                                <input class="form-control" required="required" type="number" name="noOfPages" placeholder="">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['password']; ?></label>
+                                <input class="form-control" required="required" type="password" name="password" placeholder="" value="<?php echo $row['password']; ?>" minlength="6">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo $dataDecode[$_COOKIE['lang']]['publication_date']; ?></label>
-                                <input class="form-control" required="required" type="date" name="publicationDate">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['e_mail']; ?></label>
+                                <input class="form-control" required="required" type="email" name="email" placeholder="" value="<?php echo $row['email']; ?>">
+                            </div>
+                            <div class="col-sm-6 col-6 form-group">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['gender']; ?></label>
+                                <?php
+                                if ($row['gender'] == "M") { ?>
+                                    <select class="custom-select" name="gender">
+                                        <option value="M" selected>Male</option>
+                                        <option value="F">Female</option>
+                                    </select>
+                                <?php };
+                                if ($row['gender'] == "F") { ?>
+                                    <select class="custom-select" name="gender">
+                                        <option value="M">Male</option>
+                                        <option value="F" selected>Female</option>
+                                    </select>
+                                <?php }; ?>
                             </div>
                             <div class="col-md-6 form-group">
-                                <label for=""><?php echo $dataDecode[$_COOKIE['lang']]['size']; ?></label>
-                                <input class="form-control" required="required" type="text" name="size">
-                            </div>
-                            <div class="col-md-12 control-group">
-                                <label><?php echo $dataDecode[$_COOKIE['lang']]['book_intro']; ?></label>
-                                <textarea class="form-control" rows="6" placeholder="" name="bookIntro" required="required"></textarea>
-                                <p class="help-block text-danger"></p>
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['address']; ?></label>
+                                <input class="form-control" required="required" type="text" name="address" placeholder="" value="<?php echo $row['address']; ?>">
                             </div>
                             <div class="col-md-6 form-group">
-                                <label></label>
-                                <input class="btn btn-primary py-2 px-4" type="submit" value="<?php echo $dataDecode[$_COOKIE['lang']]['create']; ?>">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['town']; ?></label>
+                                <select class="custom-select" name="town">
+                                    <?php if ($row['town'] == "Ann") { ?>
+                                        <option value="Ann" selected><?php echo $dataDecode[$_COOKIE['lang']]['ann']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Ann"><?php echo $dataDecode[$_COOKIE['lang']]['ann']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Buthidaung") { ?>
+                                        <option value="Buthidaung" selected><?php echo $dataDecode[$_COOKIE['lang']]['buthidaung']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Buthidaung"><?php echo $dataDecode[$_COOKIE['lang']]['buthidaung']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Gwa") { ?>
+                                        <option value="Gwa" selected><?php echo $dataDecode[$_COOKIE['lang']]['gwa']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Gwa"><?php echo $dataDecode[$_COOKIE['lang']]['gwa']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Kyaukphyu") { ?>
+                                        <option value="Kyaukphyu" selected><?php echo $dataDecode[$_COOKIE['lang']]['kyaukphyu']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kyaukphyu"><?php echo $dataDecode[$_COOKIE['lang']]['kyaukphyu']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Kyauktaw") { ?>
+                                        <option value="Kyauktaw" selected><?php echo $dataDecode[$_COOKIE['lang']]['kyauktaw']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kyauktaw"><?php echo $dataDecode[$_COOKIE['lang']]['kyauktaw']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Manaung") { ?>
+                                        <option value="Manaung" selected><?php echo $dataDecode[$_COOKIE['lang']]['manaung']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Manaung"><?php echo $dataDecode[$_COOKIE['lang']]['manaung']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Maungdaw") { ?>
+                                        <option value="Maungdaw" selected><?php echo $dataDecode[$_COOKIE['lang']]['maungdaw']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Maungdaw"><?php echo $dataDecode[$_COOKIE['lang']]['maungdaw']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Minbya") { ?>
+                                        <option value="Minbya" selected><?php echo $dataDecode[$_COOKIE['lang']]['minbya']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Minbya"><?php echo $dataDecode[$_COOKIE['lang']]['minbya']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Mrauk-U") { ?>
+                                        <option value="Mrauk-U" selected><?php echo $dataDecode[$_COOKIE['lang']]['mrauk_u']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Mrauk-U"><?php echo $dataDecode[$_COOKIE['lang']]['mrauk_u']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Myebon") { ?>
+                                        <option value="Myebon" selected><?php echo $dataDecode[$_COOKIE['lang']]['myebon']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Myebon"><?php echo $dataDecode[$_COOKIE['lang']]['myebon']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Pauktaw") { ?>
+                                        <option value="Pauktaw" selected><?php echo $dataDecode[$_COOKIE['lang']]['pauktaw']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Pauktaw"><?php echo $dataDecode[$_COOKIE['lang']]['pauktaw']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Ponnagyun") { ?>
+                                        <option value="Ponnagyun" selected><?php echo $dataDecode[$_COOKIE['lang']]['ponnagyun']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Ponnagyun"><?php echo $dataDecode[$_COOKIE['lang']]['ponnagyun']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Ramree") { ?>
+                                        <option value="Ramree" selected><?php echo $dataDecode[$_COOKIE['lang']]['ramree']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Ramree"><?php echo $dataDecode[$_COOKIE['lang']]['ramree']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Rathedaung") { ?>
+                                        <option value="Rathedaung" selected><?php echo $dataDecode[$_COOKIE['lang']]['rathedaung']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Rathedaung"><?php echo $dataDecode[$_COOKIE['lang']]['rathedaung']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Sittwe") { ?>
+                                        <option value="Sittwe" selected><?php echo $dataDecode[$_COOKIE['lang']]['sittwe']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Sittwe"><?php echo $dataDecode[$_COOKIE['lang']]['sittwe']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Taungup") { ?>
+                                        <option value="Taungup" selected><?php echo $dataDecode[$_COOKIE['lang']]['taungup']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Taungup"><?php echo $dataDecode[$_COOKIE['lang']]['taungup']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['town'] == "Thandwe") { ?>
+                                        <option value="Thandwe" selected><?php echo $dataDecode[$_COOKIE['lang']]['thandwe']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Thandwe"><?php echo $dataDecode[$_COOKIE['lang']]['thandwe']; ?></option>
+                                    <?php }; ?>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 form-group">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['state_region']; ?></label>
+                                <select class="custom-select" name="state_region">
+                                    <?php if ($row['state_region'] == "Kachin") { ?>
+                                        <option value="Kachin" selected><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kachin"><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Kayar") { ?>
+                                        <option value="Kayar" selected><?php echo $dataDecode[$_COOKIE['lang']]['kayar']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kayar"><?php echo $dataDecode[$_COOKIE['lang']]['kayar']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Kayin") { ?>
+                                        <option value="Kayin" selected><?php echo $dataDecode[$_COOKIE['lang']]['kayin']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kayin"><?php echo $dataDecode[$_COOKIE['lang']]['kayin']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Chin") { ?>
+                                        <option value="Chin" selected><?php echo $dataDecode[$_COOKIE['lang']]['chin']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Chin"><?php echo $dataDecode[$_COOKIE['lang']]['chin']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Mon") { ?>
+                                        <option value="Mon" selected><?php echo $dataDecode[$_COOKIE['lang']]['mon']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Mon"><?php echo $dataDecode[$_COOKIE['lang']]['mon']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Rakhine") { ?>
+                                        <option value="Rakhine" selected><?php echo $dataDecode[$_COOKIE['lang']]['rakhine']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Rakhine"><?php echo $dataDecode[$_COOKIE['lang']]['rakhine']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Shan") { ?>
+                                        <option value="Shan" selected><?php echo $dataDecode[$_COOKIE['lang']]['shan']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Shan"><?php echo $dataDecode[$_COOKIE['lang']]['shan']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Yangon") { ?>
+                                        <option value="Yangon" selected><?php echo $dataDecode[$_COOKIE['lang']]['yangon']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Yangon"><?php echo $dataDecode[$_COOKIE['lang']]['yangon']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Mandalay") { ?>
+                                        <option value="Mandalay" selected><?php echo $dataDecode[$_COOKIE['lang']]['mandalay']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Mandalay"><?php echo $dataDecode[$_COOKIE['lang']]['mandalay']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Nay Pyi Taw") { ?>
+                                        <option value="Nay Pyi Taw" selected><?php echo $dataDecode[$_COOKIE['lang']]['naypyitaw']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Nay Pyi Taw"><?php echo $dataDecode[$_COOKIE['lang']]['naypyitaw']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Ayeyarwady") { ?>
+                                        <option value="Ayeyarwady" selected><?php echo $dataDecode[$_COOKIE['lang']]['ayeyarwady']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Ayeyarwady"><?php echo $dataDecode[$_COOKIE['lang']]['ayeyarwady']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Sagaing") { ?>
+                                        <option value="Sagaing" selected><?php echo $dataDecode[$_COOKIE['lang']]['sagaing']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Sagaing"><?php echo $dataDecode[$_COOKIE['lang']]['sagaing']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Magway") { ?>
+                                        <option value="Magway" selected><?php echo $dataDecode[$_COOKIE['lang']]['magway']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Magway"><?php echo $dataDecode[$_COOKIE['lang']]['magway']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Bago") { ?>
+                                        <option value="Bago" selected><?php echo $dataDecode[$_COOKIE['lang']]['bago']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Bago"><?php echo $dataDecode[$_COOKIE['lang']]['bago']; ?></option>
+                                    <?php }; ?>
+                                    <?php if ($row['state_region'] == "Taninthari") { ?>
+                                        <option value="Taninthari" selected><?php echo $dataDecode[$_COOKIE['lang']]['taninthari']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Taninthari"><?php echo $dataDecode[$_COOKIE['lang']]['taninthari']; ?></option>
+                                    <?php }; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['profile_image']; ?></label>
+                                <input class="form-control" required="required" type="text" name="img_url" placeholder="" value="<?php echo $row['pf_img_url']; ?>">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for=""><?php echo $dataDecode[$_COOKIE['lang']]['birthday']; ?></label>
+                                <input class="form-control" required="required" type="date" name="birthday" value="<?php echo $row['birthday']; ?>">
+                            </div>
+                            <div class="col-md-6 form-group d-flex align-items-center">
+                                <input class="btn btn-primary py-2 px-4" type="submit" value="<?php echo $dataDecode[$_COOKIE['lang']]['update']; ?>">
                             </div>
                         </div>
                     </form>
@@ -359,35 +550,37 @@ require("db-connect.php");
 
     <!-- PHP Start -->
     <?php
-    if (isset($_POST['bookName'])) {
-        $bookName = $_POST['bookName'];
-        $authorName = $_POST['authorName'];
-        $produtKey = $_POST['productKey'];
-        $coverURL = $_POST['coverURL'];
-        $category = $_POST['category'];
-        $price = $_POST['price'];
-        $noOfPages = $_POST['noOfPages'];
-        $publicationDate = $_POST['publicationDate'];
-        $size = $_POST['size'];
-        $bookIntro = $_POST['bookIntro'];
-        $true = true;
-
-        $insertQuery = "INSERT INTO `books` (`name`, `author`, `img_url`, `product_key`, `category`, `intro`, `price`, `total_pages`, `public_date`, `size`) VALUES ('$bookName', '$authorName', '$coverURL', '$produtKey', '$category', '$bookIntro', $price, $noOfPages, '$publicationDate', '$size');";
-        if (mysqli_query($con, $insertQuery)) { ?>
+    if (isset($_POST['phone'])) {
+        $acc_id = $_COOKIE['acc'];
+        $name = $_POST['name'];
+        $phone = "+95" . $_POST['phone'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+        $gender = $_POST['gender'];
+        $address = $_POST['address'];
+        $town = $_POST['town'];
+        $state_region = $_POST['state_region'];
+        $img_url = $_POST['img_url'];
+        $birthday = $_POST['birthday'];
+        $updateQuery = "UPDATE `accounts` SET `name`='" . $name . "',`birthday`='" . $birthday . "',`gender`='" . $gender . "',`phone`='" . $phone . "',`pf_img_url`='" . $img_url . "',`email`='" . $email . "',`password`='" . $password . "',`address`='" . $address . "',`town`='" . $town . "',`state_region`='" . $state_region . "' WHERE `id`=$acc_id;";
+        $result = mysqli_query($con, $updateQuery);
+        if ($result) { ?>
             <script type='text/javascript'>
-                swal('<?php echo $dataDecode[$_COOKIE['lang']]['new_book_added_successfully']; ?>', {
+                swal('<?php echo $dataDecode[$_COOKIE['lang']]['updated_successfully']; ?>."', {
                     icon: 'success',
+                }).then((ok) => {
+                    window.open("profile.php", "_self");
                 });
             </script>
         <?php } else { ?>
             <script type='text/javascript'>
-                console.log("Error");
-                swal('<?php echo $dataDecode[$_COOKIE['lang']]['new_book_added_successfully']; ?>', {
-                    icon: '',
+                swal('<?php echo $dataDecode[$_COOKIE['lang']]['an_error_occured']; ?>."', {
+                    icon: 'error',
                 });
             </script>
-    <?php };
-    };
+    <?php
+        }
+    }
     ?>
     <!-- PHP End -->
 

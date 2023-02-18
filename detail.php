@@ -87,14 +87,25 @@ $row = mysqli_fetch_array($result);
                     <?php } ?>
                 </div>
                 <div class="d-inline-flex align-items-center d-block d-lg-none">
-                    <a href="profile.php" class="btn px-0 ml-2">
-                        <i class="fas fa-heart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
-                    <a href="cart.php" class="btn px-0 ml-2">
-                        <i class="fas fa-shopping-cart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
+                    <?php if (isset($_COOKIE['acc'])) { ?>
+                        <a href="profile.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="cart.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php } else { ?>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php }; ?>
                 </div>
             </div>
         </div>
@@ -172,19 +183,30 @@ $row = mysqli_fetch_array($result);
                                     </div>
                                 </div>
                             </form>
-                            <a href="index.php" class="nav-item nav-link active"><?php echo $dataDecode[$_COOKIE['lang']]['home']; ?></a>
-                            <a href="shop.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['shop']; ?></a>
+                            <a href="index.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['home']; ?></a>
+                            <a href="shop.php" class="nav-item nav-link active"><?php echo $dataDecode[$_COOKIE['lang']]['shop']; ?></a>
                             <a href="contact.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['contact']; ?></a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="profile.php" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
-                            <a href="cart.php" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                            <?php if (isset($_COOKIE['acc'])) { ?>
+                                <a href="profile.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="cart.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php } else { ?>
+                                <a href="login.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="login.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php }; ?>
                         </div>
                     </div>
                 </nav>
@@ -212,8 +234,8 @@ $row = mysqli_fetch_array($result);
     <!-- Shop Detail Start -->
     <div class="container-fluid pb-5">
         <div class="row px-xl-5">
-            <div class="col-lg-4 mb-30">
-                <img class="w-100 h-100" src="<?php echo $row['img_url']; ?>" alt="Image">
+            <div class="col-lg-4 mb-30 d-flex justify-content-center align-items-center">
+                <img class="h-100" src="<?php echo $row['img_url']; ?>" alt="Image">
             </div>
             <div class="col-lg-8 h-auto mb-30">
                 <div class="h-100 bg-light p-30">
@@ -354,29 +376,39 @@ $row = mysqli_fetch_array($result);
     <!-- Shop Detail End -->
 
 
-    <!-- Products Start -->
+    <!-- Suggestion Start -->
     <div class="container-fluid py-5">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['you_may_also_like']; ?></span></h2>
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['suggestion_for_you']; ?></span></h2>
         <div class="row px-xl-5">
             <div class="col">
                 <div class="owl-carousel related-carousel">
                     <?php
-                    $query = "SELECT * FROM `books` WHERE `category`='" . $row["category"] . "';";
+                    $randomLimit = rand(4, 6);
+                    $randomOffset = rand(1, 4);
+                    $query = "SELECT * FROM `books` WHERE `category`='" . $row["category"] . "' LIMIT $randomLimit OFFSET $randomOffset;";
                     $result = mysqli_query($con, $query);
                     $rowcount = mysqli_num_rows($result);
                     for ($i = 0; $i < $rowcount; $i++) {
                         $row = mysqli_fetch_array($result); ?>
                         <div class="product-item bg-light">
                             <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="<?php echo $row['img_url']; ?>" alt="">
+                                <div class="book-cover">
+                                    <img src="<?php echo $row['img_url']; ?>" alt="">
+                                </div>
                                 <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-plus"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    <?php if (isset($_COOKIE['acc'])) { ?>
+                                        <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
+                                        <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    <?php } else { ?>
+                                        <a class="btn btn-outline-dark btn-square active" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
+                                        <a class="btn btn-outline-dark btn-square active" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    <?php }; ?>
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href=""><?php echo $row['name']; ?></a>
+                                <a class="h6 text-decoration-none" href=""><?php echo $row['name']; ?></a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5><?php echo $row['price']; ?><span class="ml-1">MMK</span></h5>
                                     <h6 class="text-muted ml-2"><del><?php echo $row['price'] + 2000; ?><span class="ml-1">MMK</span></del></h6>
@@ -395,7 +427,7 @@ $row = mysqli_fetch_array($result);
             </div>
         </div>
     </div>
-    <!-- Products End -->
+    <!-- Suggestion End -->
 
 
     <!-- Footer Start -->

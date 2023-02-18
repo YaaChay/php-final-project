@@ -84,14 +84,25 @@ require("db-connect.php");
                     <?php } ?>
                 </div>
                 <div class="d-inline-flex align-items-center d-block d-lg-none">
-                    <a href="profile.php" class="btn px-0 ml-2">
-                        <i class="fas fa-heart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
-                    <a href="cart.php" class="btn px-0 ml-2">
-                        <i class="fas fa-shopping-cart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
+                    <?php if (isset($_COOKIE['acc'])) { ?>
+                        <a href="profile.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="cart.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php } else { ?>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php }; ?>
                 </div>
             </div>
         </div>
@@ -174,14 +185,25 @@ require("db-connect.php");
                             <a href="contact.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['contact']; ?></a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="profile.php" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
-                            <a href="cart.php" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                            <?php if (isset($_COOKIE['acc'])) { ?>
+                                <a href="profile.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="cart.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php } else { ?>
+                                <a href="login.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="login.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php }; ?>
                         </div>
                     </div>
                 </nav>
@@ -359,6 +381,7 @@ require("db-connect.php");
                             </div>
                         </div>
                     </div>
+
                     <?php if ((!isset($_COOKIE['list-style'])) or ($_COOKIE['list-style'] == "style1")) { ?>
                         <!-- Vertical Product Item Start -->
                         <?php
@@ -370,15 +393,23 @@ require("db-connect.php");
                             <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
                                 <div class="product-item bg-light mb-4">
                                     <div class="product-img position-relative overflow-hidden">
-                                        <img class="img-fluid w-100" src="<?php echo $row['img_url']; ?>" alt="">
+                                        <div class="book-cover">
+                                            <img src="<?php echo $row['img_url']; ?>" alt="">
+                                        </div>
                                         <div class="product-action">
-                                            <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
-                                            <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
-                                            <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                            <?php if (isset($_COOKIE['acc'])) { ?>
+                                                <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
+                                                <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                            <?php } else { ?>
+                                                <a class="btn btn-outline-dark btn-square active" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
+                                                <a class="btn btn-outline-dark btn-square active" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                            <?php }; ?>
                                         </div>
                                     </div>
-                                    <div class="text-center py-4">
-                                        <a class="h6 text-decoration-none text-truncate" href="detail.php?bookId=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
+                                    <div class="text-center py-4  overflow-hidden">
+                                        <a class="h6 text-decoration-none" href="detail.php?bookId=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
                                         <div class="d-flex align-items-center justify-content-center mt-2">
                                             <h5><?php echo $row['price']; ?><span class="ml-1">MMK</span></h5>
                                             <h6 class="text-muted ml-2"><del><?php $price = $row['price'];

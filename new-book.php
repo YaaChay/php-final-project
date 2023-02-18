@@ -87,14 +87,25 @@ require("db-connect.php");
                     <?php } ?>
                 </div>
                 <div class="d-inline-flex align-items-center d-block d-lg-none">
-                    <a href="profile.php" class="btn px-0 ml-2">
-                        <i class="fas fa-heart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
-                    <a href="cart.php" class="btn px-0 ml-2">
-                        <i class="fas fa-shopping-cart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
+                    <?php if (isset($_COOKIE['acc'])) { ?>
+                        <a href="profile.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="cart.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php } else { ?>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-heart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                        <a href="login.php" class="btn px-0 ml-2">
+                            <i class="fas fa-shopping-cart text-dark"></i>
+                            <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
+                        </a>
+                    <?php }; ?>
                 </div>
             </div>
         </div>
@@ -177,14 +188,25 @@ require("db-connect.php");
                             <a href="contact.php" class="nav-item nav-link"><?php echo $dataDecode[$_COOKIE['lang']]['contact']; ?></a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="profile.php" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
-                            <a href="cart.php" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                            <?php if (isset($_COOKIE['acc'])) { ?>
+                                <a href="profile.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="cart.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php } else { ?>
+                                <a href="login.php" class="btn px-0">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                                <a href="login.php" class="btn px-0 ml-3">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                </a>
+                            <?php }; ?>
                         </div>
                     </div>
                 </nav>
@@ -224,7 +246,7 @@ require("db-connect.php");
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['book_name']; ?></label>
-                                <input class="form-control" required="required" type="text" name="bookName" placeholder="" >
+                                <input class="form-control" required="required" type="text" name="bookName" placeholder="">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['authors']; ?></label>
@@ -236,7 +258,7 @@ require("db-connect.php");
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['book_cover_url']; ?></label>
-                                <input class="form-control" required="required" type="text" name="coverURL" placeholder="" >
+                                <input class="form-control" required="required" type="text" name="coverURL" placeholder="">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['category']; ?></label>
@@ -258,7 +280,7 @@ require("db-connect.php");
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['price']; ?></label>
                                 <div class="input-group">
-                                    <input class="form-control" required="required" type="number" name="price" placeholder="" aria-label="" aria-describedby="basic-addon2" >
+                                    <input class="form-control" required="required" type="number" name="price" placeholder="" aria-label="" aria-describedby="basic-addon2">
                                     <span class="input-group-text" id="basic-addon2"><?php echo $dataDecode[$_COOKIE['lang']]['kyat']; ?></span>
                                 </div>
                             </div>
