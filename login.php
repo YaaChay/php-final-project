@@ -204,6 +204,7 @@ require("db-connect.php"); ?>
             <script type='text/javascript'>
                 swal('<?php echo $phone; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['there_was_no_account_with_this_phone_number']; ?>', {
                     icon: 'error',
+                    button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
                 });
             </script>
             <?php } else {
@@ -217,6 +218,7 @@ require("db-connect.php"); ?>
                     <script type='text/javascript'>
                         swal('<?php echo $dataDecode[$_COOKIE['lang']]['incorrect_password']; ?>', {
                             icon: 'error',
+                            button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
                         });
                     </script>
                     <?php };
@@ -231,6 +233,7 @@ require("db-connect.php"); ?>
                         <script type='text/javascript'>
                             swal('<?php echo $dataDecode[$_COOKIE['lang']]['incorrect_password']; ?>', {
                                 icon: 'error',
+                                button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
                             });
                         </script>
     <?php           }

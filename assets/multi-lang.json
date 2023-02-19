@@ -209,10 +209,15 @@
         "incorrect_password": "Incorrect Password",
         "acc_id": "Account ID",
         "update": "Update",
-        "update_profile":"Update Profile",
-        "updated_successfully":"Updated successfully.",
-        "an_error_occured":"An error occured!",
-        "search_query":"Search query"
+        "update_profile": "Update Profile",
+        "updated_successfully": "Updated successfully.",
+        "an_error_occured": "An error occured!",
+        "search_query": "Search query",
+        "are_you_sure": "Are you sure?",
+        "delete_description": "Once deleted, you will not be able to recover this book!",
+        "ok": "OK",
+        "yes": "Yes",
+        "cancel": "Cancel"
     },
     "myanmar": {
         "quote": "စာအုပ်များသည် ထူးခြားစွာသယ်ဆောင်ရလွယ်ကူသော မှော်ပညာတစ်ခုဖြစ်သည်။",
@@ -424,9 +429,14 @@
         "incorrect_password": "စကား၀ှက်မှားနေပါသည်",
         "acc_id": "အကောင့်အိုင်ဒီ",
         "update": "ပြောင်းလဲပါ",
-        "update_profile":"ပရိုဖိုင်ကို ပြုပြင်ရန်",
-        "updated_successfully":"အောင်မြင်စွာ ပြောင်းလဲခဲ့ပါသည်။",
-        "an_error_occured":"Error တစ်,ခုဖြစ်ခဲ့ပါသည်။",
-        "search_query":"ရှာဖွေမှု"
+        "update_profile": "ပရိုဖိုင်ကို ပြုပြင်ရန်",
+        "updated_successfully": "အောင်မြင်စွာ ပြောင်းလဲခဲ့ပါသည်။",
+        "an_error_occured": "Error တစ်,ခုဖြစ်ခဲ့ပါသည်။",
+        "search_query": "ရှာဖွေမှု",
+        "are_you_sure": "သေချာပြီလား?",
+        "delete_description": "ဖျက်လိုက်သည်နှင့်၊ သင်သည် ဤစာအုပ်ကို ပြန်လည်ရယူနိုင်မည် မဟုတ်ပါ။",
+        "ok": "အိုကေ",
+        "yes": "ဟုတ်ကဲ့",
+        "cancel": "ပယ်ဖျက်ပါ"
     }
 }

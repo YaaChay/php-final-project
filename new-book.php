@@ -389,7 +389,6 @@ require("getProfileData.php");
         $publicationDate = $_POST['publicationDate'];
         $size = $_POST['size'];
         $bookIntro = $_POST['bookIntro'];
-        $true = true;
 
         $checkKey = "SELECT * FROM `books` WHERE `product_key`='$productKey';";
         $result = mysqli_query($con, $checkKey);
@@ -399,14 +398,15 @@ require("getProfileData.php");
             <script type='text/javascript'>
                 swal('<?php echo $productKey; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['product_key_already_exists']; ?>', {
                     icon: 'error',
+                    button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
                 });
             </script>
             <?php } else {
             if (mysqli_query($con, $insertQuery)) { ?>
                 <script type='text/javascript'>
-                    console.log("Error");
                     swal('<?php echo $dataDecode[$_COOKIE['lang']]['new_book_added_successfully']; ?>', {
                         icon: 'success',
+                        button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
                     });
                 </script>
     <?php };

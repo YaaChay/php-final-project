@@ -11,6 +11,10 @@ function accPhone()
 {
     return $GLOBALS['rowPf']['phone'];
 }
+function accPurePhone()
+{
+    return substr($GLOBALS['rowPf']['phone'], 3);
+}
 function accPassword()
 {
     return $GLOBALS['rowPf']['password'];

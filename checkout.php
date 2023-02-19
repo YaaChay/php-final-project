@@ -226,114 +226,256 @@ require("getProfileData.php");
 
     <!-- Checkout Start -->
     <div class="container-fluid">
-        <div class="row px-xl-5">
-            <div class="col-lg-8">
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['billing_address']; ?></span></h5>
-                <div class="bg-light p-30 mb-5">
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label><?php echo $dataDecode[$_COOKIE['lang']]['customer_name']; ?></label>
-                            <input class="form-control" type="text" placeholder="John">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label><?php echo $dataDecode[$_COOKIE['lang']]['e_mail']; ?></label>
-                            <input class="form-control" type="email" placeholder="example@email.com">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label><?php echo $dataDecode[$_COOKIE['lang']]['mobile_no']; ?></label>
-                            <div class="input-group">
-                                <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
-                                <input class="form-control" type="tel" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['9_x9']; ?>" aria-describedby="basic-addon1" maxlength="10" size="10">
+        <form action="" method="get">
+            <div class="row px-xl-5">
+                <div class="col-lg-8">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['billing_address']; ?></span></h5>
+                    <div class="bg-light p-30 mb-5">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['name']; ?></label>
+                                <input class="form-control" required="required" type="text" name="acc_name" placeholder="" value="<?php echo accName(); ?>">
                             </div>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label><?php echo $dataDecode[$_COOKIE['lang']]['address']; ?></label>
-                            <input class="form-control" type="text" placeholder="123 Street">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label><?php echo $dataDecode[$_COOKIE['lang']]['town']; ?></label>
-                            <select class="custom-select">
-                                <option selected>Ann</option>
-                                <option>Sittway</option>
-                                <option>YanByae</option>
-                                <option>KyaukPhyu</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label><?php echo $dataDecode[$_COOKIE['lang']]['state_region']; ?></label>
-                            <select class="custom-select">
-                                <option value="Kachin"><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
-                                <option value="Kayar"><?php echo $dataDecode[$_COOKIE['lang']]['kayar']; ?></option>
-                                <option value="Kayin"><?php echo $dataDecode[$_COOKIE['lang']]['kayin']; ?></option>
-                                <option value="Chin"><?php echo $dataDecode[$_COOKIE['lang']]['chin']; ?></option>
-                                <option value="Mon"><?php echo $dataDecode[$_COOKIE['lang']]['mon']; ?></option>
-                                <option value="Rakhine" selected><?php echo $dataDecode[$_COOKIE['lang']]['rakhine']; ?></option>
-                                <option value="Shan"><?php echo $dataDecode[$_COOKIE['lang']]['shan']; ?></option>
-                                <option value="Yangon"><?php echo $dataDecode[$_COOKIE['lang']]['yangon']; ?></option>
-                                <option value="Mandalay"><?php echo $dataDecode[$_COOKIE['lang']]['mandalay']; ?></option>
-                                <option value="Nay Pyi Taw"><?php echo $dataDecode[$_COOKIE['lang']]['naypyitaw']; ?></option>
-                                <option value="Ayeyarwady"><?php echo $dataDecode[$_COOKIE['lang']]['ayeyarwady']; ?></option>
-                                <option value="Sagaing"><?php echo $dataDecode[$_COOKIE['lang']]['sagaing']; ?></option>
-                                <option value="Magway"><?php echo $dataDecode[$_COOKIE['lang']]['magway']; ?></option>
-                                <option value="Bago"><?php echo $dataDecode[$_COOKIE['lang']]['bago']; ?></option>
-                                <option value="Taninthari"><?php echo $dataDecode[$_COOKIE['lang']]['taninthari']; ?></option>
-                            </select>
+                            <div class="col-md-6 form-group">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['e_mail']; ?></label>
+                                <input class="form-control" required="required" type="email" name="email" placeholder="" value="<?php echo accEmail(); ?>">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['phone']; ?></label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
+                                    <input class="form-control" type="tel" name="phone" placeholder="" value="<?php echo accPurePhone(); ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required">
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['address']; ?></label>
+                                <input class="form-control" required="required" type="text" name="address" placeholder="" value="<?php echo accAddress(); ?>">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['town']; ?></label>
+                                <select class="custom-select" name="town">
+                                    <?php if (accTown() == "Ann") { ?>
+                                        <option value="Ann" selected><?php echo $dataDecode[$_COOKIE['lang']]['ann']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Ann"><?php echo $dataDecode[$_COOKIE['lang']]['ann']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Buthidaung") { ?>
+                                        <option value="Buthidaung" selected><?php echo $dataDecode[$_COOKIE['lang']]['buthidaung']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Buthidaung"><?php echo $dataDecode[$_COOKIE['lang']]['buthidaung']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Gwa") { ?>
+                                        <option value="Gwa" selected><?php echo $dataDecode[$_COOKIE['lang']]['gwa']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Gwa"><?php echo $dataDecode[$_COOKIE['lang']]['gwa']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Kyaukphyu") { ?>
+                                        <option value="Kyaukphyu" selected><?php echo $dataDecode[$_COOKIE['lang']]['kyaukphyu']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kyaukphyu"><?php echo $dataDecode[$_COOKIE['lang']]['kyaukphyu']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Kyauktaw") { ?>
+                                        <option value="Kyauktaw" selected><?php echo $dataDecode[$_COOKIE['lang']]['kyauktaw']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kyauktaw"><?php echo $dataDecode[$_COOKIE['lang']]['kyauktaw']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Manaung") { ?>
+                                        <option value="Manaung" selected><?php echo $dataDecode[$_COOKIE['lang']]['manaung']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Manaung"><?php echo $dataDecode[$_COOKIE['lang']]['manaung']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Maungdaw") { ?>
+                                        <option value="Maungdaw" selected><?php echo $dataDecode[$_COOKIE['lang']]['maungdaw']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Maungdaw"><?php echo $dataDecode[$_COOKIE['lang']]['maungdaw']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Minbya") { ?>
+                                        <option value="Minbya" selected><?php echo $dataDecode[$_COOKIE['lang']]['minbya']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Minbya"><?php echo $dataDecode[$_COOKIE['lang']]['minbya']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Mrauk-U") { ?>
+                                        <option value="Mrauk-U" selected><?php echo $dataDecode[$_COOKIE['lang']]['mrauk_u']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Mrauk-U"><?php echo $dataDecode[$_COOKIE['lang']]['mrauk_u']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Myebon") { ?>
+                                        <option value="Myebon" selected><?php echo $dataDecode[$_COOKIE['lang']]['myebon']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Myebon"><?php echo $dataDecode[$_COOKIE['lang']]['myebon']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Pauktaw") { ?>
+                                        <option value="Pauktaw" selected><?php echo $dataDecode[$_COOKIE['lang']]['pauktaw']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Pauktaw"><?php echo $dataDecode[$_COOKIE['lang']]['pauktaw']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Ponnagyun") { ?>
+                                        <option value="Ponnagyun" selected><?php echo $dataDecode[$_COOKIE['lang']]['ponnagyun']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Ponnagyun"><?php echo $dataDecode[$_COOKIE['lang']]['ponnagyun']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Ramree") { ?>
+                                        <option value="Ramree" selected><?php echo $dataDecode[$_COOKIE['lang']]['ramree']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Ramree"><?php echo $dataDecode[$_COOKIE['lang']]['ramree']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Rathedaung") { ?>
+                                        <option value="Rathedaung" selected><?php echo $dataDecode[$_COOKIE['lang']]['rathedaung']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Rathedaung"><?php echo $dataDecode[$_COOKIE['lang']]['rathedaung']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Sittwe") { ?>
+                                        <option value="Sittwe" selected><?php echo $dataDecode[$_COOKIE['lang']]['sittwe']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Sittwe"><?php echo $dataDecode[$_COOKIE['lang']]['sittwe']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Taungup") { ?>
+                                        <option value="Taungup" selected><?php echo $dataDecode[$_COOKIE['lang']]['taungup']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Taungup"><?php echo $dataDecode[$_COOKIE['lang']]['taungup']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accTown() == "Thandwe") { ?>
+                                        <option value="Thandwe" selected><?php echo $dataDecode[$_COOKIE['lang']]['thandwe']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Thandwe"><?php echo $dataDecode[$_COOKIE['lang']]['thandwe']; ?></option>
+                                    <?php }; ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label><?php echo $dataDecode[$_COOKIE['lang']]['state_region']; ?></label>
+                                <select class="custom-select" name="state_region">
+                                    <?php if (accStateRegion() == "Kachin") { ?>
+                                        <option value="Kachin" selected><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kachin"><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Kayar") { ?>
+                                        <option value="Kayar" selected><?php echo $dataDecode[$_COOKIE['lang']]['kayar']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kayar"><?php echo $dataDecode[$_COOKIE['lang']]['kayar']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Kayin") { ?>
+                                        <option value="Kayin" selected><?php echo $dataDecode[$_COOKIE['lang']]['kayin']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Kayin"><?php echo $dataDecode[$_COOKIE['lang']]['kayin']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Chin") { ?>
+                                        <option value="Chin" selected><?php echo $dataDecode[$_COOKIE['lang']]['chin']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Chin"><?php echo $dataDecode[$_COOKIE['lang']]['chin']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Mon") { ?>
+                                        <option value="Mon" selected><?php echo $dataDecode[$_COOKIE['lang']]['mon']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Mon"><?php echo $dataDecode[$_COOKIE['lang']]['mon']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Rakhine") { ?>
+                                        <option value="Rakhine" selected><?php echo $dataDecode[$_COOKIE['lang']]['rakhine']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Rakhine"><?php echo $dataDecode[$_COOKIE['lang']]['rakhine']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Shan") { ?>
+                                        <option value="Shan" selected><?php echo $dataDecode[$_COOKIE['lang']]['shan']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Shan"><?php echo $dataDecode[$_COOKIE['lang']]['shan']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Yangon") { ?>
+                                        <option value="Yangon" selected><?php echo $dataDecode[$_COOKIE['lang']]['yangon']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Yangon"><?php echo $dataDecode[$_COOKIE['lang']]['yangon']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Mandalay") { ?>
+                                        <option value="Mandalay" selected><?php echo $dataDecode[$_COOKIE['lang']]['mandalay']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Mandalay"><?php echo $dataDecode[$_COOKIE['lang']]['mandalay']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Nay Pyi Taw") { ?>
+                                        <option value="Nay Pyi Taw" selected><?php echo $dataDecode[$_COOKIE['lang']]['naypyitaw']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Nay Pyi Taw"><?php echo $dataDecode[$_COOKIE['lang']]['naypyitaw']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Ayeyarwady") { ?>
+                                        <option value="Ayeyarwady" selected><?php echo $dataDecode[$_COOKIE['lang']]['ayeyarwady']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Ayeyarwady"><?php echo $dataDecode[$_COOKIE['lang']]['ayeyarwady']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Sagaing") { ?>
+                                        <option value="Sagaing" selected><?php echo $dataDecode[$_COOKIE['lang']]['sagaing']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Sagaing"><?php echo $dataDecode[$_COOKIE['lang']]['sagaing']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Magway") { ?>
+                                        <option value="Magway" selected><?php echo $dataDecode[$_COOKIE['lang']]['magway']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Magway"><?php echo $dataDecode[$_COOKIE['lang']]['magway']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Bago") { ?>
+                                        <option value="Bago" selected><?php echo $dataDecode[$_COOKIE['lang']]['bago']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Bago"><?php echo $dataDecode[$_COOKIE['lang']]['bago']; ?></option>
+                                    <?php }; ?>
+                                    <?php if (accStateRegion() == "Taninthari") { ?>
+                                        <option value="Taninthari" selected><?php echo $dataDecode[$_COOKIE['lang']]['taninthari']; ?></option>
+                                    <?php } else { ?>
+                                        <option value="Taninthari"><?php echo $dataDecode[$_COOKIE['lang']]['taninthari']; ?></option>
+                                    <?php }; ?>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+                <div class="col-lg-4">
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['order_total']; ?></span></h5>
+                    <div class="bg-light p-30 mb-5">
+                        <div class="border-bottom">
+                            <h6 class="mb-3"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></h6>
+                            <div class="d-flex justify-content-between">
+                                <p>Product Name 1</p>
+                                <p>$150</p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p>Product Name 2</p>
+                                <p>$150</p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p>Product Name 3</p>
+                                <p>$150</p>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <div class="d-flex justify-content-between mt-2">
+                                <h5><?php echo $dataDecode[$_COOKIE['lang']]['total']; ?></h5>
+                                <h5>$160</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['payment']; ?></span></h5>
+                        <div class="bg-light p-30">
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="payment" id="paypal">
+                                    <label class="custom-control-label" for="paypal">Paypal</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="payment" id="directcheck">
+                                    <label class="custom-control-label" for="directcheck">Direct Check</label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-4">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
+                                    <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
+                                </div>
+                            </div>
+                            <button class="btn btn-block btn-primary font-weight-bold py-3" type="submit"><?php echo $dataDecode[$_COOKIE['lang']]['place_order']; ?></button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-4">
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['order_total']; ?></span></h5>
-                <div class="bg-light p-30 mb-5">
-                    <div class="border-bottom">
-                        <h6 class="mb-3"><?php echo $dataDecode[$_COOKIE['lang']]['books']; ?></h6>
-                        <div class="d-flex justify-content-between">
-                            <p>Product Name 1</p>
-                            <p>$150</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Product Name 2</p>
-                            <p>$150</p>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p>Product Name 3</p>
-                            <p>$150</p>
-                        </div>
-                    </div>
-                    <div class="pt-2">
-                        <div class="d-flex justify-content-between mt-2">
-                            <h5><?php echo $dataDecode[$_COOKIE['lang']]['total']; ?></h5>
-                            <h5>$160</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-5">
-                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['payment']; ?></span></h5>
-                    <div class="bg-light p-30">
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Direct Check</label>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                            </div>
-                        </div>
-                        <button class="btn btn-block btn-primary font-weight-bold py-3"><?php echo $dataDecode[$_COOKIE['lang']]['place_order']; ?></button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
     <!-- Checkout End -->
 

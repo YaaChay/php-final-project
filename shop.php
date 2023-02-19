@@ -32,6 +32,9 @@ require("getProfileData.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
+    <!-- Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -220,10 +223,12 @@ require("getProfileData.php");
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="index.php"><?php echo $dataDecode[$_COOKIE['lang']]['home']; ?></a>
-                    <span class="breadcrumb-item active"><?php echo $dataDecode[$_COOKIE['lang']]['shop']; ?></span>
                     <?php if (isset($_GET['searchQuery'])) { ?>
+                        <a class="breadcrumb-item text-dark" href="shop.php"><?php echo $dataDecode[$_COOKIE['lang']]['shop']; ?></a>
                         <span class="breadcrumb-item active"><?php echo $dataDecode[$_COOKIE['lang']]['search_query'] . " '" . $_GET["searchQuery"] . "' "; ?></span>
-                    <?php } ?>
+                    <?php } else { ?>
+                        <span class="breadcrumb-item active"><?php echo $dataDecode[$_COOKIE['lang']]['shop']; ?></span>
+                    <?php }; ?>
                 </nav>
             </div>
         </div>
@@ -404,13 +409,17 @@ require("getProfileData.php");
                                             <img src="<?php echo $row['img_url']; ?>" alt="">
                                         </div>
                                         <div class="product-action">
-                                            <?php if (isset($_COOKIE['acc'])) { ?>
-                                                <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
-                                                <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                            <?php if (isset($_COOKIE['acc']) and accRole() == "admin") { ?>
+                                                <a class="btn btn-outline-dark btn-square" href="edit-book.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="javascript:deleteAlert(<?php echo $row['id']; ?>);" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                            <?php } else if (isset($_COOKIE['acc']) and accRole() == "user") { ?>
+                                                <a class="btn btn-outline-dark btn-square" href="cart.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-check"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="#" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
                                                 <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
                                             <?php } else { ?>
-                                                <a class="btn btn-outline-dark btn-square active" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
-                                                <a class="btn btn-outline-dark btn-square active" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-check"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
                                                 <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
                                             <?php }; ?>
                                         </div>
@@ -459,9 +468,19 @@ require("getProfileData.php");
                                             <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
                                         </div>
                                         <div class="item-action">
-                                            <a class="btn btn-outline-dark active"><i class="bi bi-cart-dash"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
-                                            <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
-                                            <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                            <?php if (isset($_COOKIE['acc']) and accRole() == "admin") { ?>
+                                                <a class="btn btn-outline-dark btn-square" href="edit-book.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="javascript:deleteAlert(<?php echo $row['id']; ?>);" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                            <?php } else if (isset($_COOKIE['acc']) and accRole() == "user") { ?>
+                                                <a class="btn btn-outline-dark" href="cart.php" title=""><i class="bi bi-cart-check"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                                <a class="btn btn-outline-dark btn-square" href="#" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                            <?php } else { ?>
+                                                <a class="btn btn-outline-dark" href="login.php" title=""><i class="bi bi-cart-check"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                                <a class="btn btn-outline-dark btn-square" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                            <?php }; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -555,10 +574,24 @@ require("getProfileData.php");
     </div>
     <!-- Footer End -->
 
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+    <script type="text/javascript">
+        function deleteAlert(id) {
+            swal('<?php echo $dataDecode[$_COOKIE['lang']]['are_you_sure']; ?>','<?php echo $dataDecode[$_COOKIE['lang']]['delete_description']; ?>', {
+                        icon: "warning",
+                        buttons: ['<?php echo $dataDecode[$_COOKIE['lang']]['cancel']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'],
+                        dangerMode: true,
+                    }
+                )
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.open("delete-book.php?bookId=" + id + "&page=shop", "_self");
+                    }
+                });
+        }
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

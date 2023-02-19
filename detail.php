@@ -31,6 +31,9 @@ $row = mysqli_fetch_array($result);
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
+    <!-- Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -393,13 +396,17 @@ $row = mysqli_fetch_array($result);
                                     <img src="<?php echo $row['img_url']; ?>" alt="">
                                 </div>
                                 <div class="product-action">
-                                    <?php if (isset($_COOKIE['acc'])) { ?>
-                                        <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
-                                        <a class="btn btn-outline-dark btn-square active" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                    <?php if (isset($_COOKIE['acc']) and accRole() == "admin") { ?>
+                                        <a class="btn btn-outline-dark btn-square" href="edit-book.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="javascript:deleteAlert(<?php echo $row['id']; ?>);" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    <?php } else if (isset($_COOKIE['acc']) and accRole() == "user") { ?>
+                                        <a class="btn btn-outline-dark" href="cart.php" title=""><i class="bi bi-cart-check"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                        <a class="btn btn-outline-dark btn-square" href="#" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
                                         <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
                                     <?php } else { ?>
-                                        <a class="btn btn-outline-dark btn-square active" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_cart']; ?>"><i class="bi bi-cart-dash"></i></a>
-                                        <a class="btn btn-outline-dark btn-square active" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['remove_from_wish_list']; ?>"><i class="bi bi-heart-fill"></i></a>
+                                        <a class="btn btn-outline-dark" href="login.php" title=""><i class="bi bi-cart-check"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                        <a class="btn btn-outline-dark btn-square" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
                                         <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
                                     <?php }; ?>
                                 </div>
@@ -497,6 +504,20 @@ $row = mysqli_fetch_array($result);
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+    <script type="text/javascript">
+        function deleteAlert(id) {
+            swal('<?php echo $dataDecode[$_COOKIE['lang']]['are_you_sure']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['delete_description']; ?>', {
+                    icon: "warning",
+                    buttons: ['<?php echo $dataDecode[$_COOKIE['lang']]['cancel']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'],
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.open("delete-book.php?bookId=" + id + "&page=detail", "_self");
+                    }
+                });
+        }
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

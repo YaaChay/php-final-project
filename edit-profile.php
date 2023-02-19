@@ -238,47 +238,41 @@ require("getProfileData.php");
         <div class="row px-xl-5">
             <div class="col-lg-12">
                 <div class="contact-form bg-light p-30">
-                    <?php
-                    $query = "SELECT * FROM `accounts` WHERE `id`='" . $_COOKIE['acc'] . "';";
-                    $result = mysqli_query($con, $query);
-                    $row = mysqli_fetch_array($result);
-                    $phone = substr($row['phone'], 3);
-                    ?>
                     <form method="POST">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['acc_id']; ?></label>
-                                <input class="form-control" type="text" placeholder="" value="<?php echo $row['id']; ?>" disabled>
+                                <input class="form-control" type="text" placeholder="" value="<?php echo $_COOKIE['acc']; ?>" disabled>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['name']; ?></label>
-                                <input class="form-control" required="required" type="text" name="name" placeholder="" value="<?php echo $row['name']; ?>">
+                                <input class="form-control" required="required" type="text" name="name" placeholder="" value="<?php echo accName(); ?>">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['phone']; ?></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
-                                    <input class="form-control" type="tel" name="phone" placeholder="" value="<?php echo $phone; ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required">
+                                    <input class="form-control" type="tel" name="phone" placeholder="" value="<?php echo accPurePhone(); ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required">
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['password']; ?></label>
-                                <input class="form-control" required="required" type="password" name="password" placeholder="" value="<?php echo $row['password']; ?>" minlength="6">
+                                <input class="form-control" required="required" type="password" name="password" placeholder="" value="<?php echo accPassword(); ?>" minlength="6">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['e_mail']; ?></label>
-                                <input class="form-control" required="required" type="email" name="email" placeholder="" value="<?php echo $row['email']; ?>">
+                                <input class="form-control" required="required" type="email" name="email" placeholder="" value="<?php echo accEmail(); ?>">
                             </div>
                             <div class="col-sm-6 col-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['gender']; ?></label>
                                 <?php
-                                if ($row['gender'] == "M") { ?>
+                                if (accGender() == "M") { ?>
                                     <select class="custom-select" name="gender">
                                         <option value="M" selected>Male</option>
                                         <option value="F">Female</option>
                                     </select>
                                 <?php };
-                                if ($row['gender'] == "F") { ?>
+                                if (accGender() == "F") { ?>
                                     <select class="custom-select" name="gender">
                                         <option value="M">Male</option>
                                         <option value="F" selected>Female</option>
@@ -287,92 +281,92 @@ require("getProfileData.php");
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['address']; ?></label>
-                                <input class="form-control" required="required" type="text" name="address" placeholder="" value="<?php echo $row['address']; ?>">
+                                <input class="form-control" required="required" type="text" name="address" placeholder="" value="<?php echo accAddress(); ?>">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['town']; ?></label>
                                 <select class="custom-select" name="town">
-                                    <?php if ($row['town'] == "Ann") { ?>
+                                    <?php if (accTown() == "Ann") { ?>
                                         <option value="Ann" selected><?php echo $dataDecode[$_COOKIE['lang']]['ann']; ?></option>
                                     <?php } else { ?>
                                         <option value="Ann"><?php echo $dataDecode[$_COOKIE['lang']]['ann']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Buthidaung") { ?>
+                                    <?php if (accTown() == "Buthidaung") { ?>
                                         <option value="Buthidaung" selected><?php echo $dataDecode[$_COOKIE['lang']]['buthidaung']; ?></option>
                                     <?php } else { ?>
                                         <option value="Buthidaung"><?php echo $dataDecode[$_COOKIE['lang']]['buthidaung']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Gwa") { ?>
+                                    <?php if (accTown() == "Gwa") { ?>
                                         <option value="Gwa" selected><?php echo $dataDecode[$_COOKIE['lang']]['gwa']; ?></option>
                                     <?php } else { ?>
                                         <option value="Gwa"><?php echo $dataDecode[$_COOKIE['lang']]['gwa']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Kyaukphyu") { ?>
+                                    <?php if (accTown() == "Kyaukphyu") { ?>
                                         <option value="Kyaukphyu" selected><?php echo $dataDecode[$_COOKIE['lang']]['kyaukphyu']; ?></option>
                                     <?php } else { ?>
                                         <option value="Kyaukphyu"><?php echo $dataDecode[$_COOKIE['lang']]['kyaukphyu']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Kyauktaw") { ?>
+                                    <?php if (accTown() == "Kyauktaw") { ?>
                                         <option value="Kyauktaw" selected><?php echo $dataDecode[$_COOKIE['lang']]['kyauktaw']; ?></option>
                                     <?php } else { ?>
                                         <option value="Kyauktaw"><?php echo $dataDecode[$_COOKIE['lang']]['kyauktaw']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Manaung") { ?>
+                                    <?php if (accTown() == "Manaung") { ?>
                                         <option value="Manaung" selected><?php echo $dataDecode[$_COOKIE['lang']]['manaung']; ?></option>
                                     <?php } else { ?>
                                         <option value="Manaung"><?php echo $dataDecode[$_COOKIE['lang']]['manaung']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Maungdaw") { ?>
+                                    <?php if (accTown() == "Maungdaw") { ?>
                                         <option value="Maungdaw" selected><?php echo $dataDecode[$_COOKIE['lang']]['maungdaw']; ?></option>
                                     <?php } else { ?>
                                         <option value="Maungdaw"><?php echo $dataDecode[$_COOKIE['lang']]['maungdaw']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Minbya") { ?>
+                                    <?php if (accTown() == "Minbya") { ?>
                                         <option value="Minbya" selected><?php echo $dataDecode[$_COOKIE['lang']]['minbya']; ?></option>
                                     <?php } else { ?>
                                         <option value="Minbya"><?php echo $dataDecode[$_COOKIE['lang']]['minbya']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Mrauk-U") { ?>
+                                    <?php if (accTown() == "Mrauk-U") { ?>
                                         <option value="Mrauk-U" selected><?php echo $dataDecode[$_COOKIE['lang']]['mrauk_u']; ?></option>
                                     <?php } else { ?>
                                         <option value="Mrauk-U"><?php echo $dataDecode[$_COOKIE['lang']]['mrauk_u']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Myebon") { ?>
+                                    <?php if (accTown() == "Myebon") { ?>
                                         <option value="Myebon" selected><?php echo $dataDecode[$_COOKIE['lang']]['myebon']; ?></option>
                                     <?php } else { ?>
                                         <option value="Myebon"><?php echo $dataDecode[$_COOKIE['lang']]['myebon']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Pauktaw") { ?>
+                                    <?php if (accTown() == "Pauktaw") { ?>
                                         <option value="Pauktaw" selected><?php echo $dataDecode[$_COOKIE['lang']]['pauktaw']; ?></option>
                                     <?php } else { ?>
                                         <option value="Pauktaw"><?php echo $dataDecode[$_COOKIE['lang']]['pauktaw']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Ponnagyun") { ?>
+                                    <?php if (accTown() == "Ponnagyun") { ?>
                                         <option value="Ponnagyun" selected><?php echo $dataDecode[$_COOKIE['lang']]['ponnagyun']; ?></option>
                                     <?php } else { ?>
                                         <option value="Ponnagyun"><?php echo $dataDecode[$_COOKIE['lang']]['ponnagyun']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Ramree") { ?>
+                                    <?php if (accTown() == "Ramree") { ?>
                                         <option value="Ramree" selected><?php echo $dataDecode[$_COOKIE['lang']]['ramree']; ?></option>
                                     <?php } else { ?>
                                         <option value="Ramree"><?php echo $dataDecode[$_COOKIE['lang']]['ramree']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Rathedaung") { ?>
+                                    <?php if (accTown() == "Rathedaung") { ?>
                                         <option value="Rathedaung" selected><?php echo $dataDecode[$_COOKIE['lang']]['rathedaung']; ?></option>
                                     <?php } else { ?>
                                         <option value="Rathedaung"><?php echo $dataDecode[$_COOKIE['lang']]['rathedaung']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Sittwe") { ?>
+                                    <?php if (accTown() == "Sittwe") { ?>
                                         <option value="Sittwe" selected><?php echo $dataDecode[$_COOKIE['lang']]['sittwe']; ?></option>
                                     <?php } else { ?>
                                         <option value="Sittwe"><?php echo $dataDecode[$_COOKIE['lang']]['sittwe']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Taungup") { ?>
+                                    <?php if (accTown() == "Taungup") { ?>
                                         <option value="Taungup" selected><?php echo $dataDecode[$_COOKIE['lang']]['taungup']; ?></option>
                                     <?php } else { ?>
                                         <option value="Taungup"><?php echo $dataDecode[$_COOKIE['lang']]['taungup']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['town'] == "Thandwe") { ?>
+                                    <?php if (accTown() == "Thandwe") { ?>
                                         <option value="Thandwe" selected><?php echo $dataDecode[$_COOKIE['lang']]['thandwe']; ?></option>
                                     <?php } else { ?>
                                         <option value="Thandwe"><?php echo $dataDecode[$_COOKIE['lang']]['thandwe']; ?></option>
@@ -383,77 +377,77 @@ require("getProfileData.php");
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['state_region']; ?></label>
                                 <select class="custom-select" name="state_region">
-                                    <?php if ($row['state_region'] == "Kachin") { ?>
+                                    <?php if (accStateRegion() == "Kachin") { ?>
                                         <option value="Kachin" selected><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
                                     <?php } else { ?>
                                         <option value="Kachin"><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Kayar") { ?>
+                                    <?php if (accStateRegion() == "Kayar") { ?>
                                         <option value="Kayar" selected><?php echo $dataDecode[$_COOKIE['lang']]['kayar']; ?></option>
                                     <?php } else { ?>
                                         <option value="Kayar"><?php echo $dataDecode[$_COOKIE['lang']]['kayar']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Kayin") { ?>
+                                    <?php if (accStateRegion() == "Kayin") { ?>
                                         <option value="Kayin" selected><?php echo $dataDecode[$_COOKIE['lang']]['kayin']; ?></option>
                                     <?php } else { ?>
                                         <option value="Kayin"><?php echo $dataDecode[$_COOKIE['lang']]['kayin']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Chin") { ?>
+                                    <?php if (accStateRegion() == "Chin") { ?>
                                         <option value="Chin" selected><?php echo $dataDecode[$_COOKIE['lang']]['chin']; ?></option>
                                     <?php } else { ?>
                                         <option value="Chin"><?php echo $dataDecode[$_COOKIE['lang']]['chin']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Mon") { ?>
+                                    <?php if (accStateRegion() == "Mon") { ?>
                                         <option value="Mon" selected><?php echo $dataDecode[$_COOKIE['lang']]['mon']; ?></option>
                                     <?php } else { ?>
                                         <option value="Mon"><?php echo $dataDecode[$_COOKIE['lang']]['mon']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Rakhine") { ?>
+                                    <?php if (accStateRegion() == "Rakhine") { ?>
                                         <option value="Rakhine" selected><?php echo $dataDecode[$_COOKIE['lang']]['rakhine']; ?></option>
                                     <?php } else { ?>
                                         <option value="Rakhine"><?php echo $dataDecode[$_COOKIE['lang']]['rakhine']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Shan") { ?>
+                                    <?php if (accStateRegion() == "Shan") { ?>
                                         <option value="Shan" selected><?php echo $dataDecode[$_COOKIE['lang']]['shan']; ?></option>
                                     <?php } else { ?>
                                         <option value="Shan"><?php echo $dataDecode[$_COOKIE['lang']]['shan']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Yangon") { ?>
+                                    <?php if (accStateRegion() == "Yangon") { ?>
                                         <option value="Yangon" selected><?php echo $dataDecode[$_COOKIE['lang']]['yangon']; ?></option>
                                     <?php } else { ?>
                                         <option value="Yangon"><?php echo $dataDecode[$_COOKIE['lang']]['yangon']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Mandalay") { ?>
+                                    <?php if (accStateRegion() == "Mandalay") { ?>
                                         <option value="Mandalay" selected><?php echo $dataDecode[$_COOKIE['lang']]['mandalay']; ?></option>
                                     <?php } else { ?>
                                         <option value="Mandalay"><?php echo $dataDecode[$_COOKIE['lang']]['mandalay']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Nay Pyi Taw") { ?>
+                                    <?php if (accStateRegion() == "Nay Pyi Taw") { ?>
                                         <option value="Nay Pyi Taw" selected><?php echo $dataDecode[$_COOKIE['lang']]['naypyitaw']; ?></option>
                                     <?php } else { ?>
                                         <option value="Nay Pyi Taw"><?php echo $dataDecode[$_COOKIE['lang']]['naypyitaw']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Ayeyarwady") { ?>
+                                    <?php if (accStateRegion() == "Ayeyarwady") { ?>
                                         <option value="Ayeyarwady" selected><?php echo $dataDecode[$_COOKIE['lang']]['ayeyarwady']; ?></option>
                                     <?php } else { ?>
                                         <option value="Ayeyarwady"><?php echo $dataDecode[$_COOKIE['lang']]['ayeyarwady']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Sagaing") { ?>
+                                    <?php if (accStateRegion() == "Sagaing") { ?>
                                         <option value="Sagaing" selected><?php echo $dataDecode[$_COOKIE['lang']]['sagaing']; ?></option>
                                     <?php } else { ?>
                                         <option value="Sagaing"><?php echo $dataDecode[$_COOKIE['lang']]['sagaing']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Magway") { ?>
+                                    <?php if (accStateRegion() == "Magway") { ?>
                                         <option value="Magway" selected><?php echo $dataDecode[$_COOKIE['lang']]['magway']; ?></option>
                                     <?php } else { ?>
                                         <option value="Magway"><?php echo $dataDecode[$_COOKIE['lang']]['magway']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Bago") { ?>
+                                    <?php if (accStateRegion() == "Bago") { ?>
                                         <option value="Bago" selected><?php echo $dataDecode[$_COOKIE['lang']]['bago']; ?></option>
                                     <?php } else { ?>
                                         <option value="Bago"><?php echo $dataDecode[$_COOKIE['lang']]['bago']; ?></option>
                                     <?php }; ?>
-                                    <?php if ($row['state_region'] == "Taninthari") { ?>
+                                    <?php if (accStateRegion() == "Taninthari") { ?>
                                         <option value="Taninthari" selected><?php echo $dataDecode[$_COOKIE['lang']]['taninthari']; ?></option>
                                     <?php } else { ?>
                                         <option value="Taninthari"><?php echo $dataDecode[$_COOKIE['lang']]['taninthari']; ?></option>
@@ -462,11 +456,11 @@ require("getProfileData.php");
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['profile_image']; ?></label>
-                                <input class="form-control" required="required" type="text" name="img_url" placeholder="" value="<?php echo $row['pf_img_url']; ?>">
+                                <input class="form-control" required="required" type="text" name="img_url" placeholder="" value="<?php echo accPfImgURL(); ?>">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label for=""><?php echo $dataDecode[$_COOKIE['lang']]['birthday']; ?></label>
-                                <input class="form-control" required="required" type="date" name="birthday" value="<?php echo $row['birthday']; ?>">
+                                <input class="form-control" required="required" type="date" name="birthday" value="<?php echo accBirthday(); ?>">
                             </div>
                             <div class="col-md-6 form-group d-flex align-items-center">
                                 <input class="btn btn-primary py-2 px-4" type="submit" value="<?php echo $dataDecode[$_COOKIE['lang']]['update']; ?>">
@@ -565,6 +559,7 @@ require("getProfileData.php");
             <script type='text/javascript'>
                 swal('<?php echo $dataDecode[$_COOKIE['lang']]['updated_successfully']; ?>."', {
                     icon: 'success',
+                    button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
                 }).then((ok) => {
                     window.open("profile.php", "_self");
                 });
@@ -573,6 +568,7 @@ require("getProfileData.php");
             <script type='text/javascript'>
                 swal('<?php echo $dataDecode[$_COOKIE['lang']]['an_error_occured']; ?>."', {
                     icon: 'error',
+                    button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
                 });
             </script>
     <?php

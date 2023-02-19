@@ -354,6 +354,7 @@ require("db-connect.php")
             <script type='text/javascript'>
                 swal('<?php echo $phone; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['this_phone_number_is_already_in_used']; ?>', {
                     icon: 'error',
+                    button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
                 });
             </script>
             <?php } else {
@@ -362,6 +363,7 @@ require("db-connect.php")
                 <script type='text/javascript'>
                     swal('<?php echo $dataDecode[$_COOKIE['lang']]['congratulation']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['your_account_created_successfully']; ?>', {
                         icon: 'success',
+                        button: '<?php echo $dataDecode[$_COOKIE['lang']]['login']; ?>'
                     }).then((ok) => {
                         window.open("login.php", "_self");
                     });

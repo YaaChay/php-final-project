@@ -807,10 +807,17 @@ require("getProfileData.php");
                                 <div class="row pb-3">
                                     <div class="col-12 pb-1">
                                         <div class="d-flex align-items-center justify-content-between mb-4">
-                                            <div>
-                                                <button class="btn btn-sm btn-light active"><i class="fa fa-th-large"></i></button>
-                                                <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>
-                                            </div>
+                                            <?php if ((!isset($_COOKIE['list-style'])) or ($_COOKIE['list-style'] == "style1")) { ?>
+                                                <div>
+                                                    <a href="setCookie.php?key=list-style&value=style1&page=shop" class="btn btn-sm btn-light active"><i class="fa fa-th-large"></i></a>
+                                                    <a href="setCookie.php?key=list-style&value=style2&page=shop" class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></a>
+                                                </div>
+                                            <?php } else if ($_COOKIE['list-style'] == "style2") { ?>
+                                                <div>
+                                                    <a href="setCookie.php?key=list-style&value=style1&page=profile" class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></a>
+                                                    <a href="setCookie.php?key=list-style&value=style2&page=profile" class="btn btn-sm btn-light ml-2 active"><i class="fa fa-bars"></i></a>
+                                                </div>
+                                            <?php } ?>
                                             <div class="ml-2">
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><?php echo $dataDecode[$_COOKIE['lang']]['sorting']; ?></button>
@@ -835,486 +842,197 @@ require("getProfileData.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Vertical Product Item Start -->
-                                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                                        <div class="product-item bg-light mb-4">
-                                            <div class="product-img position-relative overflow-hidden">
-                                                <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
-                                                <div class="product-action">
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center py-4">
-                                                <a class="h6 text-decoration-none text-truncate" href="">Product Name
-                                                    Goes Here</a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                                        <div class="product-item bg-light mb-4">
-                                            <div class="product-img position-relative overflow-hidden">
-                                                <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
-                                                <div class="product-action">
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center py-4">
-                                                <a class="h6 text-decoration-none text-truncate" href="">Product Name
-                                                    Goes Here</a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                                        <div class="product-item bg-light mb-4">
-                                            <div class="product-img position-relative overflow-hidden">
-                                                <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
-                                                <div class="product-action">
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center py-4">
-                                                <a class="h6 text-decoration-none text-truncate" href="">Product Name
-                                                    Goes Here</a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                                        <div class="product-item bg-light mb-4">
-                                            <div class="product-img position-relative overflow-hidden">
-                                                <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
-                                                <div class="product-action">
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center py-4">
-                                                <a class="h6 text-decoration-none text-truncate" href="">Product Name
-                                                    Goes Here</a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                                        <div class="product-item bg-light mb-4">
-                                            <div class="product-img position-relative overflow-hidden">
-                                                <img class="img-fluid w-100" src="img/product-5.jpg" alt="">
-                                                <div class="product-action">
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center py-4">
-                                                <a class="h6 text-decoration-none text-truncate" href="">Product Name
-                                                    Goes Here</a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                                        <div class="product-item bg-light mb-4">
-                                            <div class="product-img position-relative overflow-hidden">
-                                                <img class="img-fluid w-100" src="img/product-6.jpg" alt="">
-                                                <div class="product-action">
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center py-4">
-                                                <a class="h6 text-decoration-none text-truncate" href="">Product Name
-                                                    Goes Here</a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                                        <div class="product-item bg-light mb-4">
-                                            <div class="product-img position-relative overflow-hidden">
-                                                <img class="img-fluid w-100" src="img/product-7.jpg" alt="">
-                                                <div class="product-action">
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center py-4">
-                                                <a class="h6 text-decoration-none text-truncate" href="">Product Name
-                                                    Goes Here</a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                                        <div class="product-item bg-light mb-4">
-                                            <div class="product-img position-relative overflow-hidden">
-                                                <img class="img-fluid w-100" src="img/product-8.jpg" alt="">
-                                                <div class="product-action">
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center py-4">
-                                                <a class="h6 text-decoration-none text-truncate" href="">Product Name
-                                                    Goes Here</a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                                        <div class="product-item bg-light mb-4">
-                                            <div class="product-img position-relative overflow-hidden">
-                                                <img class="img-fluid w-100" src="img/product-9.jpg" alt="">
-                                                <div class="product-action">
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="text-center py-4">
-                                                <a class="h6 text-decoration-none text-truncate" href="">Product Name
-                                                    Goes Here</a>
-                                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-review d-flex align-items-center justify-content-center mb-1">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Vertical Product Item End -->
 
-                                    <!-- Horizontal Product Item Start -->
-                                    <div class="products-wrapper col-lg-12 col-md-12 col-sm-12 pb-12">
-                                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                                            <img src="img/product-9.jpg" alt="">
-                                            <div class="item-info">
-                                                <a class="item-name" href="">Product Name Goes Here Product Name Goes
-                                                    Here Product Name
-                                                    Goes Here</a>
-                                                <div class="prices">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class=""><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-rating">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                                <div class="item-action">
-                                                    <a class="btn btn-outline-dark" href=""><i class="bi bi-pen"></i><?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                                            <img src="img/product-9.jpg" alt="">
-                                            <div class="item-info">
-                                                <a class="item-name" href="">Product Name Goes Here Product Name Goes
-                                                    Here Product Name
-                                                    Goes Here</a>
-                                                <div class="prices">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class=""><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-rating">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                                <div class="item-action">
-                                                    <a class="btn btn-outline-dark" href=""><i class="bi bi-pen"></i><?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                                            <img src="img/product-9.jpg" alt="">
-                                            <div class="item-info">
-                                                <a class="item-name" href="">Product Name Goes Here Product Name Goes
-                                                    Here Product Name
-                                                    Goes Here</a>
-                                                <div class="prices">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class=""><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-rating">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                                <div class="item-action">
-                                                    <a class="btn btn-outline-dark" href=""><i class="bi bi-pen"></i><?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                    <?php if ((!isset($_COOKIE['list-style'])) or ($_COOKIE['list-style'] == "style1")) { ?>
+                                        <!-- Vertical Product Item Start -->
+                                        <?php
+                                        $query = isset($_GET['searchQuery']) ? "SELECT * FROM `books` WHERE `name` LIKE '%" . $_GET['searchQuery'] . "%';" : "SELECT * FROM `books`;";
+                                        $result = mysqli_query($con, $query);
+                                        $rowcount = mysqli_num_rows($result);
+                                        if ($rowcount == 0) { ?>
+                                            <h5 class="text-center my-5">Result no found for "<?php echo $_GET['searchQuery']; ?>".</h5>
+                                        <?php };
+                                        for ($i = 0; $i < $rowcount; $i++) {
+                                            $row = mysqli_fetch_array($result); ?>
+                                            <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                                                <div class="product-item bg-light mb-4">
+                                                    <div class="product-img position-relative overflow-hidden">
+                                                        <div class="book-cover">
+                                                            <img src="<?php echo $row['img_url']; ?>" alt="">
+                                                        </div>
+                                                        <div class="product-action">
+                                                            <?php if (isset($_COOKIE['acc']) and accRole() == "admin") { ?>
+                                                                <a class="btn btn-outline-dark btn-square" href="edit-book.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="javascript:deleteAlert(<?php echo $row['id']; ?>);" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                                            <?php } else if (isset($_COOKIE['acc']) and accRole() == "user") { ?>
+                                                                <a class="btn btn-outline-dark btn-square" href="cart.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-check"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="#" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                                            <?php } else { ?>
+                                                                <a class="btn btn-outline-dark btn-square" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?>"><i class="bi bi-cart-check"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                                            <?php }; ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-center py-4  overflow-hidden">
+                                                        <a class="h6 text-decoration-none" href="detail.php?bookId=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
+                                                        <div class="d-flex align-items-center justify-content-center mt-2">
+                                                            <h5><?php echo $row['price']; ?><span class="ml-1">MMK</span></h5>
+                                                            <h6 class="text-muted ml-2"><del><?php $price = $row['price'];
+                                                                                                echo $price + 2000; ?><span class="ml-1">MMK</span></del></h6>
+                                                        </div>
+                                                        <div class="item-review d-flex align-items-center justify-content-center mb-1">
+                                                            <small>4.5</small>
+                                                            <small><i class="bi bi-star-fill"></i></small>
+                                                            <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                                            <img src="img/product-9.jpg" alt="">
-                                            <div class="item-info">
-                                                <a class="item-name" href="">Product Name Goes Here Product Name Goes
-                                                    Here Product Name
-                                                    Goes Here</a>
-                                                <div class="prices">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class=""><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-rating">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                                <div class="item-action">
-                                                    <a class="btn btn-outline-dark" href=""><i class="bi bi-pen"></i><?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                                            <img src="img/product-9.jpg" alt="">
-                                            <div class="item-info">
-                                                <a class="item-name" href="">Product Name Goes Here Product Name Goes
-                                                    Here Product Name
-                                                    Goes Here</a>
-                                                <div class="prices">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class=""><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-rating">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                                <div class="item-action">
-                                                    <a class="btn btn-outline-dark" href=""><i class="bi bi-pen"></i><?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                                            <img src="img/product-9.jpg" alt="">
-                                            <div class="item-info">
-                                                <a class="item-name" href="">Product Name Goes Here Product Name Goes
-                                                    Here Product Name
-                                                    Goes Here</a>
-                                                <div class="prices">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class=""><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-rating">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                                <div class="item-action">
-                                                    <a class="btn btn-outline-dark" href=""><i class="bi bi-pen"></i><?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                        <?php } ?>
+                                        <!-- Vertical Product Item End -->
+                                    <?php } else if ($_COOKIE['list-style'] == "style2") { ?>
+                                        <!-- Horizontal Product Item Start -->
+                                        <?php
+                                        $query = isset($_GET['searchQuery']) ? "SELECT * FROM `books` WHERE `name` LIKE '%" . $_GET['searchQuery'] . "%';" : "SELECT * FROM `books`;";
+                                        $result = mysqli_query($con, $query);
+                                        $rowcount = mysqli_num_rows($result);
+                                        if ($rowcount == 0) { ?>
+                                            <h5 class="text-center my-5">Result no found for "<?php echo $_GET['searchQuery']; ?>".</h5>
+                                        <?php };
+                                        for ($i = 0; $i < $rowcount; $i++) {
+                                            $row = mysqli_fetch_array($result); ?>
+                                            <div class="products-wrapper col-lg-12 col-md-12 col-sm-12 pb-12">
+                                                <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
+                                                    <img src="<?php echo $row['img_url']; ?>" alt="">
+                                                    <div class="item-info">
+                                                        <a class="item-name" href="detail.php?bookId=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a>
+                                                        <div class="prices">
+                                                            <h5><?php echo $row['price']; ?><span class="ml-1">MMK</span></h5>
+                                                            <h6 class=""><del><?php $price = $row['price'];
+                                                                                echo $price + 2000; ?><span class="ml-1">MMK</span></del></h6>
+                                                        </div>
+                                                        <div class="item-rating">
+                                                            <small>4.5</small>
+                                                            <small><i class="bi bi-star-fill"></i></small>
+                                                            <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
+                                                        </div>
+                                                        <div class="item-action">
+                                                            <?php if (isset($_COOKIE['acc']) and accRole() == "admin") { ?>
+                                                                <a class="btn btn-outline-dark btn-square" href="edit-book.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?>"><i class="bi bi-pen"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="javascript:deleteAlert(<?php echo $row['id']; ?>);" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                                            <?php } else if (isset($_COOKIE['acc']) and accRole() == "user") { ?>
+                                                                <a class="btn btn-outline-dark" href="cart.php" title=""><i class="bi bi-cart-check"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="#" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                                            <?php } else { ?>
+                                                                <a class="btn btn-outline-dark" href="login.php" title=""><i class="bi bi-cart-check"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="login.php" title="<?php echo $dataDecode[$_COOKIE['lang']]['add_to_wish_list']; ?>"><i class="bi bi-heart"></i></a>
+                                                                <a class="btn btn-outline-dark btn-square" href="detail.php?bookId=<?php echo $row['id']; ?>" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
+                                                            <?php }; ?>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="product col-lg-12 col-md-12 col-sm-12 pb-12">
-                                            <img src="img/product-9.jpg" alt="">
-                                            <div class="item-info">
-                                                <a class="item-name" href="">Product Name Goes Here Product Name Goes
-                                                    Here Product Name
-                                                    Goes Here</a>
-                                                <div class="prices">
-                                                    <h5>$123.00</h5>
-                                                    <h6 class=""><del>$123.00</del></h6>
-                                                </div>
-                                                <div class="item-rating">
-                                                    <small>4.5</small>
-                                                    <small><i class="bi bi-star-fill"></i></small>
-                                                    <small>(100 <?php echo $dataDecode[$_COOKIE['lang']]['reviews']; ?>)</small>
-                                                </div>
-                                                <div class="item-action">
-                                                    <a class="btn btn-outline-dark" href=""><i class="bi bi-pen"></i><?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['delete_book']; ?>"><i class="bi bi-trash"></i></a>
-                                                    <a class="btn btn-outline-dark btn-square" href="" title="<?php echo $dataDecode[$_COOKIE['lang']]['view_more']; ?>"><i class="bi bi-arrows-fullscreen"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <!-- Horizontal Product Item End -->
-
-                                    <div class="col-12">
-                                        <nav>
-                                            <ul class="pagination justify-content-center">
-                                                <li class="page-item disabled"><a class="page-link" href="#"><?php echo $dataDecode[$_COOKIE['lang']]['previous']; ?></span></a></li>
-                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                <li class="page-item"><a class="page-link" href="#"><?php echo $dataDecode[$_COOKIE['lang']]['next']; ?></a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
+                                        <?php } ?>
                                 </div>
+                                <!-- Horizontal Product Item End -->
+                            <?php } ?>
+                            <div class="col-12">
+                                <nav>
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item disabled"><a class="page-link" href="#"><?php echo $dataDecode[$_COOKIE['lang']]['previous']; ?></span></a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#"><?php echo $dataDecode[$_COOKIE['lang']]['next']; ?></a></li>
+                                    </ul>
+                                </nav>
                             </div>
-                            <!-- Shop Product End -->
+                            </div>
                         </div>
+                        <!-- Shop Product End -->
                     </div>
-                    <div class="tab-pane fade" id="tab-pane-5">
-                        <div class="col-lg-12 table-responsive mb-5">
-                            <table class="table table-light table-borderless table-hover text-center mb-0">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th class="text-left"><?php echo $dataDecode[$_COOKIE['lang']]['name']; ?></th>
-                                        <th class="text-left"><?php echo $dataDecode[$_COOKIE['lang']]['address']; ?></th>
-                                        <th><?php echo $dataDecode[$_COOKIE['lang']]['phone']; ?></th>
-                                        <th><?php echo $dataDecode[$_COOKIE['lang']]['book_id']; ?></th>
-                                        <th><?php echo $dataDecode[$_COOKIE['lang']]['quantity']; ?></th>
-                                        <th><?php echo $dataDecode[$_COOKIE['lang']]['date']; ?></th>
-                                        <th><?php echo $dataDecode[$_COOKIE['lang']]['status']; ?></th>
-                                    </tr>
-                                </thead>
-                                <tbody class="align-middle">
-                                    <tr>
-                                        <td class="text-left">Kyaw Zaya</td>
-                                        <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                        <td class="align-middle">09405999313</td>
-                                        <td class="align-middle">II17623</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-info" onclick="adminUpdateStatus('Hello World');"><i class="bi bi-send mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['send']; ?></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Kyaw Zaya</td>
-                                        <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                        <td class="align-middle">09405999313</td>
-                                        <td class="align-middle">II17623</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-warning"><i class=" bi bi-arrow-right mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['delivered']; ?></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Kyaw Zaya</td>
-                                        <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                        <td class="align-middle">09405999313</td>
-                                        <td class="align-middle">II17623</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Kyaw Zaya</td>
-                                        <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                        <td class="align-middle">09405999313</td>
-                                        <td class="align-middle">II17623</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Kyaw Zaya</td>
-                                        <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                        <td class="align-middle">09405999313</td>
-                                        <td class="align-middle">II17623</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                </div>
+                <div class="tab-pane fade" id="tab-pane-5">
+                    <div class="col-lg-12 table-responsive mb-5">
+                        <table class="table table-light table-borderless table-hover text-center mb-0">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-left"><?php echo $dataDecode[$_COOKIE['lang']]['name']; ?></th>
+                                    <th class="text-left"><?php echo $dataDecode[$_COOKIE['lang']]['address']; ?></th>
+                                    <th><?php echo $dataDecode[$_COOKIE['lang']]['phone']; ?></th>
+                                    <th><?php echo $dataDecode[$_COOKIE['lang']]['book_id']; ?></th>
+                                    <th><?php echo $dataDecode[$_COOKIE['lang']]['quantity']; ?></th>
+                                    <th><?php echo $dataDecode[$_COOKIE['lang']]['date']; ?></th>
+                                    <th><?php echo $dataDecode[$_COOKIE['lang']]['status']; ?></th>
+                                </tr>
+                            </thead>
+                            <tbody class="align-middle">
+                                <tr>
+                                    <td class="text-left">Kyaw Zaya</td>
+                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
+                                    <td class="align-middle">09405999313</td>
+                                    <td class="align-middle">II17623</td>
+                                    <td class="align-middle">5</td>
+                                    <td class="align-middle">12-2-23</td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-sm btn-info" onclick="adminUpdateStatus('Hello World');"><i class="bi bi-send mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['send']; ?></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">Kyaw Zaya</td>
+                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
+                                    <td class="align-middle">09405999313</td>
+                                    <td class="align-middle">II17623</td>
+                                    <td class="align-middle">5</td>
+                                    <td class="align-middle">12-2-23</td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-sm btn-warning"><i class=" bi bi-arrow-right mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['delivered']; ?></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">Kyaw Zaya</td>
+                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
+                                    <td class="align-middle">09405999313</td>
+                                    <td class="align-middle">II17623</td>
+                                    <td class="align-middle">5</td>
+                                    <td class="align-middle">12-2-23</td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">Kyaw Zaya</td>
+                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
+                                    <td class="align-middle">09405999313</td>
+                                    <td class="align-middle">II17623</td>
+                                    <td class="align-middle">5</td>
+                                    <td class="align-middle">12-2-23</td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">Kyaw Zaya</td>
+                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
+                                    <td class="align-middle">09405999313</td>
+                                    <td class="align-middle">II17623</td>
+                                    <td class="align-middle">5</td>
+                                    <td class="align-middle">12-2-23</td>
+                                    <td class="align-middle">
+                                        <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     <?php }; ?>
     <!-- ADMIN CONTROL END -->
@@ -1448,12 +1166,13 @@ require("getProfileData.php");
                 title: "Are you sure?",
                 text: "Did you send this product." + orderId,
                 icon: "warning",
-                buttons: true,
+                button: '<?php echo $dataDecode[$_COOKIE['lang']]['yes']; ?>',
                 dangerMode: true,
             }).then((received) => {
                 if (received) {
                     swal("Updated Status", {
                         icon: "success",
+                        button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
                     }).then((ok) => {
                         if (ok) {
                             console.log("Hello");
@@ -1461,6 +1180,19 @@ require("getProfileData.php");
                     });
                 }
             });
+        }
+
+        function deleteAlert(id) {
+            swal('<?php echo $dataDecode[$_COOKIE['lang']]['are_you_sure']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['delete_description']; ?>', {
+                    icon: "warning",
+                    buttons: ['<?php echo $dataDecode[$_COOKIE['lang']]['cancel']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'],
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.open("delete-book.php?bookId=" + id + "&page=profile", "_self");
+                    }
+                });
         }
     </script>
 </body>
