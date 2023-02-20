@@ -1,3 +1,6 @@
+<?php
+require("language.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,10 +44,21 @@
 </head>
 
 <body>
-    <img class="thanks-svg" src="./svg/thanks.svg" alt="" srcset="">
-    <h1 class="text-primary font-weight-bold">Thank You</h1>
-    <p>Your order was successfully submitted.</p>
-    <a class="btn btn-primary font-weight-bold" href="index.html">Go to home page</a>
+    <?php if (isset($_POST['thanks']) and $_POST['thanks'] == 1) { ?>
+        <img class="thanks-svg" src="./svg/thanks.svg" alt="" srcset="">
+        <h1 class="text-primary font-weight-bold"><?php echo $dataDecode[$_COOKIE['lang']]['thank_you']; ?></h1>
+        <p><?php echo $dataDecode[$_COOKIE['lang']]['your_order_was_successfully_submitted']; ?></p>
+        <a class="btn btn-primary font-weight-bold" href="index.html"><?php echo $dataDecode[$_COOKIE['lang']]['go_to_home_page']; ?></a>
+    <?php } else if (isset($_POST['thanks']) and $_POST['thanks'] == 1) { ?>
+        <img class="thanks-svg" src="./svg/thanks.svg" alt="" srcset="">
+        <h1 class="text-primary font-weight-bold"><?php echo $dataDecode[$_COOKIE['lang']]['thank_you']; ?></h1>
+        <p><?php echo $dataDecode[$_COOKIE['lang']]['your_order_was_successfully_submitted']; ?></p>
+        <a class="btn btn-primary font-weight-bold" href="index.html"><?php echo $dataDecode[$_COOKIE['lang']]['go_to_home_page']; ?></a>
+    <?php } else { ?>
+        <script type="text/javascript">
+            window.open("index.php", "_self");
+        </script>
+    <?php } ?>
 </body>
 
 </html>

@@ -217,7 +217,8 @@
         "delete_description": "Once deleted, you will not be able to recover this book!",
         "ok": "OK",
         "yes": "Yes",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "did_you_send_this_order": "Did you send this order?"
     },
     "myanmar": {
         "quote": "စာအုပ်များသည် ထူးခြားစွာသယ်ဆောင်ရလွယ်ကူသော မှော်ပညာတစ်ခုဖြစ်သည်။",
@@ -437,6 +438,7 @@
         "delete_description": "ဖျက်လိုက်သည်နှင့်၊ သင်သည် ဤစာအုပ်ကို ပြန်လည်ရယူနိုင်မည် မဟုတ်ပါ။",
         "ok": "အိုကေ",
         "yes": "ဟုတ်ကဲ့",
-        "cancel": "ပယ်ဖျက်ပါ"
+        "cancel": "ပယ်ဖျက်ပါ",
+        "did_you_send_this_order": "ဒီအော်ဒါကို ပို့ခဲ့ပြီလား။"
     }
 }

@@ -617,56 +617,32 @@ require("getProfileData.php");
                                     </tr>
                                 </thead>
                                 <tbody class="align-middle">
-                                    <tr>
-                                        <td class="text-left">Book Title</td>
-                                        <td class="align-middle">5500 MMK</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">27500</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-dark disabled"><i class="bi bi-cart-check mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['ordered']; ?></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Book Title</td>
-                                        <td class="align-middle">5500 MMK</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">27500</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-warning" onclick="updateStatus('Hello World');"><i class="bi bi-arrow-right mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Book Title</td>
-                                        <td class="align-middle">5500 MMK</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">27500</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Book Title</td>
-                                        <td class="align-middle">5500 MMK</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">27500</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Book Title</td>
-                                        <td class="align-middle">5500 MMK</td>
-                                        <td class="align-middle">5</td>
-                                        <td class="align-middle">12-2-23</td>
-                                        <td class="align-middle">27500</td>
-                                        <td class="align-middle">
-                                            <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    $queryHistory = "SELECT * FROM `orders` WHERE `phone` = '" . accPhone() . "';";
+                                    $historyResult = mysqli_query($con, $queryHistory);
+                                    $history_count = mysqli_num_rows($historyResult);
+                                    for ($i = 0; $i < $history_count; $i++) {
+                                        $history = mysqli_fetch_array($historyResult);
+                                        $queryID = "SELECT * FROM `books` WHERE `product_key` = '" . $history['product_key'] . "'";
+                                        $resultID = mysqli_query($con, $queryID);
+                                        $rowId = mysqli_fetch_array($resultID); ?>
+                                        <tr>
+                                            <td class="text-left"><a class="text-decoration-none text-dark" href="detail.php?bookId=<?php echo $rowId['id']; ?>" ;><?php echo $history['book_name']; ?></a></td>
+                                            <td class="align-middle"><?php echo $history['price']; ?></td>
+                                            <td class="align-middle"><?php echo $history['count']; ?></td>
+                                            <td class="align-middle"><?php echo $history['order_date']; ?></td>
+                                            <td class="align-middle"><?php echo $history['total']; ?></td>
+                                            <td class="align-middle">
+                                                <?php if ($history['status'] == 1) { ?>
+                                                    <button class="btn btn-sm btn-dark disabled"><i class="bi bi-cart-check mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['ordered']; ?></button>
+                                                <?php } else if ($history['status'] == 2) { ?>
+                                                    <button class="btn btn-sm btn-warning" onclick="customerUpdateStatus('<?php echo $history['id']?>');"><i class="bi bi-arrow-right mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
+                                                <?php } else { ?>
+                                                    <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
+                                                <?php }; ?>
+                                            </td>
+                                        </tr>
+                                    <?php }; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -972,61 +948,33 @@ require("getProfileData.php");
                                 </tr>
                             </thead>
                             <tbody class="align-middle">
-                                <tr>
-                                    <td class="text-left">Kyaw Zaya</td>
-                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                    <td class="align-middle">09405999313</td>
-                                    <td class="align-middle">II17623</td>
-                                    <td class="align-middle">5</td>
-                                    <td class="align-middle">12-2-23</td>
-                                    <td class="align-middle">
-                                        <button class="btn btn-sm btn-info" onclick="adminUpdateStatus('Hello World');"><i class="bi bi-send mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['send']; ?></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left">Kyaw Zaya</td>
-                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                    <td class="align-middle">09405999313</td>
-                                    <td class="align-middle">II17623</td>
-                                    <td class="align-middle">5</td>
-                                    <td class="align-middle">12-2-23</td>
-                                    <td class="align-middle">
-                                        <button class="btn btn-sm btn-warning"><i class=" bi bi-arrow-right mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['delivered']; ?></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left">Kyaw Zaya</td>
-                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                    <td class="align-middle">09405999313</td>
-                                    <td class="align-middle">II17623</td>
-                                    <td class="align-middle">5</td>
-                                    <td class="align-middle">12-2-23</td>
-                                    <td class="align-middle">
-                                        <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left">Kyaw Zaya</td>
-                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                    <td class="align-middle">09405999313</td>
-                                    <td class="align-middle">II17623</td>
-                                    <td class="align-middle">5</td>
-                                    <td class="align-middle">12-2-23</td>
-                                    <td class="align-middle">
-                                        <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left">Kyaw Zaya</td>
-                                    <td class="text-left">Wet Mhyee Toe, Ann Township, Rakhine</td>
-                                    <td class="align-middle">09405999313</td>
-                                    <td class="align-middle">II17623</td>
-                                    <td class="align-middle">5</td>
-                                    <td class="align-middle">12-2-23</td>
-                                    <td class="align-middle">
-                                        <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
-                                    </td>
-                                </tr>
+                                <?php
+                                $queryOrder = "SELECT * FROM `orders`;";
+                                $resultOrder = mysqli_query($con, $queryOrder);
+                                $order_count = mysqli_num_rows($resultOrder);
+                                for ($i = 0; $i < $order_count; $i++) {
+                                    $orders = mysqli_fetch_array($resultOrder);
+                                    $queryID = "SELECT * FROM `books` WHERE `product_key` = '" . $orders['product_key'] . "'";
+                                    $resultID = mysqli_query($con, $queryID);
+                                    $rowId = mysqli_fetch_array($resultID);  ?>
+                                    <tr>
+                                        <td class="text-left"><?php echo $orders['cus_name']; ?></td>
+                                        <td class="text-left"><?php echo $orders['cus_address']; ?></td>
+                                        <td class="align-middle"><?php echo $orders['phone']; ?></td>
+                                        <td class="align-middle"><a class="text-decoration-none text-dark" href="detail.php?bookId=<?php echo $rowId['id']; ?>"><?php echo $orders['product_key']; ?></a></td>
+                                        <td class="align-middle"><?php echo $orders['count']; ?></td>
+                                        <td class="align-middle"><?php echo $orders['order_date']; ?></td>
+                                        <td class="align-middle">
+                                            <?php if ($orders['status'] == 1) { ?>
+                                                <button class="btn btn-sm btn-info" onclick="adminUpdateStatus('<?php echo $orders['id']?>');"><i class="bi bi-send mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['send']; ?></button>
+                                            <?php } else if ($orders['status'] == 2) { ?>
+                                                <button class="btn btn-sm btn-warning disabled"><i class=" bi bi-arrow-right mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['delivered']; ?></button>
+                                            <?php } else { ?>
+                                                <button class="btn btn-sm btn-success disabled"><i class="bi bi-check-lg mr-2"></i><?php echo $dataDecode[$_COOKIE['lang']]['received']; ?></button>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -1163,21 +1111,41 @@ require("getProfileData.php");
 
         function adminUpdateStatus(orderId) {
             swal({
-                title: "Are you sure?",
-                text: "Did you send this product." + orderId,
+                title: "<?php echo $dataDecode[$_COOKIE['lang']]['are_you_sure']; ?>",
+                text: "<?php echo $dataDecode[$_COOKIE['lang']]['did_you_send_this_order']; ?>",
                 icon: "warning",
-                button: '<?php echo $dataDecode[$_COOKIE['lang']]['yes']; ?>',
-                dangerMode: true,
+                buttons: ['<?php echo $dataDecode[$_COOKIE['lang']]['cancel']; ?>','<?php echo $dataDecode[$_COOKIE['lang']]['yes']; ?>'],
             }).then((received) => {
                 if (received) {
-                    swal("Updated Status", {
-                        icon: "success",
-                        button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
-                    }).then((ok) => {
-                        if (ok) {
-                            console.log("Hello");
-                        }
-                    });
+                    window.open("updateOrderState.php?orderId="+orderId+"&status=2","_self");
+                    // swal("Updated Status", {
+                    //     icon: "success",
+                    //     button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
+                    // }).then((ok) => {
+                    //     if (ok) {
+                    //         console.log("Hello");
+                    //     }
+                    // });
+                }
+            });
+        }
+        function customerUpdateStatus(orderId) {
+            swal({
+                title: "<?php echo $dataDecode[$_COOKIE['lang']]['are_you_sure']; ?>",
+                text: "<?php echo $dataDecode[$_COOKIE['lang']]['did_you_send_this_order']; ?>",
+                icon: "warning",
+                buttons: ['<?php echo $dataDecode[$_COOKIE['lang']]['cancel']; ?>','<?php echo $dataDecode[$_COOKIE['lang']]['yes']; ?>'],
+            }).then((received) => {
+                if (received) {
+                    window.open("updateOrderState.php?orderId="+orderId+"&status=3","_self");
+                    // swal("Updated Status", {
+                    //     icon: "success",
+                    //     button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
+                    // }).then((ok) => {
+                    //     if (ok) {
+                    //         console.log("Hello");
+                    //     }
+                    // });
                 }
             });
         }
