@@ -258,7 +258,7 @@ require("getProfileData.php");
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#"><?php echo $dataDecode[$_COOKIE['lang']]['home']; ?></a>
+                    <a class="breadcrumb-item text-dark" href="index.php"><?php echo $dataDecode[$_COOKIE['lang']]['home']; ?></a>
                     <a class="breadcrumb-item active text-decoration-none"><?php echo $dataDecode[$_COOKIE['lang']]['profile']; ?></a>
                     <span class="breadcrumb-item active">Smile</span>
                 </nav>

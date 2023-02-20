@@ -1,5 +1,6 @@
 <?php
 require("language.php");
+require("db-connect.php");
 require("getProfileData.php");
 ?>
 <!DOCTYPE html>
@@ -26,6 +27,9 @@ require("getProfileData.php");
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet">
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -226,7 +230,7 @@ require("getProfileData.php");
 
     <!-- Checkout Start -->
     <div class="container-fluid">
-        <form action="" method="get">
+        <form action="" method="POST">
             <div class="row px-xl-5">
                 <div class="col-lg-8">
                     <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3"><?php echo $dataDecode[$_COOKIE['lang']]['billing_address']; ?></span></h5>
@@ -234,11 +238,11 @@ require("getProfileData.php");
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['name']; ?></label>
-                                <input class="form-control" required="required" type="text" name="acc_name" placeholder="" value="<?php echo accName(); ?>">
+                                <input class="form-control" required="required" type="text" name="acc_name" placeholder="" value="<?php echo accName(); ?>" required="required">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['e_mail']; ?></label>
-                                <input class="form-control" required="required" type="email" name="email" placeholder="" value="<?php echo accEmail(); ?>">
+                                <input class="form-control" required="required" type="email" name="email" placeholder="" value="<?php echo accEmail(); ?>" required="required">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['phone']; ?></label>
@@ -249,11 +253,11 @@ require("getProfileData.php");
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['address']; ?></label>
-                                <input class="form-control" required="required" type="text" name="address" placeholder="" value="<?php echo accAddress(); ?>">
+                                <input class="form-control" required="required" type="text" name="address" placeholder="" value="<?php echo accAddress(); ?>" required="required">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['town']; ?></label>
-                                <select class="custom-select" name="town">
+                                <select class="custom-select" name="town" required="required">
                                     <?php if (accTown() == "Ann") { ?>
                                         <option value="Ann" selected><?php echo $dataDecode[$_COOKIE['lang']]['ann']; ?></option>
                                     <?php } else { ?>
@@ -343,7 +347,7 @@ require("getProfileData.php");
                             </div>
                             <div class="col-md-6 form-group">
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['state_region']; ?></label>
-                                <select class="custom-select" name="state_region">
+                                <select class="custom-select" name="state_region" required="required">
                                     <?php if (accStateRegion() == "Kachin") { ?>
                                         <option value="Kachin" selected><?php echo $dataDecode[$_COOKIE['lang']]['kachin']; ?></option>
                                     <?php } else { ?>
@@ -546,6 +550,53 @@ require("getProfileData.php");
     </div>
     <!-- Footer End -->
 
+    <!-- PHP Start -->
+    <?php
+    if (isset($_POST['acc_name'])) {
+        $productKeys = ["KzY", "Kwt", "StW", "Smz", "Kwt"];
+        $randromKey = array_rand($productKeys, 1);
+        $query = "SELECT * FROM `books` WHERE `product_key` LIKE '%" . $productKeys[$randromKey] . "%';";
+        $result = mysqli_query($con, $query);
+        $array = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $array[] = $row;
+        }
+        $randomArray = array_rand($array, 1);
+
+        $cusName = $_POST['acc_name'];
+        $cusAddress = $_POST['address'] . ", " . $_POST['town'] . ", " . $_POST['state_region'];
+        $phone = "+95" . $_POST['phone'];
+        $email = $_POST['email'];
+        $bookName = $array[$randomArray]['name'];
+        $productKey = $array[$randomArray]['product_key'];
+        $price = $array[$randomArray]['price'];
+        $count = rand(1, 5);
+        $total = $price * $count;
+        $orderDate = date("Y-m-d");
+
+        $queryOrder = "INSERT INTO `orders` (`cus_name`,`cus_address`,`phone`,`email`,`book_name`,`product_key`,`price`,`count`,`total`,`order_date`) VALUES ('$cusName','$cusAddress','$phone','$email','$bookName','$productKey',$price,$count,$total,'$orderDate');";
+        if (mysqli_query($con, $queryOrder)) { ?>
+            <script type='text/javascript'>
+                swal('<?php echo $dataDecode[$_COOKIE['lang']]['congratulation']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['your_order_was_successfully_submitted']; ?>', {
+                    icon: 'success',
+                    button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
+                }).then((ok) => {
+                    if (ok) {
+                        swal('<?php echo $dataDecode[$_COOKIE['lang']]['please_rate_your_experience']; ?>', {
+                            icon: 'info',
+                            button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
+                        }).then((rate) => {
+                            if (rate) {
+                                window.open("review.php", "_self");
+                            }
+                        })
+                    }
+                });
+            </script>
+    <?php }
+    }
+    ?>
+    <!-- PHP End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

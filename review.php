@@ -1,3 +1,6 @@
+<?php
+require("language.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,19 +16,15 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
     <!-- Getbootstrap.com -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -85,7 +84,7 @@
         <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
     </a><br> -->
     <img class="rate-svg" src="./svg/rate.svg" alt="">
-    <h5>Please Rate Your Experience</h5>
+    <h5><?php echo $dataDecode[$_COOKIE['lang']]['please_rate_your_experience']; ?></h5>
     <div class="itemReviewBar text-primary" data-star="5">
         <i class="bi bi-star-fill" id="star1"></i>
         <i class="bi bi-star-fill" id="star2"></i>
@@ -93,12 +92,22 @@
         <i class="bi bi-star-fill" id="star4"></i>
         <i class="bi bi-star-fill" id="star5"></i>
     </div>
-    <textarea class="text-area col-lg-6 col-md-9 col-sm-9 col-10 mt-2" placeholder="Comment" name="string" id="floatingTextarea"
-        maxlength="300"></textarea><br>
-    <a href="index.html" class="btn mt-2">No, thanks</a>
-    <a href="thanks.html" class="btn btn-primary mt-2">Submit</a>
+    <form action="" method="post">
+        <textarea class="text-area col-lg-6 col-md-9 col-sm-9 col-10 mt-2" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['comment']; ?>" name="comment" id="floatingTextarea" maxlength="300"></textarea><br>
+        <a href="index.html" class="btn mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['no_thanks']; ?></a>
+        <button type="submit" class="btn btn-primary mt-2"><?php echo $dataDecode[$_COOKIE['lang']]['submit']; ?></button>
+        <input type="hidden" name="star" value="5" id="starInput">
+    </form>
     <!-- Topbar End -->
 
+    <!-- PHP Start -->
+    <?php
+    if(isset($_POST['comment'])){
+        $star = $_POST['star'];
+        $comment = $_POST['comment'];
+    }
+    ?>
+    <!-- PHP End -->
     <!-- Javascript -->
     <script src="js/main.js"></script>
     <script src="js/rate.js"></script>

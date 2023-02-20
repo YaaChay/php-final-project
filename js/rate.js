@@ -6,6 +6,7 @@ var star2 = document.getElementById("star2");
 var star3 = document.getElementById("star3");
 var star4 = document.getElementById("star4");
 var star5 = document.getElementById("star5");
+var starInput = document.getElementById("starInput");
 
 rates.forEach(rate => {
     for (let i = 1; i <= 5; i++) {
@@ -41,6 +42,7 @@ reviewRates.forEach(rate => {
 //add click function to stars
 star1.onclick = () => {
     itemReviewBar.dataset.star = 1;
+    starInput.setAttribute("value","1");
     star1.removeAttribute("class");
     star1.setAttribute("class", "bi bi-star-fill");
     star2.removeAttribute("class");
@@ -54,6 +56,7 @@ star1.onclick = () => {
 };
 star2.onclick = () => {
     itemReviewBar.dataset.star = 2;
+    starInput.setAttribute("value","2");
     star1.removeAttribute("class");
     star1.setAttribute("class", "bi bi-star-fill");
     star2.removeAttribute("class");
@@ -67,6 +70,7 @@ star2.onclick = () => {
 };
 star3.onclick = () => {
     itemReviewBar.dataset.star = 3;
+    starInput.setAttribute("value","3");
     star1.removeAttribute("class");
     star1.setAttribute("class", "bi bi-star-fill");
     star2.removeAttribute("class");
@@ -80,6 +84,7 @@ star3.onclick = () => {
 };
 star4.onclick = () => {
     itemReviewBar.dataset.star = 4;
+    starInput.setAttribute("value","4");
     star1.removeAttribute("class");
     star1.setAttribute("class", "bi bi-star-fill");
     star2.removeAttribute("class");
@@ -93,6 +98,7 @@ star4.onclick = () => {
 };
 star5.onclick = () => {
     itemReviewBar.dataset.star = 5;
+    starInput.setAttribute("value","5");
     star1.removeAttribute("class");
     star1.setAttribute("class", "bi bi-star-fill");
     star2.removeAttribute("class");
