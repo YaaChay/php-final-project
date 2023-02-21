@@ -44,16 +44,15 @@ require("language.php");
 </head>
 
 <body>
-    <?php if (isset($_POST['thanks']) and $_POST['thanks'] == 1) { ?>
+    <?php if (isset($_GET['thanks']) and $_GET['thanks'] == 1) { ?>
         <img class="thanks-svg" src="./svg/thanks.svg" alt="" srcset="">
         <h1 class="text-primary font-weight-bold"><?php echo $dataDecode[$_COOKIE['lang']]['thank_you']; ?></h1>
         <p><?php echo $dataDecode[$_COOKIE['lang']]['your_order_was_successfully_submitted']; ?></p>
-        <a class="btn btn-primary font-weight-bold" href="index.html"><?php echo $dataDecode[$_COOKIE['lang']]['go_to_home_page']; ?></a>
-    <?php } else if (isset($_POST['thanks']) and $_POST['thanks'] == 1) { ?>
+        <a class="btn btn-primary font-weight-bold" href="index.php"><?php echo $dataDecode[$_COOKIE['lang']]['go_to_home_page']; ?></a>
+    <?php } else if (isset($_GET['thanks']) and $_GET['thanks'] == 2) { ?>
         <img class="thanks-svg" src="./svg/thanks.svg" alt="" srcset="">
-        <h1 class="text-primary font-weight-bold"><?php echo $dataDecode[$_COOKIE['lang']]['thank_you']; ?></h1>
-        <p><?php echo $dataDecode[$_COOKIE['lang']]['your_order_was_successfully_submitted']; ?></p>
-        <a class="btn btn-primary font-weight-bold" href="index.html"><?php echo $dataDecode[$_COOKIE['lang']]['go_to_home_page']; ?></a>
+        <p><?php echo $dataDecode[$_COOKIE['lang']]['thank_you_for_your_feedback']; ?></p>
+        <a class="btn btn-primary font-weight-bold" href="index.php"><?php echo $dataDecode[$_COOKIE['lang']]['go_to_home_page']; ?></a>
     <?php } else { ?>
         <script type="text/javascript">
             window.open("index.php", "_self");

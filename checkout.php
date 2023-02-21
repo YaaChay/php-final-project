@@ -248,7 +248,7 @@ require("getProfileData.php");
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['phone']; ?></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
-                                    <input class="form-control" type="tel" name="phone" placeholder="" value="<?php echo accPurePhone(); ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required">
+                                    <input class="form-control" type="tel" name="phone" placeholder="" value="<?php echo accPurePhone(); ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required" disabled>
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
@@ -577,20 +577,9 @@ require("getProfileData.php");
         $queryOrder = "INSERT INTO `orders` (`cus_name`,`cus_address`,`phone`,`email`,`book_name`,`product_key`,`price`,`count`,`total`,`order_date`) VALUES ('$cusName','$cusAddress','$phone','$email','$bookName','$productKey',$price,$count,$total,'$orderDate');";
         if (mysqli_query($con, $queryOrder)) { ?>
             <script type='text/javascript'>
-                swal('<?php echo $dataDecode[$_COOKIE['lang']]['congratulation']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['your_order_was_successfully_submitted']; ?>', {
+                swal('<?php echo $dataDecode[$_COOKIE['lang']]['thank_you']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['your_order_was_successfully_submitted']; ?>', {
                     icon: 'success',
                     button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
-                }).then((ok) => {
-                    if (ok) {
-                        swal('<?php echo $dataDecode[$_COOKIE['lang']]['please_rate_your_experience']; ?>', {
-                            icon: 'info',
-                            button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
-                        }).then((rate) => {
-                            if (rate) {
-                                window.open("review.php", "_self");
-                            }
-                        })
-                    }
                 });
             </script>
     <?php }

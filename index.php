@@ -234,37 +234,31 @@ require("getProfileData.php");
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item position-relative active" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/bookshop.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/quote/romance.webp" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men
-                                        Fashion</h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet
-                                        lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">အိပ်မက်ကလေးလှပခဲ့တဲ့အတွက် မောင့်ကိုကျွန်မ အမြဲကျေးဇူးတင်နေတော့မှာပါ...</p>
                                     <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="shop.php"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/bookshop.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/quote/language.jpg" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Women
-                                        Fashion</h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet
-                                        lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">You can never understand one language until you understand at least two...</p>
                                     <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="shop.php"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="img/bookshop.jpg" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="img/quote/cooking.webp" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids
-                                        Fashion</h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet
-                                        lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></h1>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Cooking is like painting or writing a song...</p>
                                     <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="shop.php"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                                 </div>
                             </div>
@@ -274,7 +268,7 @@ require("getProfileData.php");
             </div>
             <div class="col-lg-4">
                 <div class="product-offer mb-30" style="height: 200px;">
-                    <img class="img-fluid" src="img/offer-1.jpg" alt="">
+                    <img class="img-fluid" src="img/bookshop.jpg" alt="">
                     <div class="offer-text">
                         <h6 class="text-white text-uppercase"><?php echo $dataDecode[$_COOKIE['lang']]['save_20%']; ?></h6>
                         <h3 class="text-white mb-3"><?php echo $dataDecode[$_COOKIE['lang']]['special_offer']; ?></h3>
@@ -282,9 +276,9 @@ require("getProfileData.php");
                     </div>
                 </div>
                 <div class="product-offer mb-30" style="height: 200px;">
-                    <img class="img-fluid" src="img/offer-2.jpg" alt="">
+                    <img class="img-fluid" src="img/bookshop.jpg" alt="">
                     <div class="offer-text">
-                        <h6 class="text-white text-uppercase"><?php echo $dataDecode[$_COOKIE['lang']]['save_20%']; ?></h6>
+                        <h6 class="text-white text-uppercase"><?php echo $dataDecode[$_COOKIE['lang']]['save_30%']; ?></h6>
                         <h3 class="text-white mb-3"><?php echo $dataDecode[$_COOKIE['lang']]['special_offer']; ?></h3>
                         <a href="shop.php" class="btn btn-primary"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                     </div>
@@ -335,7 +329,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-1.jpg" alt="">
+                            <img class="img-fluid" src="img/category/language.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['business']; ?></h6>
@@ -348,7 +342,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-2.jpg" alt="">
+                            <img class="img-fluid" src="img/category/cartoon.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['cartoon']; ?></h6>
@@ -361,7 +355,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-3.jpg" alt="">
+                            <img class="img-fluid" src="img/category/comedy.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['comedy']; ?></h6>
@@ -374,7 +368,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-4.jpg" alt="">
+                            <img class="img-fluid" src="img/category/cooking.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['cooking']; ?></h6>
@@ -387,7 +381,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-4.jpg" alt="">
+                            <img class="img-fluid" src="img/category/health.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['health']; ?></h6>
@@ -400,7 +394,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-3.jpg" alt="">
+                            <img class="img-fluid" src="img/category/history.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['history']; ?></h6>
@@ -413,7 +407,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-2.jpg" alt="">
+                            <img class="img-fluid" src="img/category/it.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['IT']; ?></h6>
@@ -426,7 +420,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-1.jpg" alt="">
+                            <img class="img-fluid" src="img/category/knowledge.JPG" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['knowledge']; ?></h6>
@@ -439,7 +433,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-2.jpg" alt="">
+                            <img class="img-fluid" src="img/category/language.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['language']; ?></h6>
@@ -452,7 +446,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-1.jpg" alt="">
+                            <img class="img-fluid" src="img/category/religion.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['religion']; ?></h6>
@@ -465,7 +459,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-4.jpg" alt="">
+                            <img class="img-fluid" src="img/category/romance.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['romance']; ?></h6>
@@ -478,7 +472,7 @@ require("getProfileData.php");
                 <a class="text-decoration-none" href="shop.php">
                     <div class="cat-item img-zoom d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
-                            <img class="img-fluid" src="img/cat-3.jpg" alt="">
+                            <img class="img-fluid" src="img/category/translation.jpg" alt="">
                         </div>
                         <div class="flex-fill pl-3">
                             <h6><?php echo $dataDecode[$_COOKIE['lang']]['translation']; ?></h6>
@@ -554,7 +548,7 @@ require("getProfileData.php");
         <div class="row px-xl-5">
             <div class="col-md-6">
                 <div class="product-offer mb-30" style="height: 300px;">
-                    <img class="img-fluid" src="img/offer-1.jpg" alt="">
+                    <img class="img-fluid" src="img/bookshop.jpg" alt="">
                     <div class="offer-text">
                         <h6 class="text-white text-uppercase"><?php echo $dataDecode[$_COOKIE['lang']]['save_20%']; ?></h6>
                         <h3 class="text-white mb-3"><?php echo $dataDecode[$_COOKIE['lang']]['special_offer']; ?></h3>
@@ -564,9 +558,9 @@ require("getProfileData.php");
             </div>
             <div class="col-md-6">
                 <div class="product-offer mb-30" style="height: 300px;">
-                    <img class="img-fluid" src="img/offer-2.jpg" alt="">
+                    <img class="img-fluid" src="img/bookshop.jpg" alt="">
                     <div class="offer-text">
-                        <h6 class="text-white text-uppercase"><?php echo $dataDecode[$_COOKIE['lang']]['save_20%']; ?></h6>
+                        <h6 class="text-white text-uppercase"><?php echo $dataDecode[$_COOKIE['lang']]['save_30%']; ?></h6>
                         <h3 class="text-white mb-3"><?php echo $dataDecode[$_COOKIE['lang']]['special_offer']; ?></h3>
                         <a href="shop.php" class="btn btn-primary"><?php echo $dataDecode[$_COOKIE['lang']]['shop_now']; ?></a>
                     </div>

@@ -32,6 +32,7 @@
         "search_for_books": "Search For Books",
         "shop_now": "Shop Now",
         "save_20%": "Save 20%",
+        "save_30%": "Save 30%",
         "special_offer": "Special Offer",
         "free_delivery": "Free Delivery",
         "quality_books": "Quality Books",
@@ -218,7 +219,8 @@
         "ok": "OK",
         "yes": "Yes",
         "cancel": "Cancel",
-        "did_you_send_this_order": "Did you send this order?"
+        "did_you_send_this_order": "Did you send this order?",
+        "thank_you_for_your_feedback":"Thank you for your feedback."
     },
     "myanmar": {
         "quote": "စာအုပ်များသည် ထူးခြားစွာသယ်ဆောင်ရလွယ်ကူသော မှော်ပညာတစ်ခုဖြစ်သည်။",
@@ -253,6 +255,7 @@
         "search_for_books": "စာအုပ်များကိုရှာရန်",
         "shop_now": "ယခု၀ယ်ပါ",
         "save_20%": " ၂၀% သက်သာ",
+        "save_30%": " ၃္၀% သက်သာ",
         "special_offer": "အထူးလျေ့ာစျေး",
         "free_delivery": "ပို့ဆောင်ခ အခမဲ့",
         "quality_books": "အရည်အသွေးကောင်းမွန်",
@@ -439,6 +442,7 @@
         "ok": "အိုကေ",
         "yes": "ဟုတ်ကဲ့",
         "cancel": "ပယ်ဖျက်ပါ",
-        "did_you_send_this_order": "ဒီအော်ဒါကို ပို့ခဲ့ပြီလား။"
+        "did_you_send_this_order": "ဒီအော်ဒါကို ပို့ခဲ့ပြီလား။",
+        "thank_you_for_your_feedback":"သင်၏အကြံပြုချက်အတွက်ကျေးဇူးတင်ပါသည်။"
     }
 }

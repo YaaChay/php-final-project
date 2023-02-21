@@ -1,5 +1,6 @@
 <?php
 require("language.php");
+require("getProfileData.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,9 +103,13 @@ require("language.php");
 
     <!-- PHP Start -->
     <?php
-    if(isset($_POST['comment'])){
+    if (isset($_POST['comment'])) {
         $star = $_POST['star'];
         $comment = $_POST['comment'];
+        $query = "INSERT INTO `reviews`(`acc_name`,`profile_url`,`rating`,`comment`) VALUES ('" . accName() . "', '" . accPfImgURL() . "', $star,'" . $comment . "');";
+        if (mysqli_query($con, $query)) {
+            header("location:thanks.php?thanks=2");
+        }
     }
     ?>
     <!-- PHP End -->
