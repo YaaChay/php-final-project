@@ -18,6 +18,7 @@ $row = mysqli_fetch_array($result);
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" href="img/logo.png" type="text/image">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -285,7 +286,7 @@ $row = mysqli_fetch_array($result);
                                 </button>
                             </div>
                         </div>
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></button>
+                        <a href="cart.php" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
                     </div>
                     <div class="d-flex pt-2">
                         <strong class="text-dark mr-2"><?php echo $dataDecode[$_COOKIE['lang']]['share_on']; ?>:</strong>

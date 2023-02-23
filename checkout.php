@@ -15,6 +15,7 @@ require("getProfileData.php");
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" href="img/logo.png" type="text/image">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -248,7 +249,7 @@ require("getProfileData.php");
                                 <label><?php echo $dataDecode[$_COOKIE['lang']]['phone']; ?></label>
                                 <div class="input-group">
                                     <span class="input-group-text" id="basic-addon1"><?php echo $dataDecode[$_COOKIE['lang']]['plus_95']; ?></span>
-                                    <input class="form-control" type="tel" name="phone" placeholder="" value="<?php echo accPurePhone(); ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required" disabled>
+                                    <input class="form-control" type="tel" name="phone" placeholder="" value="<?php echo accPurePhone(); ?>" aria-describedby="basic-addon1" maxlength="10" size="10" required="required">
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
@@ -574,13 +575,17 @@ require("getProfileData.php");
         $total = $price * $count;
         $orderDate = date("Y-m-d");
 
-        $queryOrder = "INSERT INTO `orders` (`cus_name`,`cus_address`,`phone`,`email`,`book_name`,`product_key`,`price`,`count`,`total`,`order_date`) VALUES ('$cusName','$cusAddress','$phone','$email','$bookName','$productKey',$price,$count,$total,'$orderDate');";
+        $queryOrder = "INSERT INTO `orders` (`cus_id`,`cus_name`,`cus_address`,`phone`,`email`,`book_name`,`product_key`,`price`,`count`,`total`,`order_date`) VALUES (".$_COOKIE['acc'].",'$cusName','$cusAddress','$phone','$email','$bookName','$productKey',$price,$count,$total,'$orderDate');";
         if (mysqli_query($con, $queryOrder)) { ?>
             <script type='text/javascript'>
                 swal('<?php echo $dataDecode[$_COOKIE['lang']]['thank_you']; ?>', '<?php echo $dataDecode[$_COOKIE['lang']]['your_order_was_successfully_submitted']; ?>', {
                     icon: 'success',
                     button: '<?php echo $dataDecode[$_COOKIE['lang']]['ok']; ?>'
-                });
+                }).then((ok) => {
+                if (ok) {
+                    window.open("shop.php","_self");
+                }
+            });
             </script>
     <?php }
     }

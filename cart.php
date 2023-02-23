@@ -14,6 +14,7 @@ require("getProfileData.php");
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" href="img/logo.png" type="text/image">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -240,8 +241,7 @@ require("getProfileData.php");
                     </thead>
                     <tbody class="align-middle">
                         <tr>
-                            <td class="text-left"><img src="img/product-1.jpg" alt="" style="width: 50px;"> Product
-                                Name</td>
+                            <td class="text-left"><img src="img/book-cover.webp" alt="" style="width: 50px;"> Book Name</td>
                             <td class="align-middle">$150</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
@@ -262,8 +262,7 @@ require("getProfileData.php");
                             <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
                         </tr>
                         <tr>
-                            <td class="text-left"><img src="img/product-2.jpg" alt="" style="width: 50px;"> Product
-                                Name</td>
+                            <td class="text-left"><img src="img/book-cover.webp" alt="" style="width: 50px;"> Book Name</td>
                             <td class="align-middle">$150</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
@@ -284,8 +283,7 @@ require("getProfileData.php");
                             <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
                         </tr>
                         <tr>
-                            <td class="text-left"><img src="img/product-3.jpg" alt="" style="width: 50px;"> Product
-                                Name</td>
+                            <td class="text-left"><img src="img/book-cover.webp" alt="" style="width: 50px;"> Book Name</td>
                             <td class="align-middle">$150</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
@@ -306,8 +304,7 @@ require("getProfileData.php");
                             <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
                         </tr>
                         <tr>
-                            <td class="text-left"><img src="img/product-4.jpg" alt="" style="width: 50px;"> Product
-                                Name</td>
+                            <td class="text-left"><img src="img/book-cover.webp" alt="" style="width: 50px;"> Book Name</td>
                             <td class="align-middle">$150</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
@@ -328,8 +325,7 @@ require("getProfileData.php");
                             <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
                         </tr>
                         <tr>
-                            <td class="text-left"><img src="img/product-5.jpg" alt="" style="width: 50px;"> Product
-                                Name</td>
+                            <td class="text-left"><img src="img/book-cover.webp" alt="" style="width: 50px;"> Book Name</td>
                             <td class="align-middle">$150</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">

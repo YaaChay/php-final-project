@@ -220,6 +220,7 @@
         "yes": "Yes",
         "cancel": "Cancel",
         "did_you_send_this_order": "Did you send this order?",
+        "did_you_receive_this_order": "Did you receive this order?",
         "thank_you_for_your_feedback":"Thank you for your feedback."
     },
     "myanmar": {
@@ -443,6 +444,7 @@
         "yes": "ဟုတ်ကဲ့",
         "cancel": "ပယ်ဖျက်ပါ",
         "did_you_send_this_order": "ဒီအော်ဒါကို ပို့ခဲ့ပြီလား။",
+        "did_you_receive_this_order": "ဒီအော်ဒါကို ရခဲ့ပြီလား။",
         "thank_you_for_your_feedback":"သင်၏အကြံပြုချက်အတွက်ကျေးဇူးတင်ပါသည်။"
     }
 }

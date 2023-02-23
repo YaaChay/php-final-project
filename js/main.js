@@ -61,7 +61,7 @@
 
     // Related carousel
     $('.related-carousel').owlCarousel({
-        loop: false,
+        loop: true,
         margin: 29,
         nav: false,
         autoplay: true,
