@@ -672,7 +672,7 @@ require("getProfileData.php");
             <div>
                 <div id="owl-demo" class="owl-carousel">
                     <?php
-                    $query = "SELECT * FROM `reviews`;";
+                    $query = "SELECT * FROM `reviews` WHERE `rating` >= 4;";
                     $result = mysqli_query($con, $query);
                     $row_count = mysqli_num_rows($result);
                     for ($i = 0; $i < $row_count; $i++) {

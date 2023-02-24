@@ -233,11 +233,11 @@ require("getProfileData.php");
                     <div id="success"></div>
                     <form name="sentMessage" id="contactForm" novalidate="novalidate">
                         <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['your_name']; ?>" required="required" data-validation-required-message="Please enter your name" />
+                            <input type="text" class="form-control" id="name" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['your_name']; ?>" required="required" data-validation-required-message="Please enter your name" value="<?php echo accName();?>"/>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control" id="email" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['your_email']; ?>" required="required" data-validation-required-message="Please enter your email" />
+                            <input type="email" class="form-control" id="email" placeholder="<?php echo $dataDecode[$_COOKIE['lang']]['your_email']; ?>" required="required" data-validation-required-message="Please enter your email" value="<?php echo accEmail();?>"/>
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">

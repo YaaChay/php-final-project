@@ -273,20 +273,24 @@ $row = mysqli_fetch_array($result);
                         </tr>
                     </table>
                     <div class="d-flex align-items-center mb-4 pt-2">
-                        <div class="input-group quantity mr-3" style="width: 130px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-minus">
-                                    <i class="fa fa-minus"></i>
-                                </button>
+                        <?php if (accRole() == "user") { ?>
+                            <div class="input-group quantity mr-3" style="width: 130px;">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary btn-minus">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary btn-plus">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-plus">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <a href="cart.php" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                            <a href="cart.php" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i><?php echo $dataDecode[$_COOKIE['lang']]['add_to_cart']; ?></a>
+                        <?php } else if (accRole() == "admin") { ?>
+                            <a href="edit-book.php?bookId=<?php echo $row['id']; ?>" class="btn btn-primary px-3"><i class="bi bi-pen mr-1"></i><?php echo $dataDecode[$_COOKIE['lang']]['edit_book']; ?></a>
+                        <?php }; ?>
                     </div>
                     <div class="d-flex pt-2">
                         <strong class="text-dark mr-2"><?php echo $dataDecode[$_COOKIE['lang']]['share_on']; ?>:</strong>
